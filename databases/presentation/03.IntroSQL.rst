@@ -127,6 +127,7 @@ DDL (работа со структурой базы)
 
 .. _Команды DDL: http://webadequate.ru/rabota-s-bd-mysql/43-grading_sql_commands.html
 
+.. highlight:: sql
 
 --Создание таблицы students с полями id, name, group. ID — первичный ключ.
 CREATE TABLE students (
