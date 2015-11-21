@@ -1,1 +1,1 @@
-landslide -b -i -t tango -d /tmp/prsent.html $1
+landslide -b -i -t tango -d /var/www/templates/presentation.html $1
