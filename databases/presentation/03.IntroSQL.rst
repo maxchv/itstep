@@ -309,23 +309,7 @@ DDL (работа со структурой базы)
 
     DROP TABLE [IF EXISTS] <имя_таблицы>
 
-.. .. sourcecode:: sql
-        -- Создание таблицы students с полями id, name, group. id — первичный ключ.
-        create table students
-        (
-            id int not null auto_increment primary key,
-            name varchar(255) not null,
-            group varchar(255) null default null
-        );
-    .. code-block:: sql
-        -- Удаление таблицы studets.
-        drop table studets;
-    --------------
-    .. code-block:: sql
-        -- Добавление в таблицу students поля "date birth" после поля ID
-        -- с разрешением не заполненных значений.
-        alter table students
-            add column `date birth` date null after id;
+
 
 --------------
 
@@ -465,7 +449,7 @@ DDL (работа со структурой базы)
         <имя_столбца> <тип_столбца>
         [NOT NULL]
         [UNIQUE | PRIMARY KEY]
-        [REFERENCES <имя_мастер_таблицы> 	[<имя_столбца>]]
+        [REFERENCES <имя_мастер_таблицы>(<имя_столбца>)]
       	,...
     );
 
@@ -486,33 +470,54 @@ DDL (работа со структурой базы)
        <имя_столбца> <тип_столбца>
        [NOT NULL]
        [UNIQUE | PRIMARY KEY]
-       [REFERENCES <имя_мастер_таблицы> <имя_столбца>]]
+       [REFERENCES <имя_мастер_таблицы>(<имя_столбца>)]]
        ,...)
 
+--------------
+
+Пример модификации таблицы
+==========================
+
+.. sourcecode:: sql
+
+    -- Создание таблицы students с полями id, name, group. id — первичный ключ.
+    CREATE TABLE students
+    (
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        group VARCHAR(255) NULL DEFAULT NULL
+    );
+
+.. code-block:: sql
+
+    -- Добавление в таблицу students поля "date birth" после поля ID
+    -- с разрешением не заполненных значений.
+    ALTER TABLE students
+        ADD COLUMN `date birth` DATE NULL AFTER id;
+ 
+.. code-block:: sql
+    
+    -- Удаление таблицы studets.
+    DROP TABLE studets;
 
 --------------
 
 Задание
 =======
 
-.. image:: img/task01.png
+.. image:: img/task02.png
 
---------------
+..
+    --------------
+    Оператор SELECT
+    ===============
+    --------------
+    Выборка с оператором WHERE
+    =========================
+    --------------
+    Сортировка данных
+    =================
+    --------------
+    Многотабличные запросы. Декартовое множество
+    ============================================
 
-Оператор SELECT
-===============
-
---------------
-
-Выборка с оператором WHERE
-==========================
-
---------------
-
-Сортировка данных
-=================
-
---------------
-
-Многотабличные запросы. Декартовое множество
-============================================
