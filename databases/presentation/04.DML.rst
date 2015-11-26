@@ -1,0 +1,219 @@
+Data Manipulation Language (DML)
+================================
+
+--------------
+
+Модификация таблицы `(ALERT)`_
+===========================
+
+Добавить столбцы
+----------------
+
+.. sourcecode:: sql
+
+    ALTER TABLE <имя_таблицы> 
+        ADD COLUMN <имя_столбца> <тип_столбца>
+        [NOT NULL] [UNIQUE | PRIMARY KEY]
+        [REFERENCES <имя_мастер_таблицы>(<имя_столбца>)]
+      	,...
+
+.. _(ALTER): http://www.w3schools.com/sql/sql_alter.asp
+
+Удалить столбцы
+---------------
+
+.. sourcecode:: sql
+
+    ALTER TABLE <имя_таблицы> 
+        DROP COLUMN (<имя_столбца>,...)
+
+
+Модификация типа столбцов
+-------------------------
+
+.. sourcecode:: sql
+
+    ALTER TABLE <имя_таблицы> 
+       MODIFY COLUMN <имя_столбца> <тип_столбца>
+       [NOT NULL] [UNIQUE | PRIMARY KEY]
+       [REFERENCES <имя_мастер_таблицы>(<имя_столбца>)]]
+       ,...)
+
+--------------
+
+Пример модификации таблицы
+==========================
+
+Исходная таблица students
+-------------------------
+
+.. sourcecode:: sql
+
+    -- Создание таблицы students с полями id, name, group. id — первичный ключ.
+    CREATE TABLE students
+    (
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        group VARCHAR(255) NULL DEFAULT NULL
+    );
+
+Добавление поля
+---------------
+
+.. code-block:: sql
+
+    -- Добавление в таблицу students поля "date birth" после поля ID
+    ALTER TABLE students
+        ADD COLUMN `date birth` DATE NULL AFTER id;
+
+Модификация колонки
+-------------------
+
+.. code-block:: sql
+
+    ALTER TABLE students 
+        MODIFY COLUMN name varchar(50);
+
+Удаление поля таблицы
+---------------------
+
+.. code-block:: sql
+    
+    ALTER TABLE students
+        DROP COLUMN `group`;
+
+--------------
+
+Команды DML
+===========
+
+Команды DML содержит следующие конструкции:
+
+- `INSERT`_ – вставка новых данных
+- `SELECT`_ – выборка данных
+- `UPDATE`_ – обновление данных
+- `DELETE`_ – удаление данных
+
+.. _INSERT: http://www.w3schools.com/sql/sql_insert.asp
+
+.. _SELECT: http://www.w3schools.com/sql/sql_select.asp
+
+.. _UPDATE: http://www.w3schools.com/sql/sql_update.asp
+
+.. _DELETE: http://www.w3schools.com/sql/sql_delete.asp
+
+--------------
+
+Тестовая база данных
+====================
+
+Поля таблицы authors
+--------------------
+
+.. sourcecode:: sql
+    
+    describe authors    
+
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++=======+==============+======+=====+=========+================+
+| id    | int(11)      | NO   | PRI | NULL    | auto_increment |
++-------+--------------+------+-----+---------+----------------+
+| name  | varchar(255) | YES  | UNI | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+
+Поля таблицы books
+------------------
+
+.. sourcecode:: sql
+    
+    describe books
+
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++=============+==============+======+=====+=========+================+
+| id          | int(11)      | NO   | PRI | NULL    | auto_increment |
++-------------+--------------+------+-----+---------+----------------+
+| title       | varchar(255) | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+| author      | int(11)      | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+| year        | int(11)      | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+| description | varchar(255) | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+
+
+--------------
+
+Оператор INSERT
+===============
+
+Синтаксис команды INSERT
+------------------------
+
+.. sourcecode:: sql
+
+    INSERT [INTO] <название_таблицы> [( <поле1> [, <поле2> [,...]] )]
+    VALUES ( DEFAULT | <значение1> [, <значение2> [,...]] );
+
+
+Пример
+------
+
+В б/д books присутсвуют две таблицы: authors и books
+
++-----------------+
+| Tables_in_books |
++=================+
+| authors         |
++-----------------+
+| books           |
++-----------------+
+
+
+.. sourcecode:: sql
+
+    -- Добавление данных в таблицу authors
+    INSERT INTO authors(name) 
+        VALUES ('Станислав Лем');
+
++----+---------------------------+
+| id | name                      |
++====+===========================+
+|  1 | Станислав Лем             |
++----+---------------------------+
+
+.. sourcecode:: sql
+
+    INSERT INTO books(title, author, year) 
+        VALUES ("Молох", 1, 2006);
+
++----+------------+--------+------+-------------+
+| id | title      | author | year | description |
++====+============+========+======+=============+
+|  1 | Молох      |      1 | 2006 | NULL        |
++----+------------+--------+------+-------------+
+
+--------------
+
+UPDATE
+======
+
+.. sourcecode:: sql
+
+    UPDATE таблица
+        SET поле1=значение1,поле2=значение2,...
+        WHERE некое_поле=некое_значение;
+
+
+--------------
+
+DELETE
+======
+
+.. sourcecode:: sql
+
+    DELETE FROM таблица
+        WHERE некое_поле=некое_значение
+
