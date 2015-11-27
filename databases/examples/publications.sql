@@ -76,7 +76,7 @@ create table books
     author int not null,
     year int,
     description varchar(255) default null,
-    foreign key(id) references authors(id)
+    foreign key(author) references authors(id)
 ) character set=utf8;
 
 insert into authors(name) 
@@ -85,7 +85,14 @@ insert into authors(name)
 insert into books(title, author, year) 
     values ("Молох", 1, 2006);
 
+insert into books(title, author, year)
+    values("Солярис", 1, 1960);
+
+update books 
+    set year=1961 where id=2;
+
 select * from authors;
 select * from books;
 
-select title, author from books, authors where author=authors.id
+select title, name from books, authors where books.author=authors.id;
+
