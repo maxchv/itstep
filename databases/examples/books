@@ -28,14 +28,41 @@ create table books
 insert into authors(name) 
     values ('Станислав Лем');
 
+insert into authors(name)
+    values('Аркадий и Борис Стругацкие');
+
+insert into authors(name)
+    values('Александр Беляев');
+
+insert into authors(name)
+    values('Владимир Ленин');
+
 insert into books(title, author, year) 
-    values ("Молох", 1, 2006);
+    values ('Молох', 1, 2006);
 
 insert into books(title, author, year)
-    values("Солярис", 1, 1960);
+    values('Солярис', 1, 1960);
 
 update books 
     set year=1961 where id=2;
+
+insert into books(title, author, year)
+    values('Пикник на обочине', 2, 1972);
+
+insert into books(title, author, year)
+    values('Челове-амфибия', 3, 1928);
+
+insert into books(title, author, year)
+    values('Трудно быть богом', 2, 1963);
+
+insert into books(title, author, year)
+    values('Полное собрание сочинений', 4, 1967);
+
+-- delete from books
+--    where id=6;
+
+-- delete from authors
+--    where name='Владимир Ленин';
 
 select * from authors;
 select * from books;
