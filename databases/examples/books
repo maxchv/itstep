@@ -37,6 +37,9 @@ insert into authors(name)
 insert into authors(name)
     values('Владимир Ленин');
 
+insert into authors(name)
+    values('Роджер Желязны');
+
 insert into books(title, author, year) 
     values ('Молох', 1, 2006);
 
@@ -57,6 +60,10 @@ insert into books(title, author, year)
 
 insert into books(title, author, year)
     values('Полное собрание сочинений', 4, 1967);
+
+insert into books(title, author, year)
+    values('Хроники Амбера', 5, 1991);
+
 
 -- delete from books
 --    where id=6;
