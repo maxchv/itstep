@@ -14,16 +14,17 @@ create table People
 ) character set=utf8;
 
 insert into People(name, age, weight)
-    values('Harry', 34, 80);
+    values('Harry', 34, 80),
+          ('Sally', 28, 64),
+          ('George', 29, 70),
+          ('Helena', 54, 54),
+          ('Peter', 34, 80);
 
-insert into People(name, age, weight)
-    values('Sally', 28, 64);
+create table Characters like People;
 
-insert into People(name, age, weight)
-    values('George', 29, 70);
-
-insert into People(name, age, weight)
-    values('Helena', 54, 54);
-
-insert into People(name, age, weight)
-    values('Peter', 34, 80);
+insert into Characters(name, age, weight)
+    values('Daffy', 24, 19), 
+          ('Donald', 25, 23),
+          ('Scrooge', 81, 27),
+          ('George', 29, 70),
+          ('Sally', 28,	64);
