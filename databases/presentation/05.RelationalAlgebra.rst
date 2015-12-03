@@ -63,7 +63,7 @@ Helena	54	54
 Peter	34	80
 ====== ==== =======
 
-Результат проекции: π\ :sub:`(Age, Weight)`\ People
+Результат проекции: **π**\ :sub:`(Age, Weight)`\ People
 
 === ======
 Age	Weight
@@ -115,7 +115,7 @@ Peter	34	80
 ====== ==== =======
 
 
-Результаты выборки: σ\ :sub:`(Age≥34)`\ People
+Результаты выборки: **σ**\ :sub:`(Age≥34)`\ People
 
 ====== ==== =======
 Name	Age	Weight
@@ -156,7 +156,7 @@ Peter	34	80
 |  5 | Peter  |  34 |     80 |
 +----+--------+-----+--------+
 
-Результаты выборки: π\ :sub:`(name, age)`\ σ\ :sub:`(age>50)`\ People
+Результаты выборки: **π**\ :sub:`(name, age)`\ **σ**\ :sub:`(age>50)`\ People
 
 +--------+-----+
 | name   | age |
@@ -178,8 +178,8 @@ Peter	34	80
 
 ----
 
-Объединение (команда UNION)
-===========================
+Объединение
+===========
 
 Результатом объединения отношений A и B будет отношение с тем же заголовком, что и у совместимых по типу отношений A и B, и телом, состоящим из кортежей, принадлежащих или A, или B, или обоим отношениям.
 
@@ -328,6 +328,7 @@ Peter	34	80
 
 .. sourcecode:: sql
 
+    -- mysql не поддерживает операцию INTERSECT 
    mysql> SELECT DISTINCT 
                    People.name AS name, 
                    People.age AS age, 
@@ -338,8 +339,8 @@ Peter	34	80
 
 ----
 
-Разность
-========
+Вычитание
+=========
 
 Результатом разности отношений A и B будет отношение с тем же заголовком, что и у совместимых по типу отношений A и B, и телом, состоящим из кортежей, принадлежащих отношению A и не принадлежащих отношению B.
 
@@ -372,6 +373,7 @@ Peter	34	80
 
 .. sourcecode:: sql
 
+    -- mysql не поддерживает операцию EXCEPT
     mysql> SELECT DISTINCT 
                 People.name AS name, 
                 People.age AS age, 
@@ -385,6 +387,8 @@ Peter	34	80
 
 Декартово произведение
 ======================
+
+.. _произведение:
 
 При выполнении прямого произведения двух отношений производится отношение, кортежи которого являются конкатенацией (сцеплением) кортежей первого и второго операндов.
 
@@ -400,20 +404,20 @@ Peter	34	80
 |          2 | Family Guy   |
 +------------+--------------+
 
-Таблица Chanels
+Таблица Channels
 
 +-----------+-------------+
-| id_chanel | name_chanel |
+| id_channel| name_channel|
 +===========+=============+
 |         1 | 1+1         |
 +-----------+-------------+
 |         2 | СТБ         |
 +-----------+-------------+
 
-Результат произведения   Cartoons × Chanels
+Результат произведения   Cartoons × Channels
 
 +------------+--------------+-----------+-------------+
-| id_cartoon | name_cartoon | id_chanel | name_chanel |
+| id_cartoon | name_cartoon | id_channel| name_channel|
 +============+==============+===========+=============+
 |          1 | The Simpsons |         1 | 1+1         |
 +------------+--------------+-----------+-------------+
@@ -430,13 +434,13 @@ Peter	34	80
 
 .. sourcecode:: sql
 
-    SELECT * FROM Cartoons, Chanels;
+    SELECT * FROM Cartoons, Channels;
 
 Альтернативный запрос:
 
 .. sourcecode:: sql
 
-    SELECT * FROM Cartoons CROSS JOIN Chanels;
+    SELECT * FROM Cartoons CROSS JOIN Channels;
 
 ----
 
@@ -460,7 +464,7 @@ Peter	34	80
 Таблица Cartoons
 
 +------------+--------------+-------------+
-| id_cartoon | name_cartoon | name_chanel |
+| id_cartoon | name_cartoon | name_channel|
 +============+==============+=============+
 |          0 | The Simpsons | Inter       |
 +------------+--------------+-------------+
@@ -477,10 +481,10 @@ Peter	34	80
 |          2 | Duck Tales   | 1+1         |
 +------------+--------------+-------------+
 
-Таблица Chanels
+Таблица Channels
 
 +-------------+
-| name_chanel |
+| name_channel|
 +=============+
 | Inter       |
 +-------------+
@@ -510,18 +514,100 @@ Peter	34	80
 
 .. sourcecode:: sql
 
+    -- mysql не поддерживает операцию DIVIDE
     mysql>SELECT DISTINCT c1.id_cartoon as id, c1.name_cartoon AS name_cartoon  
             FROM CartoonsChanels AS c1 
             WHERE NOT EXISTS 
             (
-                SELECT Chanels.name_chanel FROM Chanels 
-                WHERE Chanels.name_chanel NOT IN 
+                SELECT Chanels.name_channel FROM Chanels 
+                WHERE Chanels.name_channel NOT IN 
                 (
-                    SELECT c2.name_chanel 
+                    SELECT c2.name_channel 
                     FROM CartoonsChanels as c2 
                     WHERE c2.name_cartoon=c1.name_cartoon
                 )
             );
+
+----
+
+Соединение
+==========
+
+Операция соединения есть результат последовательного применения операций декартового произведения и выборки. Если в отношениях и имеются атрибуты с одинаковыми наименованиями, то перед выполнением соединения такие атрибуты необходимо переименовать.
+
+Пример
+
+Есть таблица Cartoons:
+
++-------------+--------------+------------+
+| id_catroon  | name_cartoon | channel_id |
++=============+==============+============+
+|           1 | The Simpsons |          1 |
++-------------+--------------+------------+
+|           2 | Family Guy   |          1 |
++-------------+--------------+------------+
+|           3 | Duck Tales   |          2 |
++-------------+--------------+------------+
+
+и таблица Channels:
+
++------------+--------------+
+| id_channel | name_channel |
++============+==============+
+|          1 | Inter        |
++------------+--------------+
+|          2 | ICTV         |
++------------+--------------+
+
+Соединим их с выборкой **σ**\ :sub:`(id_channel=channel_id)`\ (Произведение)
+
+----
+
+Результат соединения
+====================
+
+Первый этап, произведение:
+
+.. sourcecode:: sql
+
+    SELECT * FROM Cartoons, Channels;
+
++-------------+--------------+------------+------------+--------------+
+| id_catroons | name_cartoon | channel_id | id_channel | name_channel |
++=============+==============+============+============+==============+
+|           1 | The Simpsons |          1 |          1 | Inter        |
++-------------+--------------+------------+------------+--------------+
+|           1 | The Simpsons |          1 |          2 | ICTV         |
++-------------+--------------+------------+------------+--------------+
+|           2 | Family Guy   |          1 |          1 | Inter        |
++-------------+--------------+------------+------------+--------------+
+|           2 | Family Guy   |          1 |          2 | ICTV         |
++-------------+--------------+------------+------------+--------------+
+|           3 | Duck Tales   |          2 |          1 | Inter        |
++-------------+--------------+------------+------------+--------------+
+|           3 | Duck Tales   |          2 |          2 | ICTV         |
++-------------+--------------+------------+------------+--------------+
+
+Второй этап, выборка
+
+.. sourcecode:: sql
+    
+    SELECT * FROM Cartoons, Channels 
+    WHERE Cartoons.channel_id=Channels.id_channel;
+
++-------------+--------------+------------+------------+--------------+
+| id_catroons | name_cartoon | channel_id | id_channel | name_channel |
++=============+==============+============+============+==============+
+|           1 | The Simpsons |          1 |          1 | Inter        |
++-------------+--------------+------------+------------+--------------+
+|           2 | Family Guy   |          1 |          1 | Inter        |
++-------------+--------------+------------+------------+--------------+
+|           3 | Duck Tales   |          2 |          2 | ICTV         |
++-------------+--------------+------------+------------+--------------+
+
+    Вопрос: как получить только столбцы name_cartoon и name_channel?
+
+.notes: :code:`SELECT Cartoons.name_cartoon, Channels.name_channel FROM Cartoons, Channels WHERE Cartoons.channel_id=Channels.id_channel;`
 
 ----
 
