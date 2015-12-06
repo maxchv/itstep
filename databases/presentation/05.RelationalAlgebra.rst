@@ -461,7 +461,7 @@ Peter	34	80
 
 Даны следующие соотношения:
 
-Таблица Cartoons
+Таблица CartoonsChannels
 
 +------------+--------------+-------------+
 | id_cartoon | name_cartoon | name_channel|
@@ -515,7 +515,7 @@ Peter	34	80
 .. sourcecode:: sql
 
     -- mysql не поддерживает операцию DIVIDE
-    mysql>SELECT DISTINCT c1.id_cartoon as id, c1.name_cartoon AS name_cartoon  
+    mysql>SELECT DISTINCT c1.id_cartoon AS id, c1.name_cartoon AS name_cartoon  
             FROM CartoonsChanels AS c1 
             WHERE NOT EXISTS 
             (
@@ -523,7 +523,7 @@ Peter	34	80
                 WHERE Chanels.name_channel NOT IN 
                 (
                     SELECT c2.name_channel 
-                    FROM CartoonsChanels as c2 
+                    FROM CartoonsChanels AS c2 
                     WHERE c2.name_cartoon=c1.name_cartoon
                 )
             );
@@ -593,7 +593,7 @@ Peter	34	80
 .. sourcecode:: sql
     
     SELECT * FROM Cartoons, Channels 
-    WHERE Cartoons.channel_id=Channels.id_channel;
+        WHERE Cartoons.channel_id=Channels.id_channel;
 
 +-------------+--------------+------------+------------+--------------+
 | id_catroons | name_cartoon | channel_id | id_channel | name_channel |
