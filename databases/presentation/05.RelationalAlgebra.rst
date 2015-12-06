@@ -616,12 +616,16 @@ Peter	34	80
 
 - `Основы реляционной алгебры`_
 - `Реляционная алгебра. Операции реляционной алгебры`_
+- `Язык SQL и реляционная алгебра`_
+- `Union, Difference, Intersection, and Division in MySQL`_  
 
 .. http://faculty.utpa.edu/lianx/CSCI4333_2015fall.html
 
+.. _Язык SQL и реляционная алгебра: http://imcs.dvfu.ru/struc/kkt/inform/studies/BD/Fomina.pdf 
 
 .. _Основы реляционной алгебры: http://habrahabr.ru/post/145381/
 
 .. _Реляционная алгебра. Операции реляционной алгебры: http://migku.wikidot.com/gos-db-16
 
+.. _Union, Difference, Intersection, and Division in MySQL: https://faculty.utpa.edu/lianx/old_courses/CSCI4333_2014fall/MySQL-set-operators.pdf
 
