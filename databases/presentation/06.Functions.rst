@@ -42,8 +42,8 @@ AVG
 
 .. sourcecode:: sql
 
-    SELECT AVG(<колонка>) 
-        FROM <таблица>;
+    SELECT AVG(<имя_поля>) 
+        FROM <имя_таблицы>;
 
 Пример
 ------
@@ -128,24 +128,95 @@ AVG
 COUNT
 =====
 
-The COUNT() function returns the number of rows that matches a specified criteria.
+.. The COUNT() function returns the number of rows that matches a specified criteria.
 
-SQL COUNT(column_name) Syntax
-The COUNT(column_name) function returns the number of values (NULL values will not be counted) of the specified column:
+Функция COUNT() возвращает количество строк соответствующих заданному критерию.
 
-SELECT COUNT(column_name) FROM table_name;
-SQL COUNT(*) Syntax
-The COUNT(*) function returns the number of records in a table:
+.. SQL COUNT(column_name) Syntax
 
-SELECT COUNT(*) FROM table_name;
-
-SQL COUNT(DISTINCT column_name) Syntax
-The COUNT(DISTINCT column_name) function returns the number of distinct values of the specified column:
-
-SELECT COUNT(DISTINCT column_name) FROM table_name;
-Note: COUNT(DISTINCT) works with ORACLE and Microsoft SQL Server, but not with Microsoft Access.
+Синтаксис COUNT(<имя_поля>)
+---------------------------
 
 
+Функция **COUNT(<имя_поля>)** возвращает количество значений (кроме NULL) заданного поля:
+
+.. sourcecode:: sql
+    
+    SELECT COUNT(<имя_поля>) 
+        FROM <имя_таблицы>;
+
+Синтаксис COUNT(*)
+------------------
+
+Функция **COUNT(*)** возвращает количество записей в таблице:
+
+.. sourcecode:: sql
+    
+    SELECT COUNT(*) FROM table_name;
+
+Синтаксис COUNT(DISTINCT <имя_поля>)
+------------------------------------
+
+Функция **COUNT(DISTINCT <имя_поля>)** возвращает количество уникальных записей заданного поля таблицы:
+
+.. sourcecode:: sql
+
+    SELECT COUNT(DISTINCT <имя_поля>) 
+        FROM <имя_таблицы>;
+
+Примечание: **COUNT(DISTINCT)** применим для ORACLE, MySQL и Microsoft SQL Server, но не для Microsoft Access.
+
+----
+
+Пример
+======
+
++---------+------------+------------+---------------------+---------+
+| OrderID | CustomerID | EmployeeID | OrderDate           | ShipVia |
++=========+============+============+=====================+=========+
+|   10265 | BLONP      |          2 | 1996-07-25 00:00:00 |       1 |
++---------+------------+------------+---------------------+---------+
+|   10266 | WARTH      |          3 | 1996-07-26 00:00:00 |       3 |
++---------+------------+------------+---------------------+---------+
+|   10267 | FRANK      |          4 | 1996-07-29 00:00:00 |       1 |
++---------+------------+------------+---------------------+---------+
+|   10268 | GROSR      |          8 | 1996-07-30 00:00:00 |       3 |
++---------+------------+------------+---------------------+---------+
+ 
+Следующий SQL запрос подсчитывае количество записей в таблице "Orders" при наличии фильтра "CustomerID"=7:
+
+.. The following SQL statement counts the number of orders from "CustomerID"=7 from the "Orders" table:
+
+.. sourcecode:: sql
+
+    SELECT COUNT(CustomerID) AS OrdersFromCustomerID7 
+        FROM Orders WHERE CustomerID='WARTH';
+
++-----------------------+
+| OrdersFromCustomerID7 |
++=======================+
+|                     1 |
++-----------------------+
+
+Следующий запрос позволяет определить общее количество записей в таблице
+
+.. sourcecode:: sql
+
+    SELECT COUNT(*) AS NumberOfOrders FROM Orders;
+
++----------------+
+| NumberOfOrders |
++================+
+|              4 |
++----------------+
+
+.. The following SQL statement counts the number of unique customers in the "Orders" table:
+
+Следующий SQL запрос подсчитывает количество уникальных покупателей в таблице "Orders":
+
+.. sourcecode:: sql
+
+    SELECT COUNT(DISTINCT CustomerID) AS NumberOfCustomers FROM Orders;
 
 ----
 
