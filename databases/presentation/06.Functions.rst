@@ -1,0 +1,289 @@
+
+Функции SQL
+===========
+
+----
+
+Функции агрегирования
+=====================
+
+.. SQL has many built-in functions for performing calculations on data.
+
+SQL содержит ряд специальных встроенных функций применяемых к данным в запросах.
+
+В каждой СУБД поддерживается свой набор функций, но существуют стандартные SQL функции, утвержденные стандартом, которые поддерживаются всеми СУБД.
+
+.. SQL aggregate functions return a single value, calculated from values in a column.
+
+Функции агрегирования SQL оперируют совокупностью значений столбца некоторой таблицы и возвращают единственное значение.
+
+.. Useful aggregate functions:
+
+Стандартные функции агрегирования:
+----------------------------------
+
+- `AVG`_    - среднее значение
+- `COUNT`_  - количество записей
+- `FIRST`_  - первое значение
+- `LAST`_   - последнее значение
+- `MAX`_    - наибольшее значение
+- `MIN`_    - наименьшее значение
+- `SUM`_    - сумму
+
+----
+
+AVG
+===
+
+Функция AVG() возвращает среднее значение колонки.
+
+Синтакс функции AVG()
+---------------------
+
+.. sourcecode:: sql
+
+    SELECT AVG(<колонка>) 
+        FROM <таблица>;
+
+Пример
+------
+
+.. The following SQL statement gets the average value of the "Price" column from the "Products" table:
+
+Следующий пример демонстрирует получение среднего значения цены из таблицы Products.
+
++-----------+------------------------------+--------------+-----------+
+| ProductID | ProductName                  | UnitsInStock | UnitPrice |
++===========+==============================+==============+===========+
+|         1 | Chai                         |           39 |   18.0000 |
++-----------+------------------------------+--------------+-----------+
+|         2 | Chang                        |           17 |   19.0000 |
++-----------+------------------------------+--------------+-----------+
+|         3 | Aniseed Syrup                |           13 |   10.0000 |
++-----------+------------------------------+--------------+-----------+
+|         4 | Chef Anton's Cajun Seasoning |           53 |   22.0000 |
++-----------+------------------------------+--------------+-----------+
+|         5 | Chef Anton's Gumbo Mix       |            0 |   21.3500 |
++-----------+------------------------------+--------------+-----------+
+
+
+.. sourcecode:: mysql
+    
+    SELECT AVG(UnitPrice) AS PriceAverage 
+        FROM Products;
+
+Результат
+---------
+
++--------------+
+| PriceAverage |
++==============+
+|  18.07000000 |
++--------------+
+
+----
+
+Пример
+======
+
+Применение функции AVG() во вложенном запросе:
+
++-----------+------------------------------+--------------+-----------+
+| ProductID | ProductName                  | UnitsInStock | UnitPrice |
++===========+==============================+==============+===========+
+|         1 | Chai                         |           39 |   18.0000 |
++-----------+------------------------------+--------------+-----------+
+|         2 | Chang                        |           17 |   19.0000 |
++-----------+------------------------------+--------------+-----------+
+|         3 | Aniseed Syrup                |           13 |   10.0000 |
++-----------+------------------------------+--------------+-----------+
+|         4 | Chef Anton's Cajun Seasoning |           53 |   22.0000 |
++-----------+------------------------------+--------------+-----------+
+|         5 | Chef Anton's Gumbo Mix       |            0 |   21.3500 |
++-----------+------------------------------+--------------+-----------+
+
+Отобразить продукты, цена которых выше средней.
+
+.. sourcecode:: mysql
+
+    SELECT ProductName, UnitPrice FROM Products 
+        WHERE UnitPrice>(SELECT AVG(UnitPrice) FROM Products);
+
+Результат
+---------
+
++------------------------------+-----------+
+| ProductName                  | UnitPrice |
++==============================+===========+
+| Chang                        |   19.0000 |
++------------------------------+-----------+
+| Chef Anton's Cajun Seasoning |   22.0000 |
++------------------------------+-----------+
+| Chef Anton's Gumbo Mix       |   21.3500 |
++------------------------------+-----------+
+
+
+----
+
+COUNT
+=====
+
+The COUNT() function returns the number of rows that matches a specified criteria.
+
+SQL COUNT(column_name) Syntax
+The COUNT(column_name) function returns the number of values (NULL values will not be counted) of the specified column:
+
+SELECT COUNT(column_name) FROM table_name;
+SQL COUNT(*) Syntax
+The COUNT(*) function returns the number of records in a table:
+
+SELECT COUNT(*) FROM table_name;
+
+SQL COUNT(DISTINCT column_name) Syntax
+The COUNT(DISTINCT column_name) function returns the number of distinct values of the specified column:
+
+SELECT COUNT(DISTINCT column_name) FROM table_name;
+Note: COUNT(DISTINCT) works with ORACLE and Microsoft SQL Server, but not with Microsoft Access.
+
+
+
+----
+
+FIRST
+=====
+
+----
+
+LAST
+====
+
+----
+
+MAX
+===
+
+----
+
+MIN
+===
+
+----
+
+SUM
+===
+
+----
+
+GROUP BY
+========
+
+Aggregate functions often need an added GROUP BY statement.
+
+The GROUP BY Statement
+----------------------
+
+The GROUP BY statement is used in conjunction with the aggregate functions to group the result-set by one or more columns.
+
+SQL GROUP BY Syntax
+-------------------
+
+.. sourcecode:: sql
+    
+    SELECT column_name, aggregate_function(column_name)
+        FROM table_name
+        WHERE column_name operator value
+        GROUP BY column_name;
+
+Пример
+------
+
+----
+
+HAVING
+======
+
+The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions.
+
+SQL HAVING Syntax
+-----------------
+
+.. sourcecode:: sql
+    
+    SELECT column_name, aggregate_function(column_name)
+        FROM table_name
+        WHERE column_name operator value
+        GROUP BY column_name
+        HAVING aggregate_function(column_name) operator value;
+
+Пример
+------
+
+----
+
+.. SQL Scalar functions
+
+Скалярные фкнкции SQL 
+=====================
+
+.. SQL scalar functions return a single value, based on the input value.
+
+Скалярные функции SQL возвращают единственное значение исходя из входного аргумента.
+
+.. Useful scalar functions:
+
+
+Стандартные скалярные функции:
+------------------------------
+
+- `UCASE`_  - приводит строку к верхнему регистру
+- `LCASE`_  - приводит строку к нижнему регистрку
+- `MID`_     - извлекает подстроку из входной строки
+- `LEN`_     - возвращает длину строки
+- `ROUND`_   - округляет число с заданной точностью
+- `NOW`_     - возвращает системное время
+- `FORMAT`_  - форматирует вывод
+
+----
+
+UCASE
+=====
+
+----
+
+LCASE
+=====
+
+----
+
+MID
+===
+
+----
+
+LEN
+===
+
+----
+
+ROUND
+=====
+
+----
+
+NOW
+===
+
+----
+
+FORMAT
+======
+
+----
+
+
+SQL NULL Functions
+==================
+
+SQL ISNULL(), NVL(), IFNULL() and COALESCE() Functions
+
+Look at the following "Products" table:
