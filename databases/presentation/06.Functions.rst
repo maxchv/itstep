@@ -326,8 +326,8 @@ MAX
 
 .. sourcecode:: sql
 
-    select MAX(UnitPrice)
-        from Products;
+    SELECT MAX(UnitPrice)
+        FROM Products;
 
 Результат
 ---------
@@ -374,8 +374,8 @@ MIN
 
 .. sourcecode:: sql
 
-    select MIN(UnitPrice)
-        from Products;
+    SELECT MIN(UnitPrice)
+        FROM Products;
 
 Результат
 ---------
@@ -428,15 +428,15 @@ SUM
 
 .. sourcecode:: sql
 
-    select sum(Quantity)
-        from Order;
+    SELECT SUM(Quantity)
+        FROM Order;
 
 
 Результат
 ---------
 
 +---------------+
-| sum(Quantity) |
+| SUM(Quantity) |
 +===============+
 |           136 |
 +---------------+
@@ -446,46 +446,325 @@ SUM
 GROUP BY
 ========
 
-Aggregate functions often need an added GROUP BY statement.
+.. Aggregate functions often need an added GROUP BY statement.
+Для применения агрегатных функций часто необходимо применять группировку через **GROUP BY**.
 
-The GROUP BY Statement
-----------------------
 
-The GROUP BY statement is used in conjunction with the aggregate functions to group the result-set by one or more columns.
-
-SQL GROUP BY Syntax
+Предложене GROUP BY
 -------------------
+
+.. The GROUP BY statement is used in conjunction with the aggregate functions to group the result-set by one or more columns.
+
+Предложение **GROUP BY** используется для определения групп выходных строк, к которым могут применяться агрегатные функции.
+
+Синтаксис GROUP BY
+------------------
 
 .. sourcecode:: sql
 
-    SELECT column_name, aggregate_function(column_name)
-        FROM table_name
-        WHERE column_name operator value
-        GROUP BY column_name;
+    SELECT <имя_поля>, агрегатная_функция(<имя_поля>)
+        FROM <имя_таблицы>
+        WHERE <имя_поля> <оператор> <значение>
+        GROUP BY <имя_поля>;
 
 Пример
 ------
 
+.. sourcecode:: sql
+
+    SELECT Shippers.CompanyName,COUNT(Orders.OrderID) AS NumberOfOrders 
+        FROM Orders,Shippers 
+        WHERE Orders.ShipVia=Shippers.ShipperID 
+        GROUP BY CompanyName;
+
+----
+
+Пример
+======
+
+Определить количество заказов обслуживаемых каждой службой доставки
+
+Таблица Orders
+--------------
+
++---------+------------+------------+---------------------+---------+
+| OrderID | CustomerID | EmployeeID | OrderDate           | ShipVia |
++=========+============+============+=====================+=========+
+|   10248 | VINET      |          5 | 1996-07-04 00:00:00 |       3 |
++---------+------------+------------+---------------------+---------+
+|   10249 | TOMSP      |          6 | 1996-07-05 00:00:00 |       1 |
++---------+------------+------------+---------------------+---------+
+|   10250 | HANAR      |          4 | 1996-07-08 00:00:00 |       2 |
++---------+------------+------------+---------------------+---------+
+|   10251 | VICTE      |          3 | 1996-07-08 00:00:00 |       1 |
++---------+------------+------------+---------------------+---------+
+|   10252 | SUPRD      |          4 | 1996-07-09 00:00:00 |       2 |
++---------+------------+------------+---------------------+---------+
+
+Таблица Shippers
+----------------
+
++-----------+------------------+-----------+
+| ShipperID | CompanyName      | Phone     |
++===========+==================+===========+
+|         1 | Speedy Express   |  555-9831 |
++-----------+------------------+-----------+
+|         2 | United Package   |  555-3199 |
++-----------+------------------+-----------+
+|         3 | Federal Shipping |  555-9931 |
++-----------+------------------+-----------+
+
+----
+
+Пример
+======
+
+Выборка
+-------
+
+.. sourcecode:: sql
+
+    SELECT Shippers.CompanyName,Orders.OrderID AS OrderID 
+        FROM Orders,Shippers 
+        WHERE Orders.ShipVia=Shippers.ShipperID;
+
++------------------+----------------+
+| CompanyName      | OrderID        |
++==================+================+
+| Speedy Express   |          10249 |
++------------------+----------------+
+| Speedy Express   |          10251 |
++------------------+----------------+
+| United Package   |          10250 |
++------------------+----------------+
+| United Package   |          10252 |
++------------------+----------------+
+| Federal Shipping |          10248 |
++------------------+----------------+
+
+Выборка с группировкой
+----------------------
+
+.. sourcecode:: sql
+
+    SELECT Shippers.CompanyName, COUNT(Orders.OrderID) AS NumberOfOrders 
+        FROM Orders,Shippers 
+        WHERE Orders.ShipVia=Shippers.ShipperID 
+        GROUP BY CompanyName;
+
++------------------+----------------+
+| CompanyName      | NumberOfOrders |
++==================+================+
+| Federal Shipping |              1 |
++------------------+----------------+
+| Speedy Express   |              2 |
++------------------+----------------+
+| United Package   |              2 |
++------------------+----------------+
+
+
+----
+
+Задание
+=======
+
+Используются таблицы Products и Categories б/д northwind_
+
+.. _northwind: https://code.google.com/p/northwindextended/downloads/detail?name=Northwind.MySQL5.sql 
+
+1. Вывести общее количество товаров каждой категории
+
+.notes: :code:`select CategoryName, count(ProductID) as CountProducts from Products, Categories where Products.CategoryID=Categories.CategoryID group by CategoryName;`
+
++----------------+---------------+
+| CategoryName   | CountProducts |
++================+===============+
+| Beverages      |            12 |
++----------------+---------------+
+| Condiments     |            12 |
++----------------+---------------+
+| Confections    |            13 |
++----------------+---------------+
+| Dairy Products |            10 |
++----------------+---------------+
+| Grains/Cereals |             7 |
++----------------+---------------+
+| Meat/Poultry   |             6 |
++----------------+---------------+
+| Produce        |             5 |
++----------------+---------------+
+| Seafood        |            12 |
++----------------+---------------+
+
+
+2. Определить среднеюю цену товаров каждой категории 
+
+.notes: :code:`select CategoryName, avg(UnitPrice) as AvgUnitPrice from Products, Categories where Products.CategoryID=Categories.CategoryID group by CategoryName;`
+
++----------------+--------------+
+| CategoryName   | AvgUnitPrice |
++================+==============+
+| Beverages      |  37.97916667 |
++----------------+--------------+
+| Condiments     |  23.06250000 |
++----------------+--------------+
+| Confections    |  25.16000000 |
++----------------+--------------+
+| Dairy Products |  28.73000000 |
++----------------+--------------+
+| Grains/Cereals |  20.25000000 |
++----------------+--------------+
+| Meat/Poultry   |  54.00666667 |
++----------------+--------------+
+| Produce        |  32.37000000 |
++----------------+--------------+
+| Seafood        |  20.68250000 |
++----------------+--------------+
+
+ 
 ----
 
 HAVING
 ======
 
-The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions.
+Предложение **HAVING** добавлено в SQL поскольку ключевое слово **WHERE** не может быть использовано совместро с функциями агрегирования.
+
+Если предложение **WHERE** определяет предикат для фильтрации строк, то предложение **HAVING** применяется после группировки для определения аналогичного предиката, фильтрующего группы по значениям агрегатных функций. 
+
+Это предложение необходимо для проверки значений, которые получены с помощью агрегатной функции не из отдельных строк источника записей, определенного в предложении **FROM**, а из групп таких строк. 
+Поэтому такая проверка не может содержаться в предложении **WHERE**.
 
 SQL HAVING Syntax
 -----------------
 
 .. sourcecode:: sql
 
-    SELECT column_name, aggregate_function(column_name)
-        FROM table_name
-        WHERE column_name operator value
-        GROUP BY column_name
-        HAVING aggregate_function(column_name) operator value;
+    SELECT <имя_поля>, агрегатная_функция(<имя_поля>)
+        FROM <имя_таблицы>
+        WHERE <имя_поля> <оператор> <значение>
+        GROUP BY <имя_поля>
+        HAVING агрегатная_функция(<имя_поля>) <оператор> <значение>;
+
+----
 
 Пример
-------
+======
+
+.. Now we want to find  if any of the employees has registered more than 10 orders.
+
+Нам необходимо найти всех работников, которые зарегестрировали более 100 заказов.
+
+Таблица Orders
+--------------
+
++---------+------------+------------+------------+---------+
+| OrderID | CustomerID | EmployeeID | OrderDate  | ShipVia |
++=========+============+============+============+=========+
+|   10248 | VINET      |          5 | 1996-07-04 |       3 |
++---------+------------+------------+------------+---------+
+|   10249 | TOMSP      |          6 | 1996-07-05 |       1 |
++---------+------------+------------+------------+---------+
+|   10250 | HANAR      |          4 | 1996-07-08 |       2 |
++---------+------------+------------+------------+---------+
+|   10251 | VICTE      |          3 | 1996-07-08 |       1 |
++---------+------------+------------+------------+---------+
+|   10252 | SUPRD      |          4 | 1996-07-09 |       2 |
++---------+------------+------------+------------+---------+
+
+.notes: :code:`select EmployeeID, LastName, FirstName, BirthDate from Employees;`
+
+Таблица Employees
+-----------------
+
++------------+-----------+-----------+-------------+
+| EmployeeID | LastName  | FirstName | BirthDate   |
++============+===========+===========+=============+
+|          1 | Davolio   | Nancy     | 1948-12-08  |
++------------+-----------+-----------+-------------+
+|          2 | Fuller    | Andrew    | 1952-02-19  |
++------------+-----------+-----------+-------------+
+|          3 | Leverling | Janet     | 1963-08-30  |
++------------+-----------+-----------+-------------+
+|          4 | Peacock   | Margaret  | 1937-09-19  |
++------------+-----------+-----------+-------------+
+|          5 | Buchanan  | Steven    | 1955-03-04  |
++------------+-----------+-----------+-------------+
+|          6 | Suyama    | Michael   | 1963-07-02  |
++------------+-----------+-----------+-------------+
+
+----
+
+Пример
+======
+
+.. sourcecode:: sql
+
+    SELECT Employees.LastName, COUNT(Orders.OrderID) FROM Employees, Orders 
+        WHERE Employees.EmployeeID=Orders.EmployeeID GROUP BY LastName; 
+
++-----------+-----------------------+
+| LastName  | count(Orders.OrderID) |
++===========+=======================+
+| Buchanan  |                    42 |
++-----------+-----------------------+
+| Callahan  |                   104 |
++-----------+-----------------------+
+| Davolio   |                   123 |
++-----------+-----------------------+
+| Dodsworth |                    43 |
++-----------+-----------------------+
+| Fuller    |                    96 |
++-----------+-----------------------+
+| King      |                    72 |
++-----------+-----------------------+
+| Leverling |                   127 |
++-----------+-----------------------+
+| Peacock   |                   156 |
++-----------+-----------------------+
+| Suyama    |                    67 |
++-----------+-----------------------+
+
+.. sourcecode:: sql
+
+    SELECT Employees.LastName, COUNT(Orders.OrderID) FROM Employees, Orders 
+        WHERE Employees.EmployeeID=Orders.EmployeeID GROUP BY LastName 
+        HAVING COUNT(Orders.OrderID)>100;
+
+Результат
+=========
+
++-----------+-----------------------+
+| LastName  | count(Orders.OrderID) |
++===========+=======================+
+| Callahan  |                   104 |
++-----------+-----------------------+
+| Davolio   |                   123 |
++-----------+-----------------------+
+| Leverling |                   127 |
++-----------+-----------------------+
+| Peacock   |                   156 |
++-----------+-----------------------+
+
+----
+
+Задание
+=======
+
+Используются таблицы Orders и Customers б/д northwind_
+найти заказчиков (поле CompanyName таблицы Customers) с количеством заказов более 20.
+
+.notes: :code:`select CompanyName, count(Orders.OrderID) as CountOrders from Orders, Customers where Orders.CustomerID=Customers.CustomerID group by Orders.CustomerID having count(OrderID) > 20;`
+
++--------------------+-------------+
+| CompanyName        | CountOrders |
++====================+=============+
+| Ernst Handel       |          30 |
++--------------------+-------------+
+| QUICK-Stop         |          28 |
++--------------------+-------------+
+| Save-a-lot Markets |          31 |
++--------------------+-------------+
+
 
 ----
 
@@ -501,11 +780,11 @@ SQL HAVING Syntax
 .. Useful scalar functions:
 
 
-Стандартные скалярные функции:
-------------------------------
+Скалярные функции:
+------------------
 
-- `UCASE`_  - приводит строку к верхнему регистру
-- `LCASE`_  - приводит строку к нижнему регистрку
+- `UCASE`_   - приводит строку к верхнему регистру
+- `LCASE`_   - приводит строку к нижнему регистрку
 - `MID`_     - извлекает подстроку из входной строки
 - `LEN`_     - возвращает длину строки
 - `ROUND`_   - округляет число с заданной точностью
@@ -517,42 +796,356 @@ SQL HAVING Syntax
 UCASE
 =====
 
+Функция UCASE() приводит строковые значения в верхний регистр (uppercase).
+
+Синтаксис 
+---------
+
+.. sourcecode:: mysql
+
+    SELECT UCASE(<имя_поля>) 
+        FROM <имя_таблицы>;
+
+Синтаксис для MS SQL Server
+---------------------------
+
+.. sourcecode:: sql
+
+    SELECT UPPER(<имя_поля>) 
+        FROM <имя_таблицы>;
+
+Пример
+------
+
++------------+------------------------------------+--------------------+---------+
+| CustomerID | CompanyName                        | ContactName        | Country |
++------------+------------------------------------+--------------------+---------+
+| ALFKI      | Alfreds Futterkiste                | Maria Anders       | Germany |
++------------+------------------------------------+--------------------+---------+
+| ANATR      | Ana Trujillo Emparedados y helados | Ana Trujillo       | Mexico  |
++------------+------------------------------------+--------------------+---------+
+
+.. sourcecode:: mysql
+
+    SELECT CustomerID, ucase(CompanyName), ContactName,  Country 
+        FROM Customers;
+
++------------+------------------------------------+--------------------+---------+
+| CustomerID | ucase(CompanyName)                 | ContactName        | Country |
++------------+------------------------------------+--------------------+---------+
+| ALFKI      | ALFREDS FUTTERKISTE                | Maria Anders       | Germany |
++------------+------------------------------------+--------------------+---------+
+| ANATR      | ANA TRUJILLO EMPAREDADOS Y HELADOS | Ana Trujillo       | Mexico  |
++------------+------------------------------------+--------------------+---------+
+
+
+
 ----
 
 LCASE
 =====
+
+Функция LCASE() приводит строковые значения к нижнему регистру (lowercase).
+
+Синтаксис
+---------
+
+.. sourcecode:: mysql
+
+    SELECT LCASE(<имя_поля>) 
+        FROM <имя_таблицы>;
+
+Синтаксис для MS SQL Server
+---------------------------
+
+.. sourcecode:: sql
+
+    SELECT LOWER(<имя_поля>) 
+        FROM <имя_таблицы>;
+
+Пример
+------
+
+.. sourcecode:: mysql
+
+    SELECT lcase(CustomerID), ucase(CompanyName), ContactName,  Country 
+        FROM Customers limit 10;
++-------------------+------------------------------------+--------------------+---------+
+| lcase(CustomerID) | ucase(CompanyName)                 | ContactName        | Country |
++-------------------+------------------------------------+--------------------+---------+
+| alfki             | ALFREDS FUTTERKISTE                | Maria Anders       | Germany |
++-------------------+------------------------------------+--------------------+---------+
+| anatr             | ANA TRUJILLO EMPAREDADOS Y HELADOS | Ana Trujillo       | Mexico  |
++-------------------+------------------------------------+--------------------+---------+
+| anton             | ANTONIO MORENO TAQUERA             | Antonio Moreno     | Mexico  |
++-------------------+------------------------------------+--------------------+---------+
+| arout             | AROUND THE HORN                    | Thomas Hardy       | UK      |
++-------------------+------------------------------------+--------------------+---------+
+| bergs             | BERGLUNDS SNABBKP                  | Christina Berglund | Sweden  |
++-------------------+------------------------------------+--------------------+---------+
+| blaus             | BLAUER SEE DELIKATESSEN            | Hanna Moos         | Germany |
++-------------------+------------------------------------+--------------------+---------+
+| blonp             | BLONDESDDSL PRE ET FILS            | Frdrique Citeaux   | France  |
++-------------------+------------------------------------+--------------------+---------+
 
 ----
 
 MID
 ===
 
+Функция MID() применяется для извлечения подстроки из текстовой строки.
+
+Синтаксис
+
+.. sourcecode:: mysql
+
+    SELECT MID(<имя_поля>,<начало>[,<длина>]) 
+        AS <псевдоним> 
+        FROM <имя_таблицы>;
+
+
+.. Note: The equivalent function for SQL Server is SUBSTRING():
+Замечание: в T-SQL эквивалентном функции MID является функция SUBSTRING()
+
+Синтаксис для MS SQL Server
+---------------------------
+
+.. sourcecode:: sql
+
+    SELECT SUBSTRING(<имя_поля>,<начало>,<длина>) 
+         AS <псевдоним> 
+        FROM <имя_таблицы>;
+
+Пример
+------
+
+.. sourcecode:: sql
+
+    SELECT CustomerID, CompanyName, City, MID(City, 1, 4) as ShortCity 
+        FROM Customers;
+
++------------+------------------------------------+------------+-----------+
+| CustomerID | CompanyName                        | City       | ShortCity |
++============+====================================+============+===========+
+| ALFKI      | Alfreds Futterkiste                | Berlin     | Berl      |
++------------+------------------------------------+------------+-----------+
+| ANATR      | Ana Trujillo Emparedados y helados | Mxico D.F. | Mxic      |
++------------+------------------------------------+------------+-----------+
+| ANTON      | Antonio Moreno Taquera             | Mxico D.F. | Mxic      |
++------------+------------------------------------+------------+-----------+
+| AROUT      | Around the Horn                    | London     | Lond      |
++------------+------------------------------------+------------+-----------+
+
 ----
 
 LEN
 ===
+
+Функция LEN() возвращает длину текстовой строки.
+
+Синтаксис
+---------
+
+.. sourcecode:: sql
+
+    SELECT LEN(<имя_поля>) 
+        FROM <имя_таблицы>;
+
+Замечание: в mysql аналогом функции LEN() является функция LENGTH()
+
+Пример
+------
+
+.. sourcecode:: mysql
+
+    SELECT  CompanyName, Address, length(Address) AS LengthOfAddress 
+        FROM Customers;
++------------------------------------+------------------------------+-----------------+
+| CompanyName                        | Address                      | LengthOfAddress |
++====================================+==============================+=================+
+| Alfreds Futterkiste                | Obere Str. 57                |              13 |
++------------------------------------+------------------------------+-----------------+
+| Ana Trujillo Emparedados y helados | Avda. de la Constitucin 2222 |              28 |
++------------------------------------+------------------------------+-----------------+
+| Antonio Moreno Taquera             | Mataderos  2312              |              15 |
++------------------------------------+------------------------------+-----------------+
+| Around the Horn                    | 120 Hanover Sq.              |              15 |
++------------------------------------+------------------------------+-----------------+
+| Berglunds snabbkp                  | Berguvsvgen  8               |              14 |
++------------------------------------+------------------------------+-----------------+
+| Blauer See Delikatessen            | Forsterstr. 57               |              14 |
++------------------------------------+------------------------------+-----------------+
+| Blondesddsl pre et fils            | 24, place Klber              |              15 |
++------------------------------------+------------------------------+-----------------+
+| Blido Comidas preparadas           | C/ Araquil, 67               |              14 |
++------------------------------------+------------------------------+-----------------+
+| Bon app'                           | 12, rue des Bouchers         |              20 |
++------------------------------------+------------------------------+-----------------+
+| Bottom-Dollar Markets              | 23 Tsawassen Blvd.           |              18 |
++------------------------------------+------------------------------+-----------------+
+
 
 ----
 
 ROUND
 =====
 
+Функция ROUND() округляет числовые значения с заданной точностью.
+
+.. Note: Many database systems do rounding differently than you might expect. 
+.. When rounding a number with a fractional part to an integer, our school teachers told us to round .1 through .4 DOWN to the next lower integer, and .5 through .9 UP to the next higher integer. 
+.. But if all the digits 1 through 9 are equally likely, this introduces a slight bias towards infinity, since we always round .5 up. Many database systems have adopted the IEEE 754 standard for arithmetic operations, according to which the default rounding behavior is "round half to even." 
+.. In this scheme, .5 is rounded to the nearest even integer. So, both 11.5 and 12.5 would be rounded to 12.
+
+Синтаксис
+---------
+
+.. sourcecode:: sql
+
+    SELECT ROUND(<имя_поля>,<точность>) 
+        FROM <имя_таблицы>;
+
+Пример
+------
+
+.. sourcecode:: sql
+
+    SELECT ProductName, UnitPrice, ROUND(UnitPrice, 1) 
+        FROM Products;
++---------------------------------+-----------+---------------------+
+| ProductName                     | UnitPrice | Round(UnitPrice, 1) |
++---------------------------------+-----------+---------------------+
+| Chai                            |   18.0000 |                18.0 |
++---------------------------------+-----------+---------------------+
+| Chang                           |   19.0000 |                19.0 |
++---------------------------------+-----------+---------------------+
+| Chef Anton's Gumbo Mix          |   21.3500 |                21.4 |
++---------------------------------+-----------+---------------------+
+| Tofu                            |   23.2500 |                23.3 |
++---------------------------------+-----------+---------------------+
+| Genen Shouyu                    |   15.5000 |                15.5 |
++---------------------------------+-----------+---------------------+
+| Pavlova                         |   17.4500 |                17.5 |
++---------------------------------+-----------+---------------------+
+| Carnarvon Tigers                |   62.5000 |                62.5 |
++---------------------------------+-----------+---------------------+
+| Teatime Chocolate Biscuits      |    9.2000 |                 9.2 |
++---------------------------------+-----------+---------------------+
+| Guaran Fantstica                |    4.5000 |                 4.5 |
++---------------------------------+-----------+---------------------+
+| Gumbr Gummibrchen               |   31.2300 |                31.2 |
++---------------------------------+-----------+---------------------+
+| Schoggi Schokolade              |   43.9000 |                43.9 |
++---------------------------------+-----------+---------------------+
+| Rssle Sauerkraut                |   45.6000 |                45.6 |
++---------------------------------+-----------+---------------------+
+
 ----
 
 NOW
 ===
+
+Функция NOW() возвращает системное время и дату.
+
+Синтаксис
+---------
+
+.. sourcecode:: sql
+
+    SELECT NOW() 
+        FROM <имя_таблицы>;
+
+Пример
+------
+
+.. sourcecode:: sql
+
+    SELECT ProductName, UnitPrice AS Price, now() AS PerDay 
+        FROM Products;
+
++---------------------------------+---------+---------------------+
+| ProductName                     | Price   | PerDay              |
++=================================+=========+=====================+
+| Chai                            | 18.0000 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+| Chang                           | 19.0000 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+| Aniseed Syrup                   | 10.0000 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+| Chef Anton's Cajun Seasoning    | 22.0000 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+| Chef Anton's Gumbo Mix          | 21.3500 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+| Grandma's Boysenberry Spread    | 25.0000 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+| Uncle Bob's Organic Dried Pears | 30.0000 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+| Northwoods Cranberry Sauce      | 40.0000 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+| Mishi Kobe Niku                 | 97.0000 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+| Ikura                           | 31.0000 | 2015-12-13 12:49:39 |
++---------------------------------+---------+---------------------+
+
 
 ----
 
 FORMAT
 ======
 
+Функция FORMAT() предназначена для форматирования вывода.
+
+Синтаксис
+---------
+    
+.. sourcecode:: mysql
+
+    SELECT FORMAT(<имя_поля>, <формат>) 
+        FROM <имя_таблицы>;
+
+Пример
+------
+
+.. sourcecode:: mysql
+
+    mysql> SELECT FORMAT(12332.123456, 4);
+            -> '12,332.1235'
+    mysql> SELECT FORMAT(12332.1,4);
+            -> '12,332.1000'
+    mysql> SELECT FORMAT(12332.2,0);
+            -> '12,332'
+    mysql> SELECT FORMAT(12332.2,2,'de_DE');
+            -> '12.332,20'
+
 ----
 
+Домашнее задание
+================
 
-SQL NULL Functions
-==================
+1. Посчитать количество фильмов каждого жанра
+2. Определить средний рейтинг фильмов каждого жанра
 
-SQL ISNULL(), NVL(), IFNULL() and COALESCE() Functions
+----
 
-Look at the following "Products" table:
+Полезные ссылки
+===============
+
+- `Интерактивный учебник sql`_
+
+- SQL Tutorial on `w3schools`_
+
+- `Строковые функции mysql`_ 
+
+- `Математические функции mysql`_ 
+
+- `Функции по работе с датами и временем mysql`_ 
+
+..  _Интерактивный учебник sql: http://www.sql-tutorial.ru/ru/content.html
+
+.. _w3schools: http://www.w3schools.com/sql
+
+.. _Строковые функции mysql: http://dev.mysql.com/doc/refman/5.7/en/string-functions.html
+
+.. _Математические функции mysql: http://dev.mysql.com/doc/refman/5.7/en/numeric-functions.html
+
+.. _Функции по работе с датами и временем mysql: http://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html
