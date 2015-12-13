@@ -480,7 +480,7 @@ DDL (работа со структурой базы)
 
 .. sourcecode:: sql
 
-    -- Создание таблицы students с полями id, name, group. id — первичный ключ.
+    -- Создание таблицы students
     CREATE TABLE students
     (
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
