@@ -1,4 +1,4 @@
-﻿# ---------------------------------------------------------------------- #
+# ---------------------------------------------------------------------- #
 # Target DBMS:           MySQL 5                                         #
 # Project name:          Northwind                                       #
 # Author:                Valon Hoti                                      #
@@ -3912,54 +3912,54 @@ VALUES('98104', 'Seattle                                           ', 2);
 # Foreign key constraints                                                #
 # ---------------------------------------------------------------------- #
 
-ALTER TABLE `CustomerCustomerDemo` ADD CONSTRAINT `FK_CustomerCustomerDemo` 
+ALTER TABLE `CustomerCustomerDemo` ADD CONSTRAINT `FK_CustomerCustomerDemo`
     FOREIGN KEY (`CustomerTypeID`) REFERENCES `CustomerDemographics` (`CustomerTypeID`);
 
-ALTER TABLE `CustomerCustomerDemo` ADD CONSTRAINT `FK_CustomerCustomerDemo_Customers` 
+ALTER TABLE `CustomerCustomerDemo` ADD CONSTRAINT `FK_CustomerCustomerDemo_Customers`
     FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`);
 
-ALTER TABLE `Employees` ADD CONSTRAINT `FK_Employees_Employees` 
+ALTER TABLE `Employees` ADD CONSTRAINT `FK_Employees_Employees`
     FOREIGN KEY (`ReportsTo`) REFERENCES `Employees` (`EmployeeID`);
 
-ALTER TABLE `EmployeeTerritories` ADD CONSTRAINT `FK_EmployeeTerritories_Employees` 
+ALTER TABLE `EmployeeTerritories` ADD CONSTRAINT `FK_EmployeeTerritories_Employees`
     FOREIGN KEY (`EmployeeID`) REFERENCES `Employees` (`EmployeeID`);
 
-ALTER TABLE `EmployeeTerritories` ADD CONSTRAINT `FK_EmployeeTerritories_Territories` 
+ALTER TABLE `EmployeeTerritories` ADD CONSTRAINT `FK_EmployeeTerritories_Territories`
     FOREIGN KEY (`TerritoryID`) REFERENCES `Territories` (`TerritoryID`);
 
-ALTER TABLE `Order Details` ADD CONSTRAINT `FK_Order_Details_Orders` 
+ALTER TABLE `Order Details` ADD CONSTRAINT `FK_Order_Details_Orders`
     FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`);
 
-ALTER TABLE `Order Details` ADD CONSTRAINT `FK_Order_Details_Products` 
+ALTER TABLE `Order Details` ADD CONSTRAINT `FK_Order_Details_Products`
     FOREIGN KEY (`ProductID`) REFERENCES `Products` (`ProductID`);
 
-ALTER TABLE `Orders` ADD CONSTRAINT `FK_Orders_Customers` 
+ALTER TABLE `Orders` ADD CONSTRAINT `FK_Orders_Customers`
     FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`);
 
-ALTER TABLE `Orders` ADD CONSTRAINT `FK_Orders_Employees` 
+ALTER TABLE `Orders` ADD CONSTRAINT `FK_Orders_Employees`
     FOREIGN KEY (`EmployeeID`) REFERENCES `Employees` (`EmployeeID`);
 
-ALTER TABLE `Orders` ADD CONSTRAINT `FK_Orders_Shippers` 
+ALTER TABLE `Orders` ADD CONSTRAINT `FK_Orders_Shippers`
     FOREIGN KEY (`ShipVia`) REFERENCES `Shippers` (`ShipperID`);
 
-ALTER TABLE `Products` ADD CONSTRAINT `FK_Products_Categories` 
+ALTER TABLE `Products` ADD CONSTRAINT `FK_Products_Categories`
     FOREIGN KEY (`CategoryID`) REFERENCES `Categories` (`CategoryID`);
 
-ALTER TABLE `Products` ADD CONSTRAINT `FK_Products_Suppliers` 
+ALTER TABLE `Products` ADD CONSTRAINT `FK_Products_Suppliers`
     FOREIGN KEY (`SupplierID`) REFERENCES `Suppliers` (`SupplierID`);
 
-ALTER TABLE `Territories` ADD CONSTRAINT `FK_Territories_Region` 
+ALTER TABLE `Territories` ADD CONSTRAINT `FK_Territories_Region`
     FOREIGN KEY (`RegionID`) REFERENCES `Region` (`RegionID`);
-    
+
 # ---------------------------------------------------------------------- #
 # Add View "Alphabetical list of products"                               #
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Alphabetical list of products`
 AS
-SELECT Products.*, 
+SELECT Products.*,
        Categories.CategoryName
-FROM Categories 
+FROM Categories
    INNER JOIN Products ON Categories.CategoryID = Products.CategoryID
 WHERE (((Products.Discontinued)=0));
 
@@ -3970,8 +3970,8 @@ WHERE (((Products.Discontinued)=0));
 CREATE VIEW `Current Product List`
 AS
 SELECT ProductID,
-       ProductName 
-FROM Products 
+       ProductName
+FROM Products
 WHERE Discontinued=0;
 
 # ---------------------------------------------------------------------- #
@@ -3980,17 +3980,17 @@ WHERE Discontinued=0;
 
 CREATE VIEW `Customer and Suppliers by City`
 AS
-SELECT City, 
-       CompanyName, 
-       ContactName, 
-       'Customers' AS Relationship 
+SELECT City,
+       CompanyName,
+       ContactName,
+       'Customers' AS Relationship
 FROM Customers
-UNION 
-SELECT City, 
-       CompanyName, 
-       ContactName, 
+UNION
+SELECT City,
+       CompanyName,
+       ContactName,
        'Suppliers'
-FROM Suppliers 
+FROM Suppliers
 ORDER BY City, CompanyName;
 
 # ---------------------------------------------------------------------- #
@@ -4002,51 +4002,51 @@ AS
 SELECT Orders.ShipName,
        Orders.ShipAddress,
        Orders.ShipCity,
-       Orders.ShipRegion, 
+       Orders.ShipRegion,
        Orders.ShipPostalCode,
        Orders.ShipCountry,
        Orders.CustomerID,
-       Customers.CompanyName AS CustomerName, 
+       Customers.CompanyName AS CustomerName,
        Customers.Address,
        Customers.City,
        Customers.Region,
        Customers.PostalCode,
        Customers.Country,
-       (Employees.FirstName + ' ' + Employees.LastName) AS Salesperson, 
+       (Employees.FirstName + ' ' + Employees.LastName) AS Salesperson,
        Orders.OrderID,
        Orders.OrderDate,
        Orders.RequiredDate,
-       Orders.ShippedDate, 
+       Orders.ShippedDate,
        Shippers.CompanyName As ShipperName,
        `Order Details`.ProductID,
-       Products.ProductName, 
+       Products.ProductName,
        `Order Details`.UnitPrice,
        `Order Details`.Quantity,
-       `Order Details`.Discount, 
+       `Order Details`.Discount,
        (((`Order Details`.UnitPrice*Quantity*(1-Discount))/100)*100) AS ExtendedPrice,
-       Orders.Freight 
-FROM Customers 
-  JOIN Orders ON Customers.CustomerID = Orders.CustomerID  
-    JOIN Employees ON Employees.EmployeeID = Orders.EmployeeID    
-     JOIN `Order Details` ON Orders.OrderID = `Order Details`.OrderID     
-      JOIN Products ON Products.ProductID = `Order Details`.ProductID      
+       Orders.Freight
+FROM Customers
+  JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+    JOIN Employees ON Employees.EmployeeID = Orders.EmployeeID
+     JOIN `Order Details` ON Orders.OrderID = `Order Details`.OrderID
+      JOIN Products ON Products.ProductID = `Order Details`.ProductID
        JOIN Shippers ON Shippers.ShipperID = Orders.ShipVia;
 
 # ---------------------------------------------------------------------- #
 # Add View "Orders Qry"                                                  #
 # ---------------------------------------------------------------------- #
-	   
+
 CREATE VIEW `Orders Qry` AS
 SELECT Orders.OrderID,
        Orders.CustomerID,
-       Orders.EmployeeID, 
-       Orders.OrderDate, 
+       Orders.EmployeeID,
+       Orders.OrderDate,
        Orders.RequiredDate,
-       Orders.ShippedDate, 
-       Orders.ShipVia, 
+       Orders.ShippedDate,
+       Orders.ShipVia,
        Orders.Freight,
-       Orders.ShipName, 
-       Orders.ShipAddress, 
+       Orders.ShipName,
+       Orders.ShipAddress,
        Orders.ShipCity,
        Orders.ShipRegion,
        Orders.ShipPostalCode,
@@ -4055,17 +4055,17 @@ SELECT Orders.OrderID,
        Customers.Address,
        Customers.City,
        Customers.Region,
-       Customers.PostalCode, 
+       Customers.PostalCode,
        Customers.Country
-FROM Customers 
-     JOIN Orders ON Customers.CustomerID = Orders.CustomerID;     
+FROM Customers
+     JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
 
 # ---------------------------------------------------------------------- #
 # Add View "Order Subtotals"                                             #
 # ---------------------------------------------------------------------- #
-	 
+
 CREATE VIEW `Order Subtotals` AS
-SELECT `Order Details`.OrderID, 
+SELECT `Order Details`.OrderID,
 Sum((`Order Details`.UnitPrice*Quantity*(1-Discount)/100)*100) AS Subtotal
 FROM `Order Details`
 GROUP BY `Order Details`.OrderID;
@@ -4075,13 +4075,13 @@ GROUP BY `Order Details`.OrderID;
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Product Sales for 1997` AS
-SELECT Categories.CategoryName, 
-       Products.ProductName, 
+SELECT Categories.CategoryName,
+       Products.ProductName,
        Sum((`Order Details`.UnitPrice*Quantity*(1-Discount)/100)*100) AS ProductSales
 FROM Categories
  JOIN    Products On Categories.CategoryID = Products.CategoryID
-    JOIN  `Order Details` on Products.ProductID = `Order Details`.ProductID     
-     JOIN  `Orders` on Orders.OrderID = `Order Details`.OrderID 
+    JOIN  `Order Details` on Products.ProductID = `Order Details`.ProductID
+     JOIN  `Orders` on Orders.OrderID = `Order Details`.OrderID
 WHERE Orders.ShippedDate Between '1997-01-01' And '1997-12-31'
 GROUP BY Categories.CategoryName, Products.ProductName;
 
@@ -4090,7 +4090,7 @@ GROUP BY Categories.CategoryName, Products.ProductName;
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Products Above Average Price` AS
-SELECT Products.ProductName, 
+SELECT Products.ProductName,
        Products.UnitPrice
 FROM Products
 WHERE Products.UnitPrice>(SELECT AVG(UnitPrice) From Products);
@@ -4100,12 +4100,12 @@ WHERE Products.UnitPrice>(SELECT AVG(UnitPrice) From Products);
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Products by Category` AS
-SELECT Categories.CategoryName, 
-       Products.ProductName, 
-       Products.QuantityPerUnit, 
-       Products.UnitsInStock, 
+SELECT Categories.CategoryName,
+       Products.ProductName,
+       Products.QuantityPerUnit,
+       Products.UnitsInStock,
        Products.Discontinued
-FROM Categories 
+FROM Categories
      INNER JOIN Products ON Categories.CategoryID = Products.CategoryID
 WHERE Products.Discontinued <> 1;
 
@@ -4114,11 +4114,11 @@ WHERE Products.Discontinued <> 1;
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Quarterly Orders` AS
-SELECT DISTINCT Customers.CustomerID, 
-                Customers.CompanyName, 
-                Customers.City, 
+SELECT DISTINCT Customers.CustomerID,
+                Customers.CompanyName,
+                Customers.City,
                 Customers.Country
-FROM Customers 
+FROM Customers
      JOIN Orders ON Customers.CustomerID = Orders.CustomerID
 WHERE Orders.OrderDate BETWEEN '1997-01-01' And '1997-12-31';
 
@@ -4127,14 +4127,14 @@ WHERE Orders.OrderDate BETWEEN '1997-01-01' And '1997-12-31';
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Sales Totals by Amount` AS
-SELECT `Order Subtotals`.Subtotal AS SaleAmount, 
-                  Orders.OrderID, 
-               Customers.CompanyName, 
+SELECT `Order Subtotals`.Subtotal AS SaleAmount,
+                  Orders.OrderID,
+               Customers.CompanyName,
                   Orders.ShippedDate
-FROM Customers 
+FROM Customers
  JOIN Orders ON Customers.CustomerID = Orders.CustomerID
-    JOIN `Order Subtotals` ON Orders.OrderID = `Order Subtotals`.OrderID 
-WHERE (`Order Subtotals`.Subtotal >2500) 
+    JOIN `Order Subtotals` ON Orders.OrderID = `Order Subtotals`.OrderID
+WHERE (`Order Subtotals`.Subtotal >2500)
 AND (Orders.ShippedDate BETWEEN '1997-01-01' And '1997-12-31');
 
 # ---------------------------------------------------------------------- #
@@ -4142,10 +4142,10 @@ AND (Orders.ShippedDate BETWEEN '1997-01-01' And '1997-12-31');
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Summary of Sales by Quarter` AS
-SELECT Orders.ShippedDate, 
-       Orders.OrderID, 
+SELECT Orders.ShippedDate,
+       Orders.OrderID,
        `Order Subtotals`.Subtotal
-FROM Orders 
+FROM Orders
      INNER JOIN `Order Subtotals` ON Orders.OrderID = `Order Subtotals`.OrderID
 WHERE Orders.ShippedDate IS NOT NULL;
 
@@ -4154,10 +4154,10 @@ WHERE Orders.ShippedDate IS NOT NULL;
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Summary of Sales by Year` AS
-SELECT      Orders.ShippedDate, 
-            Orders.OrderID, 
+SELECT      Orders.ShippedDate,
+            Orders.OrderID,
  `Order Subtotals`.Subtotal
-FROM Orders 
+FROM Orders
      INNER JOIN `Order Subtotals` ON Orders.OrderID = `Order Subtotals`.OrderID
 WHERE Orders.ShippedDate IS NOT NULL;
 
@@ -4166,7 +4166,7 @@ WHERE Orders.ShippedDate IS NOT NULL;
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Category Sales for 1997` AS
-SELECT     `Product Sales for 1997`.CategoryName, 
+SELECT     `Product Sales for 1997`.CategoryName,
        Sum(`Product Sales for 1997`.ProductSales) AS CategorySales
 FROM `Product Sales for 1997`
 GROUP BY `Product Sales for 1997`.CategoryName;
@@ -4176,14 +4176,14 @@ GROUP BY `Product Sales for 1997`.CategoryName;
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Order Details Extended` AS
-SELECT `Order Details`.OrderID, 
-       `Order Details`.ProductID, 
-       Products.ProductName, 
-	   `Order Details`.UnitPrice, 
-       `Order Details`.Quantity, 
-       `Order Details`.Discount, 
+SELECT `Order Details`.OrderID,
+       `Order Details`.ProductID,
+       Products.ProductName,
+	   `Order Details`.UnitPrice,
+       `Order Details`.Quantity,
+       `Order Details`.Discount,
       (`Order Details`.UnitPrice*Quantity*(1-Discount)/100)*100 AS ExtendedPrice
-FROM Products 
+FROM Products
      JOIN `Order Details` ON Products.ProductID = `Order Details`.ProductID;
 
 # ---------------------------------------------------------------------- #
@@ -4191,17 +4191,17 @@ FROM Products
 # ---------------------------------------------------------------------- #
 
 CREATE VIEW `Sales by Category` AS
-SELECT Categories.CategoryID, 
-       Categories.CategoryName, 
-         Products.ProductName, 
+SELECT Categories.CategoryID,
+       Categories.CategoryName,
+         Products.ProductName,
 	Sum(`Order Details Extended`.ExtendedPrice) AS ProductSales
-FROM  Categories 
-    JOIN Products 
+FROM  Categories
+    JOIN Products
       ON Categories.CategoryID = Products.CategoryID
-       JOIN `Order Details Extended` 
-         ON Products.ProductID = `Order Details Extended`.ProductID                
-           JOIN Orders 
-             ON Orders.OrderID = `Order Details Extended`.OrderID 
+       JOIN `Order Details Extended`
+         ON Products.ProductID = `Order Details Extended`.ProductID
+           JOIN Orders
+             ON Orders.OrderID = `Order Details Extended`.OrderID
 WHERE Orders.OrderDate BETWEEN '1997-01-01' And '1997-12-31'
 GROUP BY Categories.CategoryID, Categories.CategoryName, Products.ProductName;
 
@@ -4347,7 +4347,7 @@ BEGIN
 Insert Into Employees Values(AtLastName,AtFirstName,AtTitle,AtTitleOfCourtesy,AtBirthDate,AtHireDate,AtAddress,AtCity,AtRegion,AtPostalCode,AtCountry,AtHomePhone,AtExtension,AtPhoto,AtNotes,AtReportsTo,AtPhotoPath);
 
 	SELECT AtReturnID = LAST_INSERT_ID();
-	
+
 END $$
 
 DELIMITER ;
@@ -4458,12 +4458,12 @@ DECLARE ix DOUBLE;
 
   SET x = Operand*POW(10,Places);
   SET i=x;
-  
-  IF (i-x) >= 0.5 THEN                   
-    SET ix = 1;                  
+
+  IF (i-x) >= 0.5 THEN
+    SET ix = 1;
   ELSE
-    SET ix = 0;                 
-  END IF;     
+    SET ix = 0;
+  END IF;
 
   SET x=i+ix;
   SET x=x/POW(10,Places);
@@ -4568,7 +4568,7 @@ DELIMITER ;
 # ---------------------------------------------------------------------- #
 # Add PROCEDURE  "sp_employees_rownum" rownum SAMPLE                     #
 # ---------------------------------------------------------------------- #
-  
+
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_employees_rownum`$$
@@ -4591,7 +4591,7 @@ DELIMITER ;
 # ---------------------------------------------------------------------- #
 # Add PROCEDURE  "sp_employees_rollup" rollup SAMPLE                     #
 # ---------------------------------------------------------------------- #
-  
+
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_employees_rollup`$$
