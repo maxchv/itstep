@@ -1,3 +1,16 @@
+
+use northwind;
+CREATE OR REPLACE VIEW `Current Product List` AS
+    SELECT ProductID, ProductName, CategoryName FROM Products, Categories
+    WHERE  Discontinued="No" AND Products.CategoryID=Categories.CategoryID;
+
+select * from `Current Product List` limit 5;
+
+update `Current Product List` 
+    set ProductName='Chaii'
+    where ProductID=1;
+
+
 drop database if exists Orders;
 create database if not exists Orders;
 use Orders;
