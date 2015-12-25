@@ -330,15 +330,13 @@ DELIMITER
 
 .. sourcecode:: sql
 
-    DELIMITER $$
-     
+    DELIMITER $$     
     CREATE PROCEDURE GetCustomerLevel
     (
         IN  p_customerNumber INT(11), 
         OUT p_customerLevel  VARCHAR(10)
     )
     BEGIN
-
         DECLARE creditlim DOUBLE;
      
         SELECT creditlimit INTO creditlim
@@ -352,7 +350,6 @@ DELIMITER
         ELSEIF creditlim < 10000 THEN
             SET p_customerLevel = 'SILVER';
         END IF;
-
     END$$
 
 ----
@@ -398,8 +395,7 @@ CASE
 
 .. sourcecode:: sql
 
-    DELIMITER $$
-     
+    DELIMITER $$     
     CREATE PROCEDURE GetCustomerShipping
     (
          IN  p_customerNumber INT(11), 
@@ -432,14 +428,271 @@ CASE
 
 ----
 
-Циклы
-=====
+Поисковый CASE
+==============
+
+.. The simple CASE statement only allows you match a value of an expression against a set of distinct values. In order to perform more complex matches such as ranges, you use the searched CASE statement. The searched CASE statement is equivalent to the IF  statement, however, its construct is much more readable.
+
+Простые **CASE** выражения позволяют находить только совпадения с уникальными значениями для некого выражения.
+
+Для применения больее сложных условий используется поисковый варианты выражения **CASE**.
+
+Он похож на условие **IF**, но имеет более читабельный вид.
+
+Синтаксис
+---------
+
+.. sourcecode:: sql
+
+    CASE
+        WHEN <условие_1> THEN <команды_1>
+        WHEN <условие_2> THEN <команды_2>
+        ...
+        ELSE <команды_n>
+    END CASE;
+
+----
+
+Пример применения CASE
+======================
+
+.. sourcecode:: sql
+
+    DELIMITER $$
+    CREATE PROCEDURE GetCustomerLevel
+    (
+     IN  p_customerNumber INT(11), 
+     OUT p_customerLevel  VARCHAR(10)
+    )
+    BEGIN
+        DECLARE creditlim DOUBLE;
+        SELECT creditlimit INTO creditlim
+            FROM customers
+            WHERE customerNumber = p_customerNumber;
+        CASE  
+            WHEN creditlim > 50000 THEN 
+                SET p_customerLevel = 'PLATINUM';
+            WHEN (creditlim <= 50000 AND creditlim >= 10000) THEN
+                SET p_customerLevel = 'GOLD';
+            WHEN creditlim < 10000 THEN
+                SET p_customerLevel = 'SILVER';
+        END CASE;
+    END$$
+    
+    CALL GetCustomerLevel(112,@level);
+    SELECT @level AS 'Customer Level';
+
+
++----------------+
+| Customer Level |
++================+
+| PLATINUM       |
++----------------+
+
+----
+
+Цикл WHILE
+==========
+
+Запрос будет выполняться до тех пор, пока условие истинно.
 
 .. sourcecode:: sql
 
     WHILE условие DO
         действие;
     END WHILE;
+
+.. image:: http://www.mysqltutorial.org/wp-content/uploads/2009/12/mysql-while-loop.jpg
+
+----
+
+Пример цикла WHILE
+==================
+
+.. sourcecode:: sql
+
+    DELIMITER $$
+
+    CREATE PROCEDURE test_mysql_while_loop()
+    BEGIN
+        DECLARE x  INT;
+        DECLARE str  VARCHAR(255);
+
+        SET x = 1;
+        SET str =  '';
+
+        WHILE x  <= 5 DO
+            SET  str = CONCAT(str,x,',');
+            SET  x = x + 1; 
+        END WHILE;
+
+        SELECT str;
+    END$$
+    
+    DELIMITER ;
+
+    CALL test_mysql_while_loop();
+
+
++------------+
+| str        |
++============+
+| 1,2,3,4,5, |
++------------+
+
+----
+
+Цикл REPEAT
+===========
+
+Условие цикла проверяется не в начале, как в цикле **WHILE**, а в конце, т.е. хотя бы один раз, но цикл выполняется. 
+
+Сам же цикл выполняется, пока условие ложно. 
+
+
+Синтаксис
+---------
+
+.. sourcecode:: sql
+
+    REPEAT <запрос>
+    UNTIL <условие> 
+    END REPEAT
+
+.. image:: http://www.mysqltutorial.org/wp-content/uploads/2009/12/mysql-repeat-loop.jpg
+
+----
+
+Пример цикла REPEAT
+===================
+
+.. sourcecode:: sql
+
+    DELIMITER $$
+    CREATE PROCEDURE mysql_test_repeat_loop()
+    BEGIN
+        DECLARE x INT;
+        DECLARE str VARCHAR(255);
+        
+        SET x = 1;
+        SET str =  '';
+        
+        REPEAT
+            SET  str = CONCAT(str,x,',');
+            SET  x = x + 1; 
+        UNTIL x  > 5
+        END REPEAT;
+
+        SELECT str;
+    END$$
+    DELIMITER ;
+
+----
+
+Цикл LOOP 
+=========
+
+Этот цикл вообще не имеет условий (бесконечный цикл), поэтому обязательно должен иметь оператор **LEAVE** 
+(аналог break) для прекращения цикла.
+
+Также может быть использована команда **ITERATE** (аналог continue) для перехода к следующей итерации
+
+
+
+Синтаксис
+---------
+    
+.. sourcecode:: sql
+
+    LOOP запрос 
+    END LOOP
+
+----
+
+Пример цикла LOOP
+=================
+
+.. sourcecode:: sql
+
+    DELIMITER $$
+    CREATE PROCEDURE test_mysql_loop()
+    BEGIN
+        DECLARE x  INT;
+        DECLARE str  VARCHAR(255);        
+
+        SET x = 1;
+        SET str =  '';        
+        
+        loop_label:  LOOP
+        IF  x > 10 THEN 
+            LEAVE  loop_label;
+        END  IF;            
+        SET  x = x + 1;
+        
+        IF  (x mod 2) THEN
+            ITERATE  loop_label;
+        ELSE
+            SET  str = CONCAT(str,x,',');
+        END  IF;
+        END LOOP;
+        SELECT str;
+    END;
+
+----
+
+Stored Function
+===============
+
+.. http://www.mysqltutorial.org/mysql-stored-function/
+
+A stored function is a special kind stored program that returns a single value. You use stored functions to encapsulate common formulas or business rules that are reusable among SQL statements or stored programs.
+
+Different from a stored procedure, you can use a stored function in SQL statements wherever an expression is used. This helps improve the readability and maintainability of the procedural code.
+tored function syntax
+
+The following illustrates the simplest syntax for creating a new stored function:
+
+.. sourcecode:: sql
+
+    CREATE FUNCTION function_name(param1,param2,…)
+        RETURNS datatype
+        [NOT] DETERMINISTIC
+    statements
+
+----
+
+stored function example
+=======================
+
+The following example is a function that returns the level of a customer based on credit limit. We use the IF statement to decide the credit limit.
+
+.. sourcecode:: sql
+
+    DELIMITER $$
+    CREATE FUNCTION CustomerLevel(p_creditLimit double) RETURNS VARCHAR(10)
+        DETERMINISTIC
+    BEGIN
+        DECLARE lvl varchar(10);
+     
+        IF p_creditLimit > 50000 THEN
+            SET lvl = 'PLATINUM';
+        ELSEIF (p_creditLimit <= 50000 AND p_creditLimit >= 10000) THEN
+            SET lvl = 'GOLD';
+        ELSEIF p_creditLimit < 10000 THEN
+            SET lvl = 'SILVER';
+        END IF;
+     RETURN (lvl);
+    END$$    
+
+Now, we can call the CustomerLevel() in an SQL SELECT statement as follows:
+
+.. sourcecode:: sql
+
+    SELECT 
+        customerName, CustomerLevel(creditLimit)
+    FROM
+        customers
+    ORDER BY customerName;
 
 ----
 
