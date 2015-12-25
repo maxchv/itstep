@@ -5,11 +5,24 @@ CREATE OR REPLACE VIEW `Current Product List` AS
     WHERE  Discontinued="No" AND Products.CategoryID=Categories.CategoryID;
 
 select * from `Current Product List` limit 5;
+select ProductID, ProductName, Discontinued from Products limit 5;
+SELECT
+`Current Product List`.`ProductID`,
+`Current Product List`.`ProductName`,
+`Current Product List`.`CategoryName`
+FROM `northwind`.`Current Product List`;
 
 update `Current Product List` 
     set ProductName='Chaii'
     where ProductID=1;
 
+update Products
+    set ProductName='Chai'
+    where ProductID=1;
+
+update `Current Product List`
+    set Discontinued=0
+    where ProductID=1;
 
 drop database if exists Orders;
 create database if not exists Orders;
@@ -95,3 +108,14 @@ CREATE TABLE Cityorders
 	FOREIGN KEY (cnum, city) REFERENCES Customers (cnum, city) 
 ); 
 
+
+use northwind;
+select * from `Product Sales for 1997`;
+
+        SELECT      ShippedDate,
+            Orders.OrderID,
+         Subtotal
+        FROM Orders, `Order Subtotals`
+        WHERE Orders.OrderID = `Order Subtotals`.OrderID
+        AND Orders.ShippedDate IS NOT NULL;
+select count(*) from `Summary of Sales by Year`;
