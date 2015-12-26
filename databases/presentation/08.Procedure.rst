@@ -8,7 +8,7 @@
 ==================
 
 **Хранимые процедуры (stored procedure)** -  это именованный набор команд, хранящийся
-непосредственно на сервере и представляющий собой самостоятельный объект базы данных. 
+непосредственно на сервере и представляющий собой самостоятельный объект базы данных.
 
 Без хранимых процедур пользователю пришлось бы вводить весь набор команд всякий раз,
 когда он хочет выполнить какое-либо действие.
@@ -22,12 +22,12 @@
 
 - Использование хранимых процедур повышает скорость выполнения операций, так
   как процедура предварительно компилируется на сервере, и при повторном вызове
-  процедура уже загружена в память (кэш), где найти ее можно гораздо быстрее, 
+  процедура уже загружена в память (кэш), где найти ее можно гораздо быстрее,
   чем на диске, к тому же не нужна повторная компиляция и оптимизация.
 
 - Хранимые процедуры могут состоять из десятков и сотен команд, но для их
   запуска достаточно указать всего лишь имя нужной хранимой процедуры. Это позволяет уменьшить размер запроса, посылаемого по сети от клиента на сервер, так как весь набор команд находится в том месте, где он должен быть выполнен. Таким образом, при использовании хранимых процедур возможно уменьшение нагрузки на сеть.
-  
+
 - Использование хранимых процедур реализует принцип модульного проектирования,
   так как процедуры позволяют разбивать большие задачи на самостоятельные, более
   мелкие и удобные в управлении части.
@@ -38,15 +38,15 @@
 Создание подпрограмм
 ====================
 
-Сохраненная подпрограмма является процедурой или функцией. 
+Сохраненная подпрограмма является процедурой или функцией.
 
-Сохраненные подпрограммы создаются командами **CREATE PROCEDURE** и **CREATE FUNCTION**. 
+Сохраненные подпрограммы создаются командами **CREATE PROCEDURE** и **CREATE FUNCTION**.
 
 Процедура вызывается через инструкцию **CALL (EXEC)**, и может `только передавать обратные значения,
-используя переменные вывода.` 
+используя переменные вывода.`
 
 Функция может быть вызвана точно так же, как и любая другая функция языка (то есть, вызывая имя функции),
-и `может возвращать скалярное значение`. 
+и `может возвращать скалярное значение`.
 
 Сохраненные подпрограммы, разумеется, могут вызывать другие сохраненные подпрограммы.
 
@@ -92,14 +92,14 @@
             END IF;                                 /* конец IF         */
             INSERT INTO table1 VALUES (variable1);  /* запрос           */
         END //                                      /* конец блока      */
-    
+
     DELIMITER ;
 
 Вызов процедуры
 ---------------
 
 .. sourcecode:: sql
-    
+
     CALL procedure1(10);
 
 ----
@@ -126,7 +126,7 @@
     DECLARE iVar INT DEFAULT 0;
     SET iVar = 5;
     SELECT * FROM `data` WHERE `id` = iVar;
- 
+
     DECLARE iVar INT DEFAULT 0;
     SELECT COUNT(*) INTO iVar FROM `data`;
 
@@ -156,15 +156,15 @@
 
 .. Хранимые процедуры могут иметь **IN**, **OUT** и **INOUT** параметры.
 
-IN 
+IN
 --
 
 По умолчанию. Этот параметр принимается процедурой и может изменяться внутри процедуру, но не может изменятся вне процедуры.
 
 .. sourcecode:: sql
 
-    CREATE PROCEDURE sp_in(p VARCHAR(11)) SET @x = P;  
-    CALL sp_in('Hello world');  
+    CREATE PROCEDURE sp_in(p VARCHAR(11)) SET @x = P;
+    CALL sp_in('Hello world');
     SELECT @x
 
 
@@ -175,9 +175,9 @@ OUT
 
 .. sourcecode:: sql
 
-    SET @x='Something';  
-    CREATE PROCEDURE sp_out(OUT p VARCHAR(10)) SET P='Hello world';  
-    CALL sp_out(@x);  
+    SET @x='Something';
+    CREATE PROCEDURE sp_out(OUT p VARCHAR(10)) SET P='Hello world';
+    CALL sp_out(@x);
     SELECT @x
 
 INOUT
@@ -187,19 +187,19 @@ INOUT
 
 .. sourcecode:: sql
 
-    CREATE PROCEDURE sp_inout(INOUT P INT) SET @x=P*2;  
-    set @a = 5;  
-    CALL sp_inout(@a);  
-    SELECT @x  
+    CREATE PROCEDURE sp_inout(INOUT P INT) SET @x=P*2;
+    set @a = 5;
+    CALL sp_inout(@a);
+    SELECT @x
 
 ----
 
 DELIMITER
 =========
 
-Хранимые процедуры, конечно, не очень полезные если они содержат одну инструкцию. 
+Хранимые процедуры, конечно, не очень полезные если они содержат одну инструкцию.
 
-Как же отличить инструкцию внутри процедуры от конца этой процедуры. 
+Как же отличить инструкцию внутри процедуры от конца этой процедуры.
 
 Для этого можно создать другой разделитель инструкции для конца оператора **CREATE PROCEDURE**.
 
@@ -208,7 +208,7 @@ DELIMITER
 
 
 .. sourcecode:: sql
-    
+
     DELIMITER <строка/символ>
 
 
@@ -216,7 +216,7 @@ DELIMITER
 ------
 
 .. sourcecode:: sql
-    
+
     SELECT VERSION();
 
     -- установить разделитель команд |
@@ -224,9 +224,9 @@ DELIMITER
 
     SELECT VERSION()|
 
-Обратите внимание на то, что нет точки с запятой после символа «|», который будет использоваться в процедуре. 
+Обратите внимание на то, что нет точки с запятой после символа «|», который будет использоваться в процедуре.
 
-Разделитель необходимо выбарать такой, который не будет использоваться в процедуре, и он может содержать больше чем 
+Разделитель необходимо выбарать такой, который не будет использоваться в процедуре, и он может содержать больше чем
 один символ.
 
 ----
@@ -255,11 +255,11 @@ DELIMITER
     -- создаем процедуру
     CREATE PROCEDURE get_title(IN _id INT, OUT _title VARCHAR(255))
     BEGIN
-        SELECT title INTO _title 
+        SELECT title INTO _title
             FROM t1 WHERE id=_id;
     END$$
 
-    -- восстанавливаем стандартный разделитель 
+    -- восстанавливаем стандартный разделитель
     DELIMITER ;
 
     SET @title = '';
@@ -330,19 +330,19 @@ DELIMITER
 
 .. sourcecode:: sql
 
-    DELIMITER $$     
+    DELIMITER $$
     CREATE PROCEDURE GetCustomerLevel
     (
-        IN  p_customerNumber INT(11), 
+        IN  p_customerNumber INT(11),
         OUT p_customerLevel  VARCHAR(10)
     )
     BEGIN
         DECLARE creditlim DOUBLE;
-     
+
         SELECT creditlimit INTO creditlim
             FROM customers
             WHERE customerNumber = p_customerNumber;
-     
+
         IF creditlim > 50000 THEN
             SET p_customerLevel = 'PLATINUM';
         ELSEIF (creditlim <= 50000 AND creditlim >= 10000) THEN
@@ -361,12 +361,12 @@ DELIMITER
 CASE
 ====
 
-.. Besides the IF statement, MySQL provides an alternative conditional statement called CASE. 
+.. Besides the IF statement, MySQL provides an alternative conditional statement called CASE.
 .. The MySQL CASE statement makes the code more readable and efficient.
 
 Вместе с условными командами в MySQL применяются условные выражения **CASE**.
 
-**CASE** выражения позволяют создать код более читабельным и эффективным. 
+**CASE** выражения позволяют создать код более читабельным и эффективным.
 
 .. There are two forms of the CASE statements: simple and searched CASE statements.
 
@@ -375,7 +375,7 @@ CASE
 Простое CASE выражение
 ----------------------
 
-В этом случае находится совпадение выражения с одним из уникальных значений и 
+В этом случае находится совпадение выражения с одним из уникальных значений и
 выполнение соответствующих команд
 
 .. sourcecode:: sql
@@ -395,19 +395,19 @@ CASE
 
 .. sourcecode:: sql
 
-    DELIMITER $$     
+    DELIMITER $$
     CREATE PROCEDURE GetCustomerShipping
     (
-         IN  p_customerNumber INT(11), 
+         IN  p_customerNumber INT(11),
          OUT p_shiping        VARCHAR(50)
     )
     BEGIN
         DECLARE customerCountry VARCHAR(50);
-     
+
         SELECT country INTO customerCountry
              FROM customers
              WHERE customerNumber = p_customerNumber;
-     
+
         CASE customerCountry
              WHEN  'USA' THEN
                 SET p_shiping = '2-day Shipping';
@@ -415,7 +415,7 @@ CASE
                 SET p_shiping = '3-day Shipping';
              ELSE
                 SET p_shiping = '5-day Shipping';
-         END CASE;     
+         END CASE;
     END$$
 
 ----
@@ -461,7 +461,7 @@ CASE
     DELIMITER $$
     CREATE PROCEDURE GetCustomerLevel
     (
-     IN  p_customerNumber INT(11), 
+     IN  p_customerNumber INT(11),
      OUT p_customerLevel  VARCHAR(10)
     )
     BEGIN
@@ -469,8 +469,8 @@ CASE
         SELECT creditlimit INTO creditlim
             FROM customers
             WHERE customerNumber = p_customerNumber;
-        CASE  
-            WHEN creditlim > 50000 THEN 
+        CASE
+            WHEN creditlim > 50000 THEN
                 SET p_customerLevel = 'PLATINUM';
             WHEN (creditlim <= 50000 AND creditlim >= 10000) THEN
                 SET p_customerLevel = 'GOLD';
@@ -478,7 +478,7 @@ CASE
                 SET p_customerLevel = 'SILVER';
         END CASE;
     END$$
-    
+
     CALL GetCustomerLevel(112,@level);
     SELECT @level AS 'Customer Level';
 
@@ -523,12 +523,12 @@ CASE
 
         WHILE x  <= 5 DO
             SET  str = CONCAT(str,x,',');
-            SET  x = x + 1; 
+            SET  x = x + 1;
         END WHILE;
 
         SELECT str;
     END$$
-    
+
     DELIMITER ;
 
     CALL test_mysql_while_loop();
@@ -545,9 +545,9 @@ CASE
 Цикл REPEAT
 ===========
 
-Условие цикла проверяется не в начале, как в цикле **WHILE**, а в конце, т.е. хотя бы один раз, но цикл выполняется. 
+Условие цикла проверяется не в начале, как в цикле **WHILE**, а в конце, т.е. хотя бы один раз, но цикл выполняется.
 
-Сам же цикл выполняется, пока условие ложно. 
+Сам же цикл выполняется, пока условие ложно.
 
 
 Синтаксис
@@ -556,7 +556,7 @@ CASE
 .. sourcecode:: sql
 
     REPEAT <запрос>
-    UNTIL <условие> 
+    UNTIL <условие>
     END REPEAT
 
 .. image:: http://www.mysqltutorial.org/wp-content/uploads/2009/12/mysql-repeat-loop.jpg
@@ -573,13 +573,13 @@ CASE
     BEGIN
         DECLARE x INT;
         DECLARE str VARCHAR(255);
-        
+
         SET x = 1;
         SET str =  '';
-        
+
         REPEAT
             SET  str = CONCAT(str,x,',');
-            SET  x = x + 1; 
+            SET  x = x + 1;
         UNTIL x  > 5
         END REPEAT;
 
@@ -589,10 +589,10 @@ CASE
 
 ----
 
-Цикл LOOP 
+Цикл LOOP
 =========
 
-Этот цикл вообще не имеет условий (бесконечный цикл), поэтому обязательно должен иметь оператор **LEAVE** 
+Этот цикл вообще не имеет условий (бесконечный цикл), поэтому обязательно должен иметь оператор **LEAVE**
 (аналог break) для прекращения цикла.
 
 Также может быть использована команда **ITERATE** (аналог continue) для перехода к следующей итерации
@@ -601,10 +601,10 @@ CASE
 
 Синтаксис
 ---------
-    
+
 .. sourcecode:: sql
 
-    LOOP запрос 
+    LOOP запрос
     END LOOP
 
 ----
@@ -618,17 +618,17 @@ CASE
     CREATE PROCEDURE test_mysql_loop()
     BEGIN
         DECLARE x  INT;
-        DECLARE str  VARCHAR(255);        
+        DECLARE str  VARCHAR(255);
 
         SET x = 1;
-        SET str =  '';        
-        
+        SET str =  '';
+
         loop_label:  LOOP
-        IF  x > 10 THEN 
+        IF  x > 10 THEN
             LEAVE  loop_label;
-        END  IF;            
+        END  IF;
         SET  x = x + 1;
-        
+
         IF  (x mod 2) THEN
             ITERATE  loop_label;
         ELSE
@@ -645,26 +645,52 @@ Stored Function
 
 .. http://www.mysqltutorial.org/mysql-stored-function/
 
-A stored function is a special kind stored program that returns a single value. You use stored functions to encapsulate common formulas or business rules that are reusable among SQL statements or stored programs.
+..
+    A stored function is a special kind stored program that returns a single value.
+    You use stored functions to encapsulate common formulas or business rules that
+    are reusable among SQL statements or stored programs.
 
-Different from a stored procedure, you can use a stored function in SQL statements wherever an expression is used. This helps improve the readability and maintainability of the procedural code.
-tored function syntax
+Сохраненные функции это подпрограммы, которые возвращают скалярное значение.
 
-The following illustrates the simplest syntax for creating a new stored function:
+...
+    Different from a stored procedure, you can use a stored function in SQL
+    statements wherever an expression is used. This helps improve the
+    readability and maintainability of the procedural code.
+
+Отличие от сохраненных процедур заключается в том, что
+
+.. Stored function syntax
+
+Синтаксис
+---------
+
+.. The following illustrates the simplest syntax for creating a new stored function:
+
+Следующий пример демонстрирует синтаксис создания новой сохраненной функции.
 
 .. sourcecode:: sql
 
-    CREATE FUNCTION function_name(param1,param2,…)
-        RETURNS datatype
+    CREATE FUNCTION <имя_функции>(<параметр_1>,<параметр_2>,<параметр_3>,…)
+        RETURNS <тип_данных>
         [NOT] DETERMINISTIC
-    statements
+        <тело_функции>
+
+Параметр DETERMINISTIC определяет функция детерминированная или недетерминированная.
+
+Для детерминированных функций разрешается доступ к локальным данным.
+
+Например, функция, которая при вызове с одними и теми же параметрами и в одном
+том же состоянии базы данных всегда возвращает один и тот же результат,
+называется детерминированной.
 
 ----
 
-stored function example
+Пример создания функции
 =======================
 
-The following example is a function that returns the level of a customer based on credit limit. We use the IF statement to decide the credit limit.
+..
+    The following example is a function that returns the level of a customer based on credit limit.
+    We use the IF statement to decide the credit limit.
 
 .. sourcecode:: sql
 
@@ -673,7 +699,7 @@ The following example is a function that returns the level of a customer based o
         DETERMINISTIC
     BEGIN
         DECLARE lvl varchar(10);
-     
+
         IF p_creditLimit > 50000 THEN
             SET lvl = 'PLATINUM';
         ELSEIF (p_creditLimit <= 50000 AND p_creditLimit >= 10000) THEN
@@ -682,13 +708,15 @@ The following example is a function that returns the level of a customer based o
             SET lvl = 'SILVER';
         END IF;
      RETURN (lvl);
-    END$$    
+    END$$
 
-Now, we can call the CustomerLevel() in an SQL SELECT statement as follows:
+.. Now, we can call the CustomerLevel() in an SQL SELECT statement as follows:
+
+Теперь можно вызвать функцию CustomerLevel() в SQL запросе следующим образом:
 
 .. sourcecode:: sql
 
-    SELECT 
+    SELECT
         customerName, CustomerLevel(creditLimit)
     FROM
         customers
@@ -718,10 +746,19 @@ ALTER FUNCTION
 
 ----
 
+Удаление подпрограмм
+====================
+
+.. sourcecode:: sql
+
+    DROP {PROCEDURE | FUNCTION} [IF EXISTS] <имя_подпрограммы>
+
+----
+
 Перечень подпрограмм в MySQL
 ============================
 
-Для отображения сохраненных подпрограмм в СУБД используется команда: 
+Для отображения сохраненных подпрограмм в СУБД используется команда:
 
 Синтаксис
 ---------
@@ -738,10 +775,10 @@ ALTER FUNCTION
 Наример, для отображения процедур базы данных **northwind**:
 
 .. sourcecode:: sql
-    
+
     SHOW PROCEDURE STATUS WHERE db = 'northwind';
 
-Для отображения исходного кода подпрограмм используют команды: 
+Для отображения исходного кода подпрограмм используют команды:
 
 Синтаксис
 ---------
@@ -764,15 +801,16 @@ ALTER FUNCTION
 Триггеры
 ========
 
-**Триггер** представляет собой хранимую процедуру, которая активизируется 
-при наступлении определенного события. 
+**Триггер** представляет собой хранимую процедуру, которая активизируется
+при наступлении определенного события.
 
-Например, можно задать хранимую процедуру, которая срабатывает каждый раз 
-при удалении записи из транзакционной таблицы - таким образом, 
-обеспечивается автоматическое удаление соответствующего заказчика из 
+Например, можно задать хранимую процедуру, которая срабатывает каждый раз
+при удалении записи из транзакционной таблицы - таким образом,
+обеспечивается автоматическое удаление соответствующего заказчика из
 таблицы заказчиков, когда все его транзакции удаляются.
 
 Синтаксис создания триггера
+---------------------------
 
 .. sourcecode:: sql
 
@@ -780,13 +818,22 @@ ALTER FUNCTION
         [DEFINER = { имя_ пользователя | CURRENT_USER }]
         TRIGGER имя_триггера время_триггера событие_срабатывания
         ON имя_таблицы FOR EACH ROW выражение
-Если с именем триггера и именем пользователя все понятно сразу, то о «времени триггера» и «событии» поговорим отдельно.
 
 время_триггера
+--------------
 
-Определяет время свершения действия триггера. BEFORE означает, что триггер выполнится до завершения события срабатывания триггера, а AFTER означает, что после. Например, при вставке записей (см. пример выше) наш триггер срабатывал до фактической вставки записи и вычислял сумму. Такой вариант уместен при предварительном вычислении каких-то дополнительных полей в таблице или параллельной вставке в другую таблицу.
+Определяет время свершения действия триггера.
+BEFORE означает, что триггер выполнится до завершения события срабатывания триггера,
+а AFTER означает, что после.
+
+Например, при вставке записей (см. пример выше) наш триггер срабатывал до
+фактической вставки записи и вычислял сумму.
+
+Такой вариант уместен при предварительном вычислении каких-то дополнительных
+полей в таблице или параллельной вставке в другую таблицу.
 
 событие_срабатывания_триггера
+-----------------------------
 
 Здесь все проще. Тут четко обозначается, при каком событии выполняется триггер.
 
@@ -803,8 +850,8 @@ DELETE: когда запись удаляется (запросы, содерж
 - `CREATE PROCEDURE (Transact-SQL)`_
 -  `CREATE PROCEDURE Oracle Database Online Documentation`_
 - `Хранимые процедуры и триггеры`_
-- `Хранимые процедуры и триггеры. Активные базы данных`_ 
-  
+- `Хранимые процедуры и триггеры. Активные базы данных`_
+
 .. _MySQL Stored Procedures:  http://www.peregrinesalon.com/wp-content/uploads/2009/03/mysql-stored-procedures.pdf
 
 .. _CREATE PROCEDURE (Transact-SQL): https://msdn.microsoft.com/ru-ru/library/ms187926(v=sql.120).aspx
