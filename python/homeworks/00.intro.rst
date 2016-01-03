@@ -62,7 +62,7 @@
 
 .. sourcecode:: python
     
-    sec = 1440
+    sec = 1415
     
     # ваш код
 
