@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>An Overview of Runestone Interactive &mdash; Runestone Interactive Overview</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.0.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/codemirror.css" type="text/css" />
+    <link rel="stylesheet" href="_static/livecode.css" type="text/css" />
+    <link rel="stylesheet" href="_static/dragndrop.css" type="text/css" />
+    <link rel="stylesheet" href="_static/datafile.css" type="text/css" />
+    <link rel="stylesheet" href="_static/tabbedstuff.css" type="text/css" />
+    <link rel="stylesheet" href="_static/parsons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/lib/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="_static/video.css" type="text/css" />
+    <link rel="stylesheet" href="_static/clickable.css" type="text/css" />
+    <link rel="stylesheet" href="_static/codemirror.css" type="text/css" />
+    <link rel="stylesheet" href="_static/activecode.css" type="text/css" />
+    <link rel="stylesheet" href="_static/fitb.css" type="text/css" />
+    <link rel="stylesheet" href="_static/poll.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pytutor.css" type="text/css" />
+    <link rel="stylesheet" href="_static/modal-basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/jquery-ui-1.10.3.custom.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/user-highlights.css" type="text/css" />
+    <link rel="stylesheet" href="_static/runestone-custom-sphinx-bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/runestonebase.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/livecode.js"></script>
+    <script type="text/javascript" src="_static/clike.js"></script>
+    <script type="text/javascript" src="_static/dragndrop.js"></script>
+    <script type="text/javascript" src="_static/timeddnd.js"></script>
+    <script type="text/javascript" src="_static/skulpt.min.js"></script>
+    <script type="text/javascript" src="_static/skulpt-stdlib.js"></script>
+    <script type="text/javascript" src="_static/datafile.js"></script>
+    <script type="text/javascript" src="_static/tabbedstuff.js"></script>
+    <script type="text/javascript" src="_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="_static/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="_static/lib/prettify.js"></script>
+    <script type="text/javascript" src="_static/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="_static/lib/lis.js"></script>
+    <script type="text/javascript" src="_static/parsons.js"></script>
+    <script type="text/javascript" src="_static/parsons-noconflict.js"></script>
+    <script type="text/javascript" src="_static/animationbase.js"></script>
+    <script type="text/javascript" src="_static/shortanswer.js"></script>
+    <script type="text/javascript" src="_static/clickable.js"></script>
+    <script type="text/javascript" src="_static/timedclickable.js"></script>
+    <script type="text/javascript" src="_static/reveal.js"></script>
+    <script type="text/javascript" src="_static/jquery.highlight.js"></script>
+    <script type="text/javascript" src="_static/bookfuncs.js"></script>
+    <script type="text/javascript" src="_static/codemirror.js"></script>
+    <script type="text/javascript" src="_static/xml.js"></script>
+    <script type="text/javascript" src="_static/css.js"></script>
+    <script type="text/javascript" src="_static/htmlmixed.js"></script>
+    <script type="text/javascript" src="_static/python.js"></script>
+    <script type="text/javascript" src="_static/javascript.js"></script>
+    <script type="text/javascript" src="_static/activecode.js"></script>
+    <script type="text/javascript" src="_static/skulpt.min.js"></script>
+    <script type="text/javascript" src="_static/skulpt-stdlib.js"></script>
+    <script type="text/javascript" src="_static/clike.js"></script>
+    <script type="text/javascript" src="_static/mchoice.js"></script>
+    <script type="text/javascript" src="_static/timedmc.js"></script>
+    <script type="text/javascript" src="_static/fitb.js"></script>
+    <script type="text/javascript" src="_static/timedfitb.js"></script>
+    <script type="text/javascript" src="_static/timed.js"></script>
+    <script type="text/javascript" src="_static/poll.js"></script>
+    <script type="text/javascript" src="_static/d3.v2.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.ba-bbq.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.jsPlumb-1.3.10-all-min.js"></script>
+    <script type="text/javascript" src="_static/pytutor.js"></script>
+    <script type="text/javascript" src="_static/codelens.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="_static/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/waypoints.min.js"></script>
+    <script type="text/javascript" src="_static/rangy-core.js"></script>
+    <script type="text/javascript" src="_static/rangy-textrange.js"></script>
+    <script type="text/javascript" src="_static/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="_static/user-highlights.js"></script>
+    <script type="text/javascript" src="_static/jquery.idle-timer.js"></script>
+    <script type="text/javascript" src="_static/processing-1.4.1.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.hotkey.js"></script>
+    <script type="text/javascript" src="_static/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="top" title="Runestone Interactive Overview" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<script type="text/javascript">
+  eBookConfig = {};
+  eBookConfig.host = 'http://127.0.0.1:8000' ? 'http://127.0.0.1:8000' : 'http://127.0.0.1:8000';
+  eBookConfig.app = eBookConfig.host+'/runestone';
+  eBookConfig.ajaxURL = eBookConfig.app+'/ajax/';
+  eBookConfig.course = 'PythonBook';
+  eBookConfig.logLevel = 0;
+  eBookConfig.loginRequired = false;
+  eBookConfig.build_info = "unknown";
+  eBookConfig.isLoggedIn = false;
+  eBookConfig.useRunestoneServices = false;
+  eBookConfig.python3 = true;
+</script>
+
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+  </head>
+  <body role="document">
+
+
+<!-- Begin navbar -->
+<div id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+  <div class="container">
+
+    <div class="navbar-header">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button type='button' class='navbar-toggle' data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div>
+        <a class="brand-logo" style='background: transparent url("_static/img/logo_small.png") no-repeat 0px 0px;' href="/runestone/default/user/login">&nbsp; </a>
+        <a class="navbar-brand" href="index.html">Python Book</a>
+      </div>
+    </div>
+
+    <div class="navbar-collapse collapse navbar-ex1-collapse">
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li class="divider-vertical"></li>
+
+        <!-- social media dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-share-alt" style="opacity: 0.9"></i>
+          </a>
+          <ul class="dropdown-menu social-menu">
+              <li>
+                <div>
+                  <b>Runestone in social media:</b>
+                </div>
+                <a href="https://twitter.com/iRunestone" class="twitter-follow-button" data-show-count="true">Follow @iRunestone</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <div class="fb-like" data-href="https://www.facebook.com/RunestoneInteractive" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-font="arial"></div>
+              </li>
+
+              <li class="divider"></li>
+              <li>
+                <div>
+                  <b>Help support us:</b>
+                </div>
+                <div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHNwYJKoZIhvcNAQcEoIIHKDCCByQCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYAcrkqh1hn3lYqIpfXxNqe1T82EhXzCJGy1yMAmklpyZshyMkfDGe1Bhx+iwyGeoYRTTyphFmP+9M3NyO0+Q5XdHxgZPx/zYjjBxlZHgEV6jhE8bN2fHkkPf0VHfz0a0QQylQOPlKiOTZV7B37Jpk6yM47oVZ1tG/KNm0NkfmB76DELMAkGBSsOAwIaBQAwgbQGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIi0GmFfOlcjuAgZBbYOo9UO+CpMQa+PYqwsUmUnJvXIImeMeNI3KVTUx5Cfk9gNMo3WzPeiB5IqZo9nRAQ0mf1qL2ecLeB5tidM+lgBUhOxfj3/FecpnVFa0263gp4g+PLw8jzhvVRdUon1K3SeO1Rzh23fIRKwnrD6btt73uwtj0sl3tGd8qz+6GIcwPDdRk9VcUffiBJT/ZagKgggOHMIIDgzCCAuygAwIBAgIBADANBgkqhkiG9w0BAQUFADCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20wHhcNMDQwMjEzMTAxMzE1WhcNMzUwMjEzMTAxMzE1WjCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMFHTt38RMxLXJyO2SmS+Ndl72T7oKJ4u4uw+6awntALWh03PewmIJuzbALScsTS4sZoS1fKciBGoh11gIfHzylvkdNe/hJl66/RGqrj5rFb08sAABNTzDTiqqNpJeBsYs/c2aiGozptX2RlnBktH+SUNpAajW724Nv2Wvhif6sFAgMBAAGjge4wgeswHQYDVR0OBBYEFJaffLvGbxe9WT9S1wob7BDWZJRrMIG7BgNVHSMEgbMwgbCAFJaffLvGbxe9WT9S1wob7BDWZJRroYGUpIGRMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbYIBADAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBAIFfOlaagFrl71+jq6OKidbWFSE+Q4FqROvdgIONth+8kSK//Y/4ihuE4Ymvzn5ceE3S/iBSQQMjyvb+s2TWbQYDwcp129OPIbD9epdr4tJOUNiSojw7BHwYRiPh58S1xGlFgHFXwrEBb3dgNbMUa+u4qectsMAXpVHnD9wIyfmHMYIBmjCCAZYCAQEwgZQwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tAgEAMAkGBSsOAwIaBQCgXTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0xMzExMDMxMzQxMzFaMCMGCSqGSIb3DQEJBDEWBBRDJF8w+zsMr7FSk+pwinB5f5D4rzANBgkqhkiG9w0BAQEFAASBgHw1LMHpkpaqHIvDGdFE0eG+2mZlmMnUeDCBhQlbc7QMzFQYKTV94NfaebBO4PmNdADe1rq4WidSRZZbE7CzkX9IGENYnBTWY0hb2l0lGdGrJdGeWyV3ekg9WVaFMMumrekds96h3Cx7dGz2kWDzIai2iEXE/qoE+xpkyXAYZNV3-----END PKCS7-----
+                  ">
+                  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+
+                </div>
+              </li>
+          </ul>
+        </li>
+        <!-- end social media dropdown -->
+
+        <li class="divider-vertical"></li>
+
+        <!-- search dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-search" style='opacity:0.9;'></i>
+          </a>
+          <ul class='dropdown-menu'>
+            
+                <li><a href='index.html'>Table of Contents</a></li>
+            
+            <li><a href='/runestone/static/PythonBook/genindex.html'>Book Index</a></li>
+            <li class="divider"></li>
+            <li id="scratch_ac_link"><a href="javascript:ACFactory.toggleScratchActivecode()">Scratch ActiveCode</a></li>
+            <li class="divider"></li>
+            <li style="width: 240px;">
+              <form class="navbar-search" style="margin:10px;" action="search.html" method="get">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="q" placeholder="Search this book" />
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" style="margin:0;" type="submit">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </span>
+                </div><!-- /input-group -->
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+            </li>
+          </ul>
+        </li>
+        <!-- end search dropdown -->
+
+        <li class="divider-vertical"></li>
+
+        
+        <li class="divider-vertical"></li>
+
+        <!-- help menu dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-question-sign" style="opacity:0.9;"></i>
+          </a>
+          <ul class="dropdown-menu user-menu">
+            <li><a href='/runestone/static/PythonBook/navhelp.html'>Navigation Help</a></li>
+            <li><a href='/runestone/static/overview/instructor.html'>Help for Instructors</a></li>
+            <li class="divider"></li>
+            <li><a href='http://runestoneinteractive.org'>About Runestone</a></li>
+            <li><a href='/runestone/static/help/bugreports.html'>Report A Problem</a></li>
+          </ul>
+        </li>
+        <!-- end help menu dropdown -->
+
+        <li class="divider-vertical"></li>
+
+      </ul>
+
+      <ul class="nav navbar-nav">
+        <li class="divider-vertical"></li>
+        <!--
+          <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"><ul>
+<li><a class="reference internal" href="#">An Overview of Runestone Interactive</a><ul>
+<li><a class="reference internal" href="#embedded-videos">Embedded Videos</a></li>
+<li><a class="reference internal" href="#youtube">YouTube</a></li>
+<li><a class="reference internal" href="#activecode-windows">ActiveCode Windows</a></li>
+<li><a class="reference internal" href="#the-codelens-tool">The CodeLens Tool</a></li>
+<li><a class="reference internal" href="#self-check-questions">Self-Check Questions</a></li>
+<li><a class="reference internal" href="#timed-exam-questions">Timed Exam Questions</a></li>
+<li><a class="reference internal" href="#unit-tests-for-code">Unit Tests for Code</a></li>
+<li><a class="reference internal" href="#drag-n-drop">Drag N Drop</a></li>
+<li><a class="reference internal" href="#clickable-area">Clickable Area</a></li>
+<li><a class="reference internal" href="#disqus-comment-box">Disqus Comment Box</a></li>
+<li><a class="reference internal" href="#tabbed-question">Tabbed Question</a></li>
+<li><a class="reference internal" href="#polls">Polls</a></li>
+<li><a class="reference internal" href="#reveals">Reveals</a></li>
+<li><a class="reference internal" href="#dom-access">DOM Access</a></li>
+<li><a class="reference internal" href="#javascript">JavaScript</a></li>
+<li><a class="reference internal" href="#html">HTML</a></li>
+<li><a class="reference internal" href="#blockly">Blockly</a></li>
+<li><a class="reference internal" href="#other-languages-in-activecode">Other Languages in ActiveCode</a></li>
+<li><a class="reference internal" href="#audio-tours">Audio Tours</a></li>
+<li><a class="reference internal" href="#what-to-do-now">What To Do Now</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+          <li class="divider-vertical"></li>
+        
+        
+          
+
+<script type="text/javascript">
+  opts = {'placement':'bottom',
+          'selector': '',
+          'delay': { show: 100, hide: 50}
+         };
+
+  $('#relations-prev').tooltip(opts);
+  $('#relations-next').tooltip(opts);
+</script>
+        -->
+        
+          <li></li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container" id="continue-reading"></div>
+
+<div class="container" id="main-content">
+  
+  <div class="section" id="an-overview-of-runestone-interactive">
+<h1>An Overview of Runestone Interactive<a class="headerlink" href="#an-overview-of-runestone-interactive" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Runestone Interactive is a project focusing on providing tools and content for the purpose of
+creating interactive computer science courseware.  We provide a complete introductory series of chapters
+that can be used as is, or if you wish, you can customize the chapters.  You can even start
+from scratch and write your own interactive textbook using the tools that we provide.
+In order to see how the tools work, the following sections will show them in action.</p>
+<div class="section" id="embedded-videos">
+<h2>Embedded Videos<a class="headerlink" href="#embedded-videos" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Our toolset provides a number of different things that will help you to learn to program in the Python programming language.
+Aside from reading the text, it is sometimes useful to hear someone tell you about different aspects of the topic being discussed.
+In order to accomplish this, we provide a way to integrate simple, short videos into the text.  For example, if you click
+on the video shown below, you will hear us talk about the tools that will be described shortly.</p>
+<div id="videoinfo" class="video_popup" >
+<video controls preload="none"  poster="_static/activecodethumb.png">
+    <source src="http://media.interactivepython.org/runestone.mov" type="video/mp4"></source>
+    <source src="http://media.interactivepython.org/runestone.webm" type="video/webm"></source>
+    No supported video types
+</video>
+</div>
+<script>
+   jQuery(function($) {
+      var rb = new RunestoneBase();
+      $('#videoinfo_thumb').click(function(e) {
+         $('#videoinfo').show();
+         $('#videoinfo_thumb').hide();
+         rb.logBookEvent({'event':'video','act':'play','div_id': 'videoinfo'});
+         // Log the run event
+      });
+      $('#videoinfo video').one("click", function(){
+        this.play();
+      });
+      $('#videoinfo video').one("play", function(){
+        rb.logBookEvent({'event':'video','act':'play','div_id': 'videoinfo'});
+      });
+   });
+</script>
+</div>
+<div class="section" id="youtube">
+<h2>YouTube<a class="headerlink" href="#youtube" title="Ссылка на этот заголовок">¶</a></h2>
+<iframe src="http://www.youtube.com/embed/anwy2MPT5RE"     width="560" height="315" frameborder="0"     webkitAllowFullScreen mozallowfullscreen allowfullscreen     class="align-left" seamless ></iframe></div>
+<div class="section" id="activecode-windows">
+<h2>ActiveCode Windows<a class="headerlink" href="#activecode-windows" title="Ссылка на этот заголовок">¶</a></h2>
+<p>One of the most important things that you can do when you are learning a programming language is to write programs.  Unfortunately,
+typical textbooks allow you to read about programming but don&#8217;t allow you to practice.  We have created a unique tool called
+<strong>activecode</strong> that allows you to write, modify, and execute programs right
+in the text itself (right from the web browser).  Although this is certainly not the way real programs are written, it provides an excellent
+environment for learning a programming language like Python since you can experiment with the language as you are reading.</p>
+<p>Take a look at the activecode interpreter in action.  If we take a simple Python program and make it active, you will see that it can be executed directly by pressing the <em>run</em> button.   Try pressing the <em>run</em> button below.</p>
+
+<pre data-component="datafile" id=df1  data-edit="false" data-rows="20" data-cols="24">
+def main():
+    print("Hello world")
+    return 45
+
+ </pre>
+
+<textarea data-component="activecode" id=codeexample1 data-lang="python"    data-timelimit=25000 data-coach="true" data-codelens="true" data-audio=''     data-caption='This is a caption'>
+print("My first program adds a list of numbers")
+myList = [2, 4, 6, 8, 10]
+total = 0
+for num in myList:
+    total = total + num
+print(total)
+</textarea>
+<p>Now try modifying the activecode program shown above.  First, modify the string in the first print statement
+by changing the word <em>adds</em> to the word <em>multiplies</em>.  Now press <em>run</em>.  You can see that the result of the program
+has changed.  However, it still prints &#8220;30&#8221; as the answer.  Modify the total calculation by changing the
+addition symbol, the &#8220;+&#8221;, to the multiplication symbol, &#8220;*&#8221;.  Press <em>run</em> to see the new results (note that you should also fix the total initialization for a correct claculation).
+You can do this as many times as you like.  You can even start completely over by simply deleting all the code from the window.</p>
+<p>If you are a registered user and have logged in,
+it is possible to save the changes you make for reloading later. <em>Save</em> and <em>Load</em> buttons will appear that allow you to keep one copy of the program you are working on.
+Note that these saved programs can be accessed from anywhere if you have logged in.  However, if you are
+working anonymously, then you will lose your work at the end of the session.</p>
+<p>Activecode is even capable of executing graphical programs that use the built in Python turtle module.
+The program shown below is a very interesting graphics program that uses the turtle and the idea of recursion to construct a type of
+fractal called a Sierpinski Triangle.  Once you run the program, try experimenting with the number of triangle levels.  You
+can find this on line 39 (it is currently set to 3).  Try 4!
+Try some other
+changes and see what happens (maybe change a few of the colors or make the level 2).  If you ever want to go back to the original example, simply reload the page in the browser.  One of
+the great things about activecode is that you can experiment as much as you want.  This can be very helpful as you
+are learning to program.</p>
+
+<textarea data-component="activecode" id=codeexample2 data-lang="python" data-autorun="true" data-hidecode="true"  data-timelimit=25000   data-audio=''     >
+import turtle
+
+def drawTriangle(points,color,myTurtle):
+    myTurtle.fillcolor(color)
+    myTurtle.up()
+    myTurtle.goto(points[0][0],points[0][1])
+    myTurtle.down()
+    myTurtle.begin_fill()
+    myTurtle.goto(points[1][0],points[1][1])
+    myTurtle.goto(points[2][0],points[2][1])
+    myTurtle.goto(points[0][0],points[0][1])
+    myTurtle.end_fill()
+
+def getMid(p1,p2):
+    return ( (p1[0]+p2[0]) / 2, (p1[1] + p2[1]) / 2)
+
+def sierpinski(points,degree,myTurtle):
+    colormap = ['blue','red','green','white','yellow',
+                'violet','orange']
+    drawTriangle(points,colormap[degree],myTurtle)
+    if degree > 0:
+        sierpinski([points[0],
+                        getMid(points[0], points[1]),
+                        getMid(points[0], points[2])],
+                   degree-1, myTurtle)
+        sierpinski([points[1],
+                        getMid(points[0], points[1]),
+                        getMid(points[1], points[2])],
+                   degree-1, myTurtle)
+        sierpinski([points[2],
+                        getMid(points[2], points[1]),
+                        getMid(points[0], points[2])],
+                   degree-1, myTurtle)
+
+def main():
+   myTurtle = turtle.Turtle()
+   myWin = turtle.Screen()
+   myPoints = [[-100,-50],[0,100],[100,-50]]
+   sierpinski(myPoints,3,myTurtle)
+   myWin.exitonclick()
+
+main()
+</textarea>
+</div>
+<div class="section" id="the-codelens-tool">
+<h2>The CodeLens Tool<a class="headerlink" href="#the-codelens-tool" title="Ссылка на этот заголовок">¶</a></h2>
+<p>In addition to activecode, you can also execute Python code with the assistance of a unique visualization tool.  This tool, known as <strong>codelens</strong>, allows you to control the step by step execution of a program.  It also lets you see the values of
+all variables as they are created and modified.  The following example shows codelens in action on the same simple program as we saw above.  Remember that in activecode, the source code executes from beginning to end and you can see the final result.  In codelens you can see and control the step by step progress.  Try clicking on the forward button below.</p>
+
+<div class="alert alert-warning cd_section">
+<div id="firstexample"></div>
+<p class="cl_caption"><span class="cl_caption_text"> (firstexample)</span> </p>
+</div>
+<script type="text/javascript">
+var firstexample_trace = {"code": "print(\"My first program adds two numbers, 2 and 3:\")\nprint(2 + 3)", "trace": [{"ordered_globals": [], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {}, "heap": {}, "line": 1, "event": "step_line"}, {"ordered_globals": [], "stdout": "My first program adds two numbers, 2 and 3:\n", "func_name": "<module>", "stack_to_render": [], "globals": {}, "heap": {}, "line": 2, "event": "step_line"}, {"ordered_globals": [], "stdout": "My first program adds two numbers, 2 and 3:\n5\n", "func_name": "<module>", "stack_to_render": [], "globals": {}, "heap": {}, "line": 2, "event": "return"}]};
+var firstexample_vis;
+
+$(document).ready(function() {
+    try {
+        firstexample_vis = new ExecutionVisualizer('firstexample',firstexample_trace,
+                                    {embeddedMode: false,
+                                    verticalStack: false,
+                                    heightChangeCallback: redrawAllVisualizerArrows,
+                                    codeDivWidth: 500,
+                                    lang : 'py2'
+                                    });
+        attachLoggers(firstexample_vis,'firstexample');
+        styleButtons('firstexample');
+        allVisualizers.push(firstexample_vis);
+    } catch (e) {
+        console.log("Failed to Initialize CodeLens component firstexample_vis" );
+        console.log(e.toString());
+    }
+
+});
+
+$(document).ready(function() {
+    $("#firstexample_tracecheck").click(function() {
+        logBookEvent({'event':'codelens', 'act': 'check', 'div_id':'firstexample'});
+    });
+});
+
+if (allVisualizers === undefined) {
+   var allVisualizers = [];
+}
+
+
+$(window).resize(function() {
+    if (firstexample_vis) {
+        firstexample_vis.redrawConnectors();
+    }
+});
+</script>
+<p>Note that you can control the step by step execution and you can even move forward and backward thru the statements as they execute.  The following example shows a more sophisticated program using Python lists.  The codelens tool draws very useful
+pictures as the statements are being executed.  These pictures, called reference diagrams, are very helpful as you learn about the
+more complex aspects of Python.</p>
+
+<div class="alert alert-warning cd_section">
+<div id="secondexample"></div>
+<p class="cl_caption"><span class="cl_caption_text"> (secondexample)</span> </p>
+</div>
+<script type="text/javascript">
+var secondexample_trace = {"code": "fruit = [\"apple\",\"orange\",\"banana\",\"cherry\"]\nnumlist = [6,7]\nnewlist = fruit + numlist\nzeros = [0] * 4\n\nzeros[1] = fruit\nzeros[1][2] = numlist", "trace": [{"ordered_globals": [], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {}, "heap": {}, "line": 1, "event": "step_line"}, {"ordered_globals": ["fruit"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"fruit": ["REF", 1]}, "heap": {"1": ["LIST", "apple", "orange", "banana", "cherry"]}, "line": 2, "event": "step_line"}, {"ordered_globals": ["fruit", "numlist"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"fruit": ["REF", 1], "numlist": ["REF", 2]}, "heap": {"1": ["LIST", "apple", "orange", "banana", "cherry"], "2": ["LIST", 6, 7]}, "line": 3, "event": "step_line"}, {"ordered_globals": ["fruit", "numlist", "newlist"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"newlist": ["REF", 3], "fruit": ["REF", 1], "numlist": ["REF", 2]}, "heap": {"1": ["LIST", "apple", "orange", "banana", "cherry"], "2": ["LIST", 6, 7], "3": ["LIST", "apple", "orange", "banana", "cherry", 6, 7]}, "line": 4, "event": "step_line"}, {"ordered_globals": ["fruit", "numlist", "newlist", "zeros"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"newlist": ["REF", 3], "fruit": ["REF", 1], "zeros": ["REF", 4], "numlist": ["REF", 2]}, "heap": {"1": ["LIST", "apple", "orange", "banana", "cherry"], "2": ["LIST", 6, 7], "3": ["LIST", "apple", "orange", "banana", "cherry", 6, 7], "4": ["LIST", 0, 0, 0, 0]}, "line": 6, "event": "step_line"}, {"ordered_globals": ["fruit", "numlist", "newlist", "zeros"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"newlist": ["REF", 3], "fruit": ["REF", 1], "zeros": ["REF", 4], "numlist": ["REF", 2]}, "heap": {"1": ["LIST", "apple", "orange", "banana", "cherry"], "2": ["LIST", 6, 7], "3": ["LIST", "apple", "orange", "banana", "cherry", 6, 7], "4": ["LIST", 0, ["REF", 1], 0, 0]}, "line": 7, "event": "step_line"}, {"ordered_globals": ["fruit", "numlist", "newlist", "zeros"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"newlist": ["REF", 3], "fruit": ["REF", 1], "zeros": ["REF", 4], "numlist": ["REF", 2]}, "heap": {"1": ["LIST", "apple", "orange", ["REF", 2], "cherry"], "2": ["LIST", 6, 7], "3": ["LIST", "apple", "orange", "banana", "cherry", 6, 7], "4": ["LIST", 0, ["REF", 1], 0, 0]}, "line": 7, "event": "return"}]};
+var secondexample_vis;
+
+$(document).ready(function() {
+    try {
+        secondexample_vis = new ExecutionVisualizer('secondexample',secondexample_trace,
+                                    {embeddedMode: true,
+                                    verticalStack: false,
+                                    heightChangeCallback: redrawAllVisualizerArrows,
+                                    codeDivWidth: 500,
+                                    lang : 'py2'
+                                    });
+        attachLoggers(secondexample_vis,'secondexample');
+        styleButtons('secondexample');
+        allVisualizers.push(secondexample_vis);
+    } catch (e) {
+        console.log("Failed to Initialize CodeLens component secondexample_vis" );
+        console.log(e.toString());
+    }
+
+});
+
+$(document).ready(function() {
+    $("#secondexample_tracecheck").click(function() {
+        logBookEvent({'event':'codelens', 'act': 'check', 'div_id':'secondexample'});
+    });
+});
+
+if (allVisualizers === undefined) {
+   var allVisualizers = [];
+}
+
+
+$(window).resize(function() {
+    if (secondexample_vis) {
+        secondexample_vis.redrawConnectors();
+    }
+});
+</script>
+</div>
+<div class="section" id="self-check-questions">
+<h2>Self-Check Questions<a class="headerlink" href="#self-check-questions" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Finally, it is also possible to embed simple questions into the text.  These
+questions provide a way for the students to check themselves as they go along.  The questions also provide feedback so that you can
+understand why an answer may or may not be correct.</p>
+
+            <ul data-component="multiplechoice" data-multipleanswers="false"  id="question1_1">
+            sc-1-1: What programming language does this site help you to learn?
+            <li data-component="answer" data-correct id="question1_1_opt_a">Python</li><li data-component="feedback" id="question1_1_opt_a">Yes, Python is a great language to learn, whether you are a beginner or an experienced programmer.</li>
+            
+            <li data-component="answer"  id="question1_1_opt_b">Java</li><li data-component="feedback" id="question1_1_opt_b">Java is a good object oriented language but it has some details that make it hard for the beginner.</li>
+            
+            <li data-component="answer"  id="question1_1_opt_c">C</li><li data-component="feedback" id="question1_1_opt_c">C is an imperative programming language that has been around for a long time, but it is not the one that we use.</li>
+            
+            <li data-component="answer"  id="question1_1_opt_d">ML</li><li data-component="feedback" id="question1_1_opt_d">No, ML is a functional programming language.  You can use Python to write functional programs as well.</li>
+            
+
+            </ul>
+            <p>This next type of question allows more than one correct answer to be required.  The feedback will tell you whether you have the
+correct number as well as the feedback for each.</p>
+
+            <ul data-component="multiplechoice" data-multipleanswers="true"  id="question1_2">
+            sc-1-2: Which colors might be found in a rainbow? (choose all that are correct)
+            <li data-component="answer" data-correct id="question1_2_opt_a">red</li><li data-component="feedback" id="question1_2_opt_a">Red is a definitely on of the colors.</li>
+            
+            <li data-component="answer" data-correct id="question1_2_opt_b">yellow</li><li data-component="feedback" id="question1_2_opt_b">Yes, yellow is correct.</li>
+            
+            <li data-component="answer"  id="question1_2_opt_c">black</li><li data-component="feedback" id="question1_2_opt_c">Remember the acronym...ROY G BIV.  B stands for blue.</li>
+            
+            <li data-component="answer" data-correct id="question1_2_opt_d">green</li><li data-component="feedback" id="question1_2_opt_d">Yes, green is one of the colors.</li>
+            
+
+            </ul>
+            <p>Another type of question allows you as the instructor to ask for a value.  You can test for the value using Pythons regular expressions.  For example:</p>
+
+        <p data-component="fillintheblank" data-casei="false" id="fill1512">
+            
+        <span data-blank>
+            What is the value of 25 expressed as an octal number (base 8)?
+        <span data-feedback="regex" style="display: none" id="blank21_feedback1">\b25\b</span>
+        <span data-feedback="text" style="display: none" for="blank21_feedback1">That's base 10!</span>
+            
+        <span data-feedback="regex" style="display: none" id="blank21_feedback2">.*</span>
+        <span data-feedback="text" style="display: none" for="blank21_feedback2">25 in octal please!</span>
+            
+        <span data-answer style="display: none" id="blank21_answer">\\b31\\b</span>
+        </span>
+        
+        </p>
+            <p>And finally here is a way of giving your students some simple programming problems where the code is already there for them but not indented or in the correct order.  Use drag-and-drop to get everthing right.</p>
+<p><strong>Check your understanding</strong></p>
+
+        <div class='parsons alert alert-warning' id="parsons-243">
+        <div class="parsons-text">sc-1-3: Construct a block of code that correctly implements the accumulator pattern.<br /><br /></div>
+        <div style="clear:left;"></div>
+        <div id="parsons-orig-243" style="display:none;">x = 0
+for i in range(10)
+   x = x + 1</div>
+        <div class="sortable-code-container">
+        <div id="parsons-sortableTrash-243" class="sortable-code"></div>
+        <div id="parsons-sortableCode-243" class="sortable-code"></div>
+        <div style="clear:left;"></div>
+        </div>
+        <div class="parsons-controls">
+        <input type="button" class='btn btn-success' id="checkMe243" value="Check Me"/>
+        <input type="button" class='btn btn-default' id="reset243" value="Reset"/>
+        <div id="parsons-message-243"></div>
+        </div>
+        </div>
+
+    <script>
+        $pjQ(document).ready(function(){
+            var rb = new RunestoneBase();
+            $("#parsons-243").not(".sortable-code").not(".parsons-controls").on("click", function(){
+                 $('html, body').animate({
+                    scrollTop: ($("#parsons-243").offset().top - 50)
+                }, 700);
+            }).find(".sortable-code, .parsons-controls").click(function(e) {
+                return false;
+                });
+            var msgBox = $("#parsons-message-243");
+            msgBox.hide();
+        var displayErrors = function (fb) {
+            if(fb.errors.length > 0) {
+                    var hash = pp_243.getHash("#ul-parsons-sortableCode-243");
+                    msgBox.fadeIn(500);
+                    msgBox.attr('class','alert alert-danger');
+                    msgBox.html(fb.errors[0]);
+                    rb.logBookEvent({'event':'parsons', 'act':hash, 'div_id':'question1_100_4'});
+
+            } else {
+                    rb.logBookEvent({'event':'parsons', 'act':'yes', 'div_id':'question1_100_4'});
+                    msgBox.fadeIn(100);
+                    msgBox.attr('class','alert alert-success');
+                    msgBox.html("Perfect!")
+                }
+
+        }
+
+        $(window).load(function() {
+            // set min width and height
+            var sortableul = $("#ul-parsons-sortableCode-243");
+            var trashul = $("#ul-parsons-sortableTrash-243");
+            var sortableHeight = sortableul.height();
+            var sortableWidth = sortableul.width();
+            var trashWidth = trashul.width();
+            var trashHeight = trashul.height();
+            var minHeight = Math.max(trashHeight,sortableHeight);
+            var minWidth = Math.max(trashWidth, sortableWidth);
+            trashul.css("min-height",minHeight + "px");
+            sortableul.css("min-height",minHeight + "px");
+            sortableul.height(minHeight);
+            trashul.css("min-width",minWidth + "px");
+            sortableul.css("min-width",minWidth + "px");
+        });
+ 
+
+        var pp_243 = new ParsonsWidget({
+                'sortableId': 'parsons-sortableCode-243',
+        'trashId': 'parsons-sortableTrash-243',
+                'max_wrong_lines': 1,
+                'solution_label': 'Drop blocks here',
+                'feedback_cb' : displayErrors
+        });
+        pp_243.init($pjQ("#parsons-orig-243").text());
+    pp_243.shuffleLines();
+            
+        if(localStorage.getItem('question1_100_4') && localStorage.getItem('question1_100_4-trash')) {
+            try {
+                var solution = localStorage.getItem('question1_100_4');
+                var trash = localStorage.getItem('question1_100_4-trash');
+                pp_243.createHTMLFromHashes(solution,trash);
+                pp_243.getFeedback();
+            } catch(err) {
+                var text = "An error occured restoring old question1_100_4 state.  Error: ";
+                console.log(text + err.message);
+            }
+
+        }
+            $pjQ("#reset243").click(function(event){
+              event.preventDefault();
+              pp_243.shuffleLines();
+            
+            // set min width and height
+            var sortableul = $("#ul-parsons-sortableCode-243");
+            var trashul = $("#ul-parsons-sortableTrash-243");
+            var sortableHeight = sortableul.height();
+            var sortableWidth = sortableul.width();
+            var trashWidth = trashul.width();
+            var trashHeight = trashul.height();
+            var minHeight = Math.max(trashHeight,sortableHeight);
+            var minWidth = Math.max(trashWidth, sortableWidth);
+            trashul.css("min-height",minHeight + "px");
+            sortableul.css("min-height",minHeight + "px");
+            trashul.css("min-width",minWidth + "px");
+            sortableul.css("min-width",minWidth + "px");
+              msgBox.hide();
+            });
+            
+            $pjQ("#checkMe243").click(function(event){
+              event.preventDefault();
+              var hash = pp_243.getHash("#ul-parsons-sortableCode-243");
+              localStorage.setItem('question1_100_4',hash);
+              hash = pp_243.getHash("#ul-parsons-sortableTrash-243");
+              localStorage.setItem('question1_100_4-trash',hash);
+            
+            pp_243.getFeedback();
+            msgBox.fadeIn(100);
+            
+            });
+            
+        });
+            
+
+    </script>
+
+<p>Here is a different sort of codelens visualization.  Some codelens blocks can have
+questions embedded in them that will ask you a question about the value of a
+variable, or which line will be the next line to execute.  This example asks you
+to keep track of the <code class="docutils literal"><span class="pre">tot</span></code> variable as you step through the loop.</p>
+
+<div class="alert alert-warning cd_section">
+<div id="codelens_question"></div>
+<p class="cl_caption"><span class="cl_caption_text"> (codelens_question)</span> </p>
+</div>
+<div id="codelens_question_modal" class="modal fade codelens-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Check your understanding</h4>
+      </div>
+      <div class="modal-body">
+        <p>What is the value of tot after the line with the red arrow executes?</p>
+        <input id="codelens_question_textbox" type="textbox" class="form-control" style="width:200px;" />
+        <br />
+        <button id="codelens_question_tracecheck" class='btn btn-default tracecheck' onclick="traceQCheckMe('codelens_question_textbox','codelens_question','globals.tot')">
+          Check Me
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
+        <br />
+        <p id="codelens_question_feedbacktext" class="feedbacktext alert alert-warning"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var codelens_question_trace = {"code": "tot = 0\nprod = 1\nfor i in range(10):\n   tot = tot + i\n   prod = prod * i", "trace": [{"ordered_globals": [], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {}, "heap": {}, "line": 1, "event": "step_line"}, {"ordered_globals": ["tot"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"tot": 0}, "heap": {}, "line": 2, "event": "step_line"}, {"ordered_globals": ["tot", "prod"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"prod": 1, "tot": 0}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 0, "prod": 1, "tot": 0}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 0, "prod": 1, "tot": 0}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 0, "prod": 0, "tot": 0}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 1, "prod": 0, "tot": 0}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 1, "prod": 0, "tot": 1}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 1, "prod": 0, "tot": 1}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 2, "prod": 0, "tot": 1}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 2, "prod": 0, "tot": 3}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 2, "prod": 0, "tot": 3}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 3, "prod": 0, "tot": 3}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 3, "prod": 0, "tot": 6}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 3, "prod": 0, "tot": 6}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 4, "prod": 0, "tot": 6}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 4, "prod": 0, "tot": 10}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 4, "prod": 0, "tot": 10}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 5, "prod": 0, "tot": 10}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 5, "prod": 0, "tot": 15}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 5, "prod": 0, "tot": 15}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 6, "prod": 0, "tot": 15}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 6, "prod": 0, "tot": 21}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 6, "prod": 0, "tot": 21}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 7, "prod": 0, "tot": 21}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 7, "prod": 0, "tot": 28}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 7, "prod": 0, "tot": 28}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 8, "prod": 0, "tot": 28}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 8, "prod": 0, "tot": 36}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 8, "prod": 0, "tot": 36}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "question": {"text": "What is the value of tot after the line with the red arrow executes?", "div": "codelens_question_modal", "feedback": "Use the global variables box to look at the current values of tot and i.", "correct": "globals.tot"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 9, "prod": 0, "tot": 36}, "heap": {}, "line": 4, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 9, "prod": 0, "tot": 45}, "heap": {}, "line": 5, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 9, "prod": 0, "tot": 45}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["tot", "prod", "i"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"i": 9, "prod": 0, "tot": 45}, "heap": {}, "line": 3, "event": "return"}]};
+var codelens_question_vis;
+
+$(document).ready(function() {
+    try {
+        codelens_question_vis = new ExecutionVisualizer('codelens_question',codelens_question_trace,
+                                    {embeddedMode: true,
+                                    verticalStack: false,
+                                    heightChangeCallback: redrawAllVisualizerArrows,
+                                    codeDivWidth: 500,
+                                    lang : 'py2'
+                                    });
+        attachLoggers(codelens_question_vis,'codelens_question');
+        styleButtons('codelens_question');
+        allVisualizers.push(codelens_question_vis);
+    } catch (e) {
+        console.log("Failed to Initialize CodeLens component codelens_question_vis" );
+        console.log(e.toString());
+    }
+
+});
+
+$(document).ready(function() {
+    $("#codelens_question_tracecheck").click(function() {
+        logBookEvent({'event':'codelens', 'act': 'check', 'div_id':'codelens_question'});
+    });
+});
+
+if (allVisualizers === undefined) {
+   var allVisualizers = [];
+}
+
+
+$(window).resize(function() {
+    if (codelens_question_vis) {
+        codelens_question_vis.redrawConnectors();
+    }
+});
+</script>
+<p>Here&#8217;s another example that asks the student to predict which line will be the
+next line executed.</p>
+
+<div class="alert alert-warning cd_section">
+<div id="codelens_question_line"></div>
+<p class="cl_caption"><span class="cl_caption_text"> (codelens_question_line)</span> </p>
+</div>
+<div id="codelens_question_line_modal" class="modal fade codelens-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Check your understanding</h4>
+      </div>
+      <div class="modal-body">
+        <p>After the line with the red arrow is executed, which will be next?</p>
+        <input id="codelens_question_line_textbox" type="textbox" class="form-control" style="width:200px;" />
+        <br />
+        <button id="codelens_question_line_tracecheck" class='btn btn-default tracecheck' onclick="traceQCheckMe('codelens_question_line_textbox','codelens_question_line','line')">
+          Check Me
+        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
+        <br />
+        <p id="codelens_question_line_feedbacktext" class="feedbacktext alert alert-warning"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var codelens_question_line_trace = {"code": "x = 2\ny = 0\nif x % 2 == 1:\n    print('x is odd')\n    y = y + x\nelse:\n    print('x is even')\n    y = y - x", "trace": [{"ordered_globals": [], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {}, "heap": {}, "line": 1, "event": "step_line"}, {"ordered_globals": ["x"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"x": 2}, "heap": {}, "line": 2, "event": "step_line"}, {"ordered_globals": ["x", "y"], "question": {"text": "After the line with the red arrow is executed, which will be next?", "div": "codelens_question_line_modal", "feedback": "Remember that in an if/else statement only one block is executed.", "correct": "line"}, "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"y": 0, "x": 2}, "heap": {}, "line": 3, "event": "step_line"}, {"ordered_globals": ["x", "y"], "stdout": "", "func_name": "<module>", "stack_to_render": [], "globals": {"y": 0, "x": 2}, "heap": {}, "line": 7, "event": "step_line"}, {"ordered_globals": ["x", "y"], "stdout": "x is even\n", "func_name": "<module>", "stack_to_render": [], "globals": {"y": 0, "x": 2}, "heap": {}, "line": 8, "event": "step_line"}, {"ordered_globals": ["x", "y"], "stdout": "x is even\n", "func_name": "<module>", "stack_to_render": [], "globals": {"y": -2, "x": 2}, "heap": {}, "line": 8, "event": "return"}]};
+var codelens_question_line_vis;
+
+$(document).ready(function() {
+    try {
+        codelens_question_line_vis = new ExecutionVisualizer('codelens_question_line',codelens_question_line_trace,
+                                    {embeddedMode: true,
+                                    verticalStack: false,
+                                    heightChangeCallback: redrawAllVisualizerArrows,
+                                    codeDivWidth: 500,
+                                    lang : 'py2'
+                                    });
+        attachLoggers(codelens_question_line_vis,'codelens_question_line');
+        styleButtons('codelens_question_line');
+        allVisualizers.push(codelens_question_line_vis);
+    } catch (e) {
+        console.log("Failed to Initialize CodeLens component codelens_question_line_vis" );
+        console.log(e.toString());
+    }
+
+});
+
+$(document).ready(function() {
+    $("#codelens_question_line_tracecheck").click(function() {
+        logBookEvent({'event':'codelens', 'act': 'check', 'div_id':'codelens_question_line'});
+    });
+});
+
+if (allVisualizers === undefined) {
+   var allVisualizers = [];
+}
+
+
+$(window).resize(function() {
+    if (codelens_question_line_vis) {
+        codelens_question_line_vis.redrawConnectors();
+    }
+});
+</script>
+</div>
+<div class="section" id="timed-exam-questions">
+<h2>Timed Exam Questions<a class="headerlink" href="#timed-exam-questions" title="Ссылка на этот заголовок">¶</a></h2>
+<p>You can add a timed exam of multiple-choice/fill-in-the-blank/clickable-area/drag-n-drop questions that the user can only take once.  All the feedback will be shown after the time is up or after the user has clicked the &#8220;Submit Answers&#8221; button at the end of the timed exam.  To start the timed exam click on the &#8220;Start&#8221; button.  This will also start the countdown of the time remaining.  You can pause the timer by clicking on the &#8220;Pause&#8221; button and start it again by clicking on the &#8220;Resume&#8221; button.  When you pause the timed exam the questions will be hidden.  There is also a clock icon that will display the time remaining when the reader hovers over it.</p>
+<p>Please note that you can currently only have one timed exam per html page.</p>
+<p>All you need is the timed directive&#8211;you can specify the time limit (in minutes), and there are options for no feedback, no results, and no time limit (in which case it will keep track of the amount of time taken to complete the exam).
+A timed exam can hold any number of multiple choice, fill in the blank, clickable area, and dragndrop components.</p>
+
+    <ul data-component="timedAssessment" data-time=10 id="timed1"  >
+    
+            <ul data-component="multiplechoice" data-multipleanswers="false"  id="questiontimed1_1">
+            sc-1-4: Under which of these conditions will a sequential search be faster than a binary search?
+            <li data-component="answer" data-correct id="questiontimed1_1_opt_a">The value you are searching for is the first element in the array.</li><li data-component="feedback" id="questiontimed1_1_opt_a">Only when the search value is the first item in the array, and thus the first value encountered in sequential search, will sequential be faster than binary.</li>
+            
+            <li data-component="answer"  id="questiontimed1_1_opt_b">The value you are searching for is the last element in the array</li><li data-component="feedback" id="questiontimed1_1_opt_b">In this case a sequential search will have to check every element before finding the correct one, whereas a binary search will not.</li>
+            
+            <li data-component="answer"  id="questiontimed1_1_opt_c">The value you are searching for is in the middle of the array.</li><li data-component="feedback" id="questiontimed1_1_opt_c">Results will differ depending on the exact location of the element, but Binary Search will still find the element faster while Sequential will have to check more elements.</li>
+            
+            <li data-component="answer"  id="questiontimed1_1_opt_d">The value you are searching for is not in the array</li><li data-component="feedback" id="questiontimed1_1_opt_d">If the search value is not in the array, a sequential search will have to check every item in the array before failing, a binary search will be faster.</li>
+            
+            <li data-component="answer"  id="questiontimed1_1_opt_e">Sequential Search can never be faster than Binary Search.</li><li data-component="feedback" id="questiontimed1_1_opt_e">When the search value is the first element, Sequential will always be faster, as it will only need to check one element.</li>
+            
+
+            </ul>
+            
+<div data-component="clickablearea" id="clicktimed1" data-table data-cc="1,1;1,4;2,3;2,4" data-ci="2,1;2,2;3,0">
+<span data-question>Click on the correct cells.</span><span data-feedback>Remember, the operator '=' is used for assignment.</span>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="21%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">correct</th>
+<th class="head">N-A</th>
+<th class="head">N-A</th>
+<th class="head">correct</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Incorrect</td>
+<td>incorrect</td>
+<td>correct</td>
+<td>correct</td>
+</tr>
+<tr class="row-odd"><td>This row is incorrect</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<ul data-component="dragndrop" id="dnd2">
+    <span data-component="question">This is a drag n drop question.</span>
+	<span data-component=feedback>This is feedback.</span>
+
+    <li data-component="draggable" id="dnd2_drag1">Drag to Answer A</li>
+    <li data-component="dropzone" for="dnd2_drag1">Answer A</li>
+
+    <li data-component="draggable" id="dnd2_drag2">Drag me Answer B</li>
+    <li data-component="dropzone" for="dnd2_drag2">Answer B</li>
+
+    <li data-component="draggable" id="dnd2_drag3">Drag to Answer C</li>
+    <li data-component="dropzone" for="dnd2_drag3">Answer C</li>
+</ul>
+        <p data-component="fillintheblank" data-casei="false" id="fill1412">
+            
+        <span data-blank>
+            Fill in the blanks to make the following sentence: &#8220;The red car drove away&#8221; The
+        <span data-feedback="regex" style="display: none" id="blank1345_feedback1">.*</span>
+        <span data-feedback="text" style="display: none" for="blank1345_feedback1">Try 'red'</span>
+            
+        <span data-answer style="display: none" id="blank1345_answer">\\bred\\b</span>
+        </span>
+        
+        <span data-blank>
+            car drove
+        <span data-feedback="regex" style="display: none" id="blank52532_feedback1">.*</span>
+        <span data-feedback="text" style="display: none" for="blank52532_feedback1">Try 'away'</span>
+            
+        <span data-answer style="display: none" id="blank52532_answer">\\baway\\b</span>
+        </span>
+        
+        </p>
+            </ul>
+    </div>
+<div class="section" id="unit-tests-for-code">
+<h2>Unit Tests for Code<a class="headerlink" href="#unit-tests-for-code" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Its nice to be able to have students solve a particular problem by writing some code, its even better if you can give them some feedback and provide some tests for them.  Much of the <code class="docutils literal"><span class="pre">unittest</span></code> module from Python is available in the <code class="docutils literal"><span class="pre">unittest</span></code> module for activecode.  Take a look:</p>
+
+<textarea data-component="activecode" id=units1 data-lang="python"    data-timelimit=25000   data-audio=''     >
+def add(a,b):
+   return 4
+
+from unittest.gui import TestCaseGui
+
+class myTests(TestCaseGui):
+
+    def testOne(self):
+        self.assertEqual(add(2,2),4,"A feedback string when the test fails")
+        self.assertAlmostEqual(add(2.0,3.0),5.0,feedback="Your function failed on inputs of 2.0 and 3.0")
+
+myTests().main()
+</textarea>
+<p>Before you go on, fix the add function in the activecode box.  The full complement of assertXXX functions is available.  You can see the list <a class="reference external" href="http://docs.python.org/2/library/unittest.html#assert-methods">Here</a>.  Now, for an introductory course exposing the inner workings of the unittest class may lead to more confusion that anything.  But, you can still get the benefit of the unittest module with activecode by placing it in the hidden code at the end.  You can hide the code by placing it after a line that contains <code class="docutils literal"><span class="pre">====</span></code>.  The source code for the above example with the unit tests hidden would look like this:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="p">..</span> <span class="ow">activecode</span><span class="p">::</span> units1
+
+   def add(a,b):
+      return 4
+
+   ====
+   from unittest.gui import TestCaseGui
+
+   class myTests(TestCaseGui):
+
+       def testOne(self):
+           self.assertEqual(add(2,2),4,&quot;A feedback string when the test fails&quot;)
+           self.assertAlmostEqual(add(2.0,3.0),5.0,feedback=&quot;Your function failed on inputs of 2.0 and 3.0&quot;)
+
+   myTests().main()
+</pre></div>
+</div>
+<p><strong>Check Your Understanding</strong></p>
+<p>Fix the following code so that it always correctly adds two numbers.</p>
+
+<textarea data-component="activecode" id=units2 data-lang="python"    data-timelimit=25000   data-audio=''     >
+def add(a,b):
+   return 4
+
+====
+from unittest.gui import TestCaseGui
+
+class myTests(TestCaseGui):
+
+    def testOne(self):
+        self.assertEqual(add(2,2),4,"A feedback string when the test fails")
+        self.assertAlmostEqual(add(2.0,3.0),5.0,feedback="Your function failed on inputs of 2.0 and 3.0")
+
+myTests().main()
+</textarea>
+</div>
+<div class="section" id="drag-n-drop">
+<h2>Drag N Drop<a class="headerlink" href="#drag-n-drop" title="Ссылка на этот заголовок">¶</a></h2>
+<p>You can add a Drag n drop matching question to your page simply by defining the pairs of matchable elements within a dragndrop directive.
+The order of draggable elements and their respective dropzones will be randomized so the pairs aren&#8217;t always side-by-side.</p>
+<ul data-component="dragndrop" id="dnd1">
+    <span data-component="question">This is a drag n drop question.</span>
+	<span data-component=feedback>This is feedback.</span>
+
+    <li data-component="draggable" id="dnd1_drag1">Drag me to 1</li>
+    <li data-component="dropzone" for="dnd1_drag1">I am 1</li>
+
+    <li data-component="draggable" id="dnd1_drag2">Drag me to 2</li>
+    <li data-component="dropzone" for="dnd1_drag2">I am 2</li>
+
+    <li data-component="draggable" id="dnd1_drag3">Drag me to 3</li>
+    <li data-component="dropzone" for="dnd1_drag3">I am 3</li>
+</ul></div>
+<div class="section" id="clickable-area">
+<h2>Clickable Area<a class="headerlink" href="#clickable-area" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Clickable area is another type of assess question you can use. All you need to do is write the code you wish to be in the question, and wrap the parts that you
+would like to be clickable in either a click-correct tag or a click-incorrect tag. The students can click on all elements you defined as being clickable, and
+will be evaluated once they click the &#8216;Check Me&#8217; button.</p>
+
+<div data-component="clickablearea" id="click1"   >
+<span data-question>Click on all assignment statements.</span><span data-feedback>Remember, the operator '=' is used for assignment.</span><pre><span data-incorrect>def main():</span>
+    <span data-correct>x = 4</span>
+    for i in range(5):
+        <span data-correct>y = i</span>
+        <span data-incorrect>if y > 2:</span>
+            print(y)</pre>
+
+</div>
+</div>
+<div class="section" id="disqus-comment-box">
+<h2>Disqus Comment Box<a class="headerlink" href="#disqus-comment-box" title="Ссылка на этот заголовок">¶</a></h2>
+<p>A comment box allowing users to add comments and start discussions can be added. A comment box can be added at the page level, but also for an individual section or question, allowing discussion of that particular content.</p>
+<script type="text/javascript">
+    function discussion1_disqus(source) { 
+        if (window.DISQUS) {
+
+            $('#disqus_thread').insertAfter(source); //put the DIV for the Disqus box after the link
+
+            //if Disqus exists, call it's reset method with new parameters
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.identifier = 'discussion1_' + eBookConfig.course;
+                    this.page.url = 'http://discussion1_'+eBookConfig.course+'.interactivepython.com/#!';
+                }
+            });
+
+        } else {
+            //insert a wrapper in HTML after the relevant "show comments" link
+            $('<div id="disqus_thread"></div>').insertAfter(source);
+
+            // set Disqus required vars
+            disqus_shortname = 'interactivepython';    
+            disqus_identifier = 'discussion1_' + eBookConfig.course;
+            disqus_url = 'http://discussion1_'+eBookConfig.course+'.interactivepython.com/#!';
+
+            //append the Disqus embed script to HTML
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            $('head').append(dsq);
+
+        }
+    }
+</script>
+
+<a href="#disqus_thread" class='disqus_thread_link' data-disqus-identifier="discussion1" onclick="discussion1_disqus(this);">Show Comments</a>
+<script type='text/javascript'>
+    $("a[data-disqus-identifier='discussion1']").attr('data-disqus-identifier', 'discussion1_' + eBookConfig.course);
+</script>
+</div>
+<div class="section" id="tabbed-question">
+<h2>Tabbed Question<a class="headerlink" href="#tabbed-question" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Any of the existing components can be placed in a tabbed exhibit-style question. This may be used to provide an possible answer or a Disqus discussion box specifically related to a certain question.</p>
+<div id='exercise1' data-component="tabbedStuff" ><div data-component="tab" data-tabname="Question 1" >
+<p>Write a program that prints &#8220;Hello, world&#8221;.</p>
+
+<textarea data-component="activecode" id=helloworld data-lang="python"    data-timelimit=25000  data-codelens="true" data-audio=''     >
+print("Hello, world")
+</textarea>
+</div><div data-component="tab" data-tabname="Discussion" >
+<script type="text/javascript">
+    function helloworlddiscussion_disqus(source) { 
+        if (window.DISQUS) {
+
+            $('#disqus_thread').insertAfter(source); //put the DIV for the Disqus box after the link
+
+            //if Disqus exists, call it's reset method with new parameters
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.identifier = 'helloworlddiscussion_' + eBookConfig.course;
+                    this.page.url = 'http://helloworlddiscussion_'+eBookConfig.course+'.interactivepython.com/#!';
+                }
+            });
+
+        } else {
+            //insert a wrapper in HTML after the relevant "show comments" link
+            $('<div id="disqus_thread"></div>').insertAfter(source);
+
+            // set Disqus required vars
+            disqus_shortname = 'interactivepython';    
+            disqus_identifier = 'helloworlddiscussion_' + eBookConfig.course;
+            disqus_url = 'http://helloworlddiscussion_'+eBookConfig.course+'.interactivepython.com/#!';
+
+            //append the Disqus embed script to HTML
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            $('head').append(dsq);
+
+        }
+    }
+</script>
+
+<a href="#disqus_thread" class='disqus_thread_link' data-disqus-identifier="helloworlddiscussion" onclick="helloworlddiscussion_disqus(this);">Show Comments</a>
+<script type='text/javascript'>
+    $("a[data-disqus-identifier='helloworlddiscussion']").attr('data-disqus-identifier', 'helloworlddiscussion_' + eBookConfig.course);
+</script>
+</div>
+    </div>
+
+<p>We are working on additional question types as well.  Give us your feedback on our <a class="reference external" href="http://www.facebook.com/RunestoneInteractive">Facebook page</a>.</p>
+</div>
+<div class="section" id="polls">
+<h2>Polls<a class="headerlink" href="#polls" title="Ссылка на этот заголовок">¶</a></h2>
+
+<ul data-component="poll" id=pollid1 data-comment> On a scale from 1 to 10, how important do you think it is to have a polling directive in the Runestone Tools?
+
+<li>1</li>
+
+<li>2</li>
+
+<li>3</li>
+
+<li>4</li>
+
+<li>5</li>
+
+<li>6</li>
+
+<li>7</li>
+
+<li>8</li>
+
+<li>9</li>
+
+<li>10</li>
+</ul></div>
+<div class="section" id="reveals">
+<h2>Reveals<a class="headerlink" href="#reveals" title="Ссылка на этот заголовок">¶</a></h2>
+
+    <div data-component="reveal" id="revealid1"   data-showtitle="Reveal Content" data-hidetitle="Hide Content">
+    <p>This content starts out hidden. It&#8217;s visibility can be toggled by using the Show/Hide button.</p>
+<p>The reveal block can also contain other directives (ActiveCode, Disqus block, etc):</p>
+
+<textarea data-component="activecode" id=ac11 data-lang="python"    data-timelimit=25000  data-codelens="true" data-audio=''     >
+print ("Hello, world")
+</textarea>
+
+    </div>
+    </div>
+<div class="section" id="dom-access">
+<h2>DOM Access<a class="headerlink" href="#dom-access" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Python programs written in activecode windows can now import the <code class="docutils literal"><span class="pre">document</span></code> module. This document module
+allows access to basic elements of the web page, including the new text entry box called
+<strong>text1</strong> <input type='text' id='text1' class="form-control" style="display:inline; width: 150px;" value="example input"></input> like this one.  Try running the program, then change
+the value in the text entry box and run it again.</p>
+
+<textarea data-component="activecode" id=tftest1 data-lang="python"    data-timelimit=25000   data-audio=''     >
+import document
+
+t = document.getElementById('text1')
+print('value = ', t.value)
+</textarea>
+</div>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Ссылка на этот заголовок">¶</a></h2>
+<p>We have come to realize that not everyone loves Python as much as we do.
+So we have now made it possible to write activecode examples in pure javascript as well
+as Python.  Here is a simple example:</p>
+
+<textarea data-component="activecode" id=jstest1 data-lang="javascript"    data-timelimit=25000   data-audio=''     >
+var x = 10;
+var y = 11;
+var z = x + y;
+console.log(z);
+function fact(n) {
+   if(n <= 1) return 1;
+   else {
+       return n * fact(n-1);
+   }
+}
+console.log(fact(10));
+writeln('hello world');
+</textarea>
+<p>Adding a javascript example is just as easy as Python, all you need to do is add a <code class="docutils literal"><span class="pre">:language:</span></code>
+parameter to the activecode directive.</p>
+</div>
+<div class="section" id="html">
+<h2>HTML<a class="headerlink" href="#html" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Teaching a class on HTML and simple web design?  Why not use activecode for HTML too?
+Although you don&#8217;t run HTML, clicking the run button will cause the HTML to be rendered.</p>
+
+<textarea data-component="activecode" id=html1 data-lang="htmlmixed"    data-timelimit=25000   data-audio=''     >
+&lt;html&gt;
+&lt;body&gt;
+&lt;style&gt;
+    h2 { font-size: 48px;
+         color: red;
+    }
+&lt;/style&gt;
+&lt;h2&gt;Hello World&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;one&lt;/li&gt;
+    &lt;li&gt;two&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea>
+</div>
+<div class="section" id="blockly">
+<h2>Blockly<a class="headerlink" href="#blockly" title="Ссылка на этот заголовок">¶</a></h2>
+<iframe class="blk-iframe" seamless src="_static/blockly1.html" width="600" height="600"></iframe><p>Add a print statement after the set X to 10.  Click on text and drag out a print block;
+connect it to the set block.  Then click on variables and drag out the X block and
+connect it to the print block.  Now click the run button and you should see 10 printed
+in the gray output area.</p>
+</div>
+<div class="section" id="other-languages-in-activecode">
+<h2>Other Languages in ActiveCode<a class="headerlink" href="#other-languages-in-activecode" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Activecode now supports Java, C++ and C through a backend server, not in the browser.    You can
+use them by specifying the language to be <cite>java</cite>, <cite>cpp</cite> or <cite>c</cite> In addition it supports either Python3 or Python2
+outside of the browser using <cite>python3</cite> or <cite>python2</cite> as the language.   You are limited to non-graphical
+programs in any of these options.</p>
+
+<textarea data-component="activecode" id=lc1 data-lang="java"    data-timelimit=25000   data-audio=''   data-stdin='100'  >
+import java.util.Scanner;
+
+public class TempConv {
+    public static void main(String[] args) {
+         Double fahr;
+         Double cel;
+         Scanner in;
+
+         in = new Scanner(System.in);
+         System.out.println("Enter the temperature in F: ");
+         fahr = in.nextDouble();
+
+         cel = (fahr - 32) * 5.0/9.0;
+         System.out.println(fahr + " degrees F is: " + cel + " C");
+
+         System.exit(0);
+    }
+
+}
+</textarea>
+</div>
+<div class="section" id="audio-tours">
+<h2>Audio Tours<a class="headerlink" href="#audio-tours" title="Ссылка на этот заголовок">¶</a></h2>
+
+<textarea data-component="activecode" id=ch03_4 data-lang="python"    data-timelimit=25000  data-codelens="true" data-audio='*doubleq*Overall Tour*doubleq*; 1-2: Example04_Tour01_Line01; 2: Example04_Tour01_Line02; 1: Example04_Tour01_Line03;*atype*'     >
+for name in ["Joe", "Amy", "Brad", "Angelina", "Zuki", "Thandi", "Paris"]:
+    print("Hi", name, "Please come to my party on Saturday!")
+</textarea>
+</div>
+<div class="section" id="what-to-do-now">
+<h2>What To Do Now<a class="headerlink" href="#what-to-do-now" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Now that you have seen some of these tools in action, you can do more exploration by going back to the Runestone Interactive
+site and choosing the courseware examples that we have already created.  The first,
+<strong>How to Think Like a Computer Scientist: Interactive Edition</strong>, provides an introductory course.  This course covers the basic ideas
+of computer science and helps you learn Python programming.  The second course, <strong>Problem Solving with Algorithms and Data Structures Using Python</strong>, is a thorough introduction to data structures and algorithms using Python.  Topics include stacks,
+queues, trees, graphs, and recursion.</p>
+<p>We hope you will find these tools and materials useful.  If you want to get more involved, feel free to download the tools and write your own courseware.  Everything you need can be found in the current <a class="reference external" href="http://github.com/bnmnetp/runestone">GitHub repository</a>.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+  
+      
+
+<script type="text/javascript">
+
+  $('#relations-prev').tooltip({'placement':'right', 'selector': '', 'delay': { show: 100, hide: 50}});
+  $('#relations-next').tooltip({'placement':'left', 'selector': '', 'delay': { show: 100, hide: 50}});
+  
+</script>
+  
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      
+      | <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015 Max Shaptala.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+    </p>
+  </div>
+</footer>
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32029811-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
