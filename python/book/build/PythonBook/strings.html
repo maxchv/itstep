@@ -102,7 +102,7 @@
     <script type="text/javascript" src="_static/jquery.hotkey.js"></script>
     <script type="text/javascript" src="_static/jquery-migrate-1.2.1.min.js"></script>
     <link rel="top" title="Runestone Interactive Overview" href="index.html" />
-    <link rel="prev" title="Python Book" href="index.html" />
+    <link rel="prev" title="Основные понятия ООП" href="0201.IntroOOP.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -271,8 +271,8 @@
         
         
           
-  <li id="relations-prev" title="Previous Chapter - Python Book" data-toggle="tooltip">
-    <a href="index.html" >
+  <li id="relations-prev" title="Previous Chapter - Основные понятия ООП" data-toggle="tooltip">
+    <a href="0201.IntroOOP.html" >
       <i class='glyphicon glyphicon-backward' style='opacity:0.9;'></i>
     </a>
   </li>
@@ -349,20 +349,16 @@ print(3 * 'un' + 'ium')
 <textarea data-component="activecode" id=stringex05 data-lang="python"    data-timelimit=25000   data-audio=''     data-caption='автоматическая конкатенация строковых литералов'>
 print('Py' 'thon' "!")
 </textarea>
-<p>Это работает только с двумя литералами подряд, но не с переменными или выражениями.</p>
-<p>Если вам необходимо соединить переменные или переменную и литерал, используйте оператор <code class="docutils literal"><span class="pre">+</span></code>:</p>
+<p>Это, в частности, удобно при разделении длинного текста:</p>
 
 <textarea data-component="activecode" id=stringex06 data-lang="python"    data-timelimit=25000   data-audio=''     >
-prefix = 'Py'
-print(prefix 'thon') # ошибка
+text = ('Put several strings within parentheses '
+        'to have them joined together.')
+print(text)
 </textarea>
-<p>This feature is particularly useful when you want to break long strings:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;Put several strings within parentheses &#39;</span>
-<span class="go">            &#39;to have them joined together.&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span>
-<span class="go">&#39;Put several strings within parentheses to have them joined together.&#39;</span>
-</pre></div>
-</div>
+<p>Автоматическая конкатенация работает только с двумя литералами подряд,
+но не работает с переменными или выражениями.</p>
+<p>Если вам необходимо соединить переменные или переменную и литерал, используйте оператор <code class="docutils literal"><span class="pre">+</span></code>:</p>
 <p>Strings can be <em>indexed</em> (subscripted), with the first character having index 0.
 There is no separate character type; a character is simply a string of size
 one:</p>
@@ -512,12 +508,12 @@ Therefore, assigning to an indexed position in the string results in an error:</
 
   
       
-  <li id="relations-prev" class="navLink" title='Previous Section - Python Book' data-toggle="tooltip">
-    <a href="index.html" >
+  <li id="relations-prev" class="navLink" title='Previous Section - Основные понятия ООП' data-toggle="tooltip">
+    <a href="0201.IntroOOP.html" >
       <i class='prevNav glyphicon glyphicon-chevron-left'></i>
     </a>
   </li>
-  <a class="navLinkBg" id="navLinkBgLeft"  href="index.html" ></a>
+  <a class="navLinkBg" id="navLinkBgLeft"  href="0201.IntroOOP.html" ></a>
   
 
 <script type="text/javascript">

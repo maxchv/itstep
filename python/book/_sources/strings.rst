@@ -87,27 +87,32 @@
 
    print('Py' 'thon' "!")
 
-.. This only works with two literals though, not with variables or expressions::
+.. This feature is particularly useful when you want to break long strings::
+Это, в частности, удобно при разделении длинного текста:
 
-Это работает только с двумя литералами подряд, но не с переменными или выражениями.
+.. activecode:: stringex06
+   :nocodelens:
+
+   text = ('Put several strings within parentheses '
+           'to have them joined together.')
+   print(text)
+
+.. This only works with two literals though, not with variables or expressions::
+Автоматическая конкатенация работает только с двумя литералами подряд, 
+но не работает с переменными или выражениями.
 
 .. If you want to concatenate variables or a variable and a literal, use ``+``::
 
 Если вам необходимо соединить переменные или переменную и литерал, используйте оператор ``+``:
 
-.. activecode:: stringex06
+.. activecode:: stringex07
    :nocodelens:
+   :nocaption:
 
    prefix = 'Py'
    print(prefix 'thon') # ошибка
 
 
-This feature is particularly useful when you want to break long strings::
-
-   >>> text = ('Put several strings within parentheses '
-               'to have them joined together.')
-   >>> text
-   'Put several strings within parentheses to have them joined together.'
 
 Strings can be *indexed* (subscripted), with the first character having index 0.
 There is no separate character type; a character is simply a string of size

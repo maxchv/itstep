@@ -44,7 +44,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Runestone Interactive Python Book'
+project = 'Interactive Python Book'
 copyright = '2015 Max Shaptala'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -158,7 +158,7 @@ html_short_title ='Runestone Interactive Overview'
 # of the sidebar.
 
 # logo is included in layout file
-#html_logo = "../source/_static/logo_small.png"
+html_logo = "itstep.jpg"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32

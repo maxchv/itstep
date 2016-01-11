@@ -30,6 +30,12 @@ body {
   padding-right: 12px !important;
 }
 
+@media (min-width: 980px) {
+  .navbar h3 a, .navbar .brand {
+    background: transparent url("itstep.jpg") no-repeat 22px 3px;
+    padding-left: 62px;
+  }
+}
 
 table {
   border: 0;
