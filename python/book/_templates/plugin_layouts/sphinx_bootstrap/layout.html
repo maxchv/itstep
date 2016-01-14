@@ -53,7 +53,7 @@
       </button>
 
       <div>
-        <a class="brand-logo" style='background: transparent url("{{pathto('_static/img/logo_small.png', 1)}}") no-repeat 0px 0px;' href="/{{appname}}/default/user/login">&nbsp; </a>
+        <a class="brand-logo" style='background: transparent url("{{pathto('_static/img/itstep.jpg', 1)}}") no-repeat 0px 0px;' href="{{ pathto(master_doc) }}">&nbsp; </a>
         <a class="navbar-brand" href="{{ pathto(master_doc) }}">{% if theme_navbar_title -%}{{ theme_navbar_title|e }}{%- else -%}{{ project|e }}{%- endif -%}</a>
       </div>
     </div>
@@ -65,6 +65,7 @@
         <li class="divider-vertical"></li>
 
         <!-- social media dropdown -->
+        <!--
         <li class="dropdown">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown">
             <i class="glyphicon glyphicon-share-alt" style="opacity: 0.9"></i>
@@ -96,6 +97,7 @@
               </li>
           </ul>
         </li>
+        -->
         <!-- end social media dropdown -->
 
         <li class="divider-vertical"></li>
@@ -109,16 +111,16 @@
             {% if 'overview' in course_id %}
                 <li><a href='/{{appname}}/static/{{course_id}}/overview.html'>Table of Contents</a></li>
             {% else: %}
-                <li><a href='{{ pathto(master_doc) }}'>Table of Contents</a></li>
+                <li><a href='{{ pathto(master_doc) }}'>Содержание</a></li>
             {% endif %}
-            <li><a href='/{{appname}}/static/{{course_id}}/genindex.html'>Book Index</a></li>
+            <li><a href='{{ pathto ("genindex")}}'>Алфавитный указатель</a></li>
             <li class="divider"></li>
-            <li id="scratch_ac_link"><a href="javascript:ACFactory.toggleScratchActivecode()">Scratch ActiveCode</a></li>
-            <li class="divider"></li>
+            <!-- <li id="scratch_ac_link"><a href="javascript:ACFactory.toggleScratchActivecode()">Scratch ActiveCode</a></li> 
+            <li class="divider"></li>-->
             <li style="width: 240px;">
               <form class="navbar-search" style="margin:10px;" action="{{ pathto('search') }}" method="get">
                 <div class="input-group">
-                  <input type="text" class="form-control" name="q" placeholder="Search this book" />
+                  <input type="text" class="form-control" name="q" placeholder="Поиск по книге" />
                   <span class="input-group-btn">
                     <button class="btn btn-primary" style="margin:0;" type="submit">
                       <i class="glyphicon glyphicon-search"></i>
@@ -163,6 +165,7 @@
         <li class="divider-vertical"></li>
 
         <!-- help menu dropdown -->
+        <!--
         <li class="dropdown">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown">
             <i class="glyphicon glyphicon-question-sign" style="opacity:0.9;"></i>
@@ -175,6 +178,7 @@
             <li><a href='/{{ appname }}/static/help/bugreports.html'>Report A Problem</a></li>
           </ul>
         </li>
+        -->
         <!-- end help menu dropdown -->
 
         <li class="divider-vertical"></li>

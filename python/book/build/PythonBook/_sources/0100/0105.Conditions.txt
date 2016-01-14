@@ -1,0 +1,149 @@
+
+Операторы ветвления. Случайные числа.
+-------------------------------------
+
+.. While working on real life of problems we have to make decisions. Decisions like which camera to buy or which cricket bat is better. At the time of writing a computer program we do the same. We make the decisions using if-else statements, we change the flow of control in the program by using them.
+
+В жизни нам часто приходится сталкиваться с проблемами для которых нам необходимо принимать решения.
+Например, какую лучше купить видеокамеру или какой автомобиль лучше.
+При написании компьютерных программ мы делаем то же самое.
+Для принятия решений используется условия *if-else* тем самым мы изменяем поток выполнения программы.
+
+Условие  if
+:::::::::::
+
+.. The syntax looks like
+Синтаксис выглядит следующим образом:
+
+.. code-block:: python
+
+    if <выражение>:
+        <действие>
+
+.. If the value of *expression* is true (anything other than zero), do the what is written below under indentation. Please remember to give proper indentation, all the lines indented will be evaluated on the True value of the expression. One simple example is to take some number as input and check if the number is less than 100 or not.
+
+Если **<выражение>** возвращает логическую правду (все кроме нуля), выполяется **<действие>**, которое записано ниже после отступа.
+Помните про необходимость добавления отступа, все строки с отступом будут выполнены в случае, если значение выражения возвращает **True**.
+В этом простом примере запрашивается постое число и проверяется меньше ли оно 100 или нет.
+
+.. activecode:: ifex01
+    :caption: Пример if 
+    :above:
+
+    number = int(input("Введите целое число: "))
+    if number < 100:
+        print("Число меньше 100")
+
+Выражения
+:::::::::
+
+..  All the usual arithmetic comparisons may be made, but many do not
+    use standard mathematical symbolism, mostly for lack of proper keys
+    on a standard keyboard.
+
+Все арифметические операции сравнения, известные со школьного курса математики,
+могут быть использованы в условиях.
+Но не все стандартные математические сиволы можно применять.
+Это связано с отсутствием соответствующих клвиш на стандартной клавиатуре
+
+=====================  =====================  ==============
+Значение               Математический символ  Python символы
+=====================  =====================  ==============
+Меньше чем             <                      ``<`` 
+Больше чем             >                      ``>``
+Меньше или равно       ≤                      ``<=``
+Больше или равно       ≥                      ``>=``
+Равно                  =                      ``==``
+Не равно               ≠                      ``!=``
+=====================  =====================  ==============  
+
+.. There should not be space between the two-symbol Python
+   substitutes.
+
+Между думя символами сравнения не должно быть пробела.
+
+.. index:: if-else
+
+Оператор else
+:::::::::::::
+
+.. Now in the above example we want to print "Greater than" if the number is greater than 100. For that we have to use the *else* statement. This works when the *if*statement is not fulfilled.
+
+В примере ниже мы хотим вывести сообщение "Больше чем" если число бльше чем 100.
+Для этого мы используем оператор **else**, которые срабатывает если условие **if** не выполняется.
+
+.. activecode:: ifex02
+    :caption: Пример if else
+    :above:
+
+    number = int(input("Введите целое число: "))
+    if number < 100:
+        print("Число меньше чем 100")
+    else:
+        print("Число больше чем 100")
+
+
+Другой, очень простой пример
+
+.. activecode:: ifex03
+    :caption: Пример if elif else
+    :above:
+
+    x = int(input("Введите целое число: "))
+    if x < 0:
+         x = 0
+         print('Отрицательное число меняем на нуль')
+    elif x == 0:
+         print('Нуль')
+    elif x == 1:
+         print('Один')
+    else:
+         print('Больше')
+
+.. Truth value testing
+
+Проверка истинности в Python
+::::::::::::::::::::::::::::
+
+* Любое число, не равное 0, или непустой объект - истина.
+* Числа, равные 0, пустые объекты и значение None - ложь
+* Операции сравнения применяются к структурам данных рекурсивно
+* Операции сравнения возвращают True или False
+* Логические операторы and и or возвращают истинный или ложный объект-операнд
+
+.. The elegant way to test Truth values is like
+
+Элегантный способ проверить истину: 
+
+::
+
+    if x:
+        pass
+
+.. warning:: Не делайте так
+    
+    ::
+    
+        if x == True:
+            pass
+
+.. activecode:: ifex03
+    :caption: Пример if elif else
+    :above:
+
+    improt random
+    number = random.randinit(1, 10)
+    guess = int(input('Введите целое число : '))
+
+    if guess == number:
+        print('Поздравляю, вы угадали,') # Здесь начинается новый блок
+        print('(хотя и не выиграли никакого приза!)') # Здесь заканчивается новый блок
+    elif guess < number:
+        print('Нет, загаданное число немного больше этого.') # Ещё один блок
+        # Внутри блока вы можете выполнять всё, что угодно ...
+    else:
+        print('Нет, загаданное число немного меньше этого.')
+        # чтобы попасть сюда, guess должно быть больше, чем number
+
+    print('Завершено')
+    # Это последнее выражение выполняется всегда после выполнения оператора if
