@@ -2,12 +2,17 @@
 Операторы ветвления. Случайные числа.
 -------------------------------------
 
+.. toctree::
+    :maxdepth: 2
+
 .. While working on real life of problems we have to make decisions. Decisions like which camera to buy or which cricket bat is better. At the time of writing a computer program we do the same. We make the decisions using if-else statements, we change the flow of control in the program by using them.
 
-В жизни нам часто приходится сталкиваться с проблемами для которых нам необходимо принимать решения.
-Например, какую лучше купить видеокамеру или какой автомобиль лучше.
+В жизни нам часто приходится сталкиваться с проблемами которые требуют принятия решений.
+Например, какую купить видеокамеру или какой выбрать автомобиль.
+
 При написании компьютерных программ мы делаем то же самое.
-Для принятия решений используется условия *if-else* тем самым мы изменяем поток выполнения программы.
+
+Для принятия решений используется условия **if-else** тем самым мы изменяем поток выполнения программы.
 
 Условие  if
 :::::::::::
@@ -17,14 +22,16 @@
 
 .. code-block:: python
 
-    if <выражение>:
+    if <условие>:
         <действие>
 
 .. If the value of *expression* is true (anything other than zero), do the what is written below under indentation. Please remember to give proper indentation, all the lines indented will be evaluated on the True value of the expression. One simple example is to take some number as input and check if the number is less than 100 or not.
 
-Если **<выражение>** возвращает логическую правду (все кроме нуля), выполяется **<действие>**, которое записано ниже после отступа.
-Помните про необходимость добавления отступа, все строки с отступом будут выполнены в случае, если значение выражения возвращает **True**.
-В этом простом примере запрашивается постое число и проверяется меньше ли оно 100 или нет.
+Если **<условие>** возвращает истину (т.е. все, кроме нуля), выполяется **<действие>**, которое записано ниже после отступа.
+
+Помните про необходимость добавления отступа, все строки с отступом будут выполнены в том случае, если значение выражения возвращает **True**.
+
+В этом простом примере у пользователя запрашивается простое число, после чего с применением условного оператора **if** проверяется меньше ли оно значения 100.
 
 .. activecode:: ifex01
     :caption: Пример if 
@@ -41,10 +48,16 @@
     use standard mathematical symbolism, mostly for lack of proper keys
     on a standard keyboard.
 
-Все арифметические операции сравнения, известные со школьного курса математики,
-могут быть использованы в условиях.
-Но не все стандартные математические сиволы можно применять.
-Это связано с отсутствием соответствующих клвиш на стандартной клавиатуре
+В приведенном выше примере в качестве **условия** использовалась арифметическая операция ``<`` (меньше).
+
+В Python в качестве условия возможно использовать все арифметические операции сравнения, 
+известные вам со школьного курса математики.
+
+Но не все стандартные математические символы возможно применять.
+Это связано с отсутствием соответствующих клавиш на стандартной клавиатуре.
+
+Вместо стандарных математических символов сравнения используются символы замены
+представленные в таблице:
 
 =====================  =====================  ==============
 Значение               Математический символ  Python символы
@@ -60,7 +73,49 @@
 .. There should not be space between the two-symbol Python
    substitutes.
 
-Между думя символами сравнения не должно быть пробела.
+.. warning:: Между думя символами сравнения не должно быть пробела.
+
+.. index:: pair: Boolean; operations
+
+Булевы операции
+:::::::::::::::
+
+.. These are the Boolean operations, ordered by ascending priority:
+
+Над булевыми значениями можно выполнять следующие операции: 
+
++-------------+---------------------------------+-------+
+| Операция    | Результат                       | Прим. |
++=============+=================================+=======+
+| ``x or y``  | если *x* ложь, то *y*, иначе    | \(1)  |
+|             | *x*                             |       |
++-------------+---------------------------------+-------+
+| ``x and y`` | если *x* ложь, то *x*, иначе    | \(2)  |
+|             | *y*                             |       |
++-------------+---------------------------------+-------+
+| ``not x``   | если *x* ложь, то ``True``,     | \(3)  |
+|             | иначе ``False``                 |       |
++-------------+---------------------------------+-------+
+
+.. index::
+   operator: and
+   operator: or
+   operator: not
+
+Notes:
+
+(1)
+   This is a short-circuit operator, so it only evaluates the second
+   argument if the first one is :const:`False`.
+
+(2)
+   This is a short-circuit operator, so it only evaluates the second
+   argument if the first one is :const:`True`.
+
+(3)
+   ``not`` has a lower priority than non-Boolean operators, so ``not a == b`` is
+   interpreted as ``not (a == b)``, and ``a == not b`` is a syntax error.
+
 
 .. index:: if-else
 
@@ -69,8 +124,12 @@
 
 .. Now in the above example we want to print "Greater than" if the number is greater than 100. For that we have to use the *else* statement. This works when the *if*statement is not fulfilled.
 
-В примере ниже мы хотим вывести сообщение "Больше чем" если число бльше чем 100.
-Для этого мы используем оператор **else**, которые срабатывает если условие **if** не выполняется.
+Часто приходится сталкиватся с ситауциями, когда необходимо принимать альтернативные решение, которые могут выходить
+из варианта не выполнения условия.
+
+.. В примере ниже выводится сообщение "Больше чем" если число бльше чем 100.
+
+В этом случае используется оператор **else**, которые срабатывает если условие **if** не выполняется.
 
 .. activecode:: ifex02
     :caption: Пример if else
@@ -82,8 +141,10 @@
     else:
         print("Число больше чем 100")
 
+А что, если у нас больше чем два варианта ДА/НЕТ? В этом случае испоьзуются дополнительные условия вместе с
+оператором **elseif**.
 
-Другой, очень простой пример
+Пример:
 
 .. activecode:: ifex03
     :caption: Пример if elif else
@@ -105,27 +166,100 @@
 Проверка истинности в Python
 ::::::::::::::::::::::::::::
 
-* Любое число, не равное 0, или непустой объект - истина.
-* Числа, равные 0, пустые объекты и значение None - ложь
-* Операции сравнения применяются к структурам данных рекурсивно
-* Операции сравнения возвращают True или False
-* Логические операторы and и or возвращают истинный или ложный объект-операнд
+В качестве **выражения** в условиях, циклах и булевских операциях могуть быть использованы не только арифметические операции сравнения, но и любой объект.
+
+.. Any object can be tested for truth value, for use in an if or while condition or as operand of the Boolean operations below. 
+.. The following values are considered false:
+
+Следующие значения принимаются ложными:
+
+*   None
+*   False
+*   Число нуль любого типа, например 0, 0.0, 0j.
+*   Любая пустая последовательность, например, '', (), [], set().
+*   Ппустой словарь, например, {}.
+*   экземпляр пользовательского класса если в классе определены методы __nonzero__() или __len__(), которые возвращают целочисленный нуль или булевое значение False.
+
+Во всех других случаях значения считаются истинными -- таким образом объекты многих типов всегда истинны
+.. so objects of many types are always true.
+
+.. Operations and built-in functions that have a Boolean result always return 0 or False for false and 1 or True for true, unless otherwise stated. (Important exception: the Boolean operations "or" and "and" always return one of their operands.)
+
+
 
 .. The elegant way to test Truth values is like
 
-Элегантный способ проверить истину: 
+Наиболее элегантный способ проверить истину (x - переменная): 
 
 ::
 
     if x:
         pass
 
-.. warning:: Не делайте так
+.. warning:: Не рекомендуется проверять так:
     
     ::
     
         if x == True:
             pass
+
+Однострочное выражение if
+:::::::::::::::::::::::::
+
+.. http://pythoncentral.io/one-line-if-statement-in-python-ternary-conditional-operator/
+
+Python finally received its own shortcut conditional expression:
+
+::
+    <expression1> if <condition> else <expression2>
+
+It first evaluates the condition; if it returns True, expression1 will be evaluated to give the result, otherwise expression2. 
+Evaluation is lazy, so only one expression will be executed.
+
+Let's take a look at this example:
+
+::
+
+    age = 15
+    # Conditions are evaluated from left to right
+    print('kid' if age < 18 else 'adult')
+
+
+Ternary operators can be changed:
+
+::
+    age = 15
+    print('kid' if age < 13 else 'teenager' if age < 18 else 'adult')
+
+
+Which is the same as:
+
+::
+
+    if age < 18:
+        if age < 12:
+            print('kid')
+        else:
+            print('teenager')
+    else:
+        print('adult')
+
+Alternatives to the ternary operator
+::::::::::::::::::::::::::::::::::::
+
+For Python versions lower then 2.5, programmers developed several tricks that somehow emulate behavior of ternary conditional operator. They are generally discouraged, but it's good to know how they work:
+
+::
+
+    age = 15
+    # Selecting an item from a tuple
+    print(('adult', 'kid')[age < 20])
+    # Which is the equivalent of...
+    print(('adult', 'kid')[True])
+    # Or more explicit by using dict
+    print({True: 'kid', False: 'adult'}[age < 20])
+
+The problem of such an approach is that both expressions will be evaluated no matter what the condition is. 
 
 Игра: Угодай число
 ::::::::::::::::::
@@ -134,8 +268,8 @@
     :caption: Пример игры Угадай число с первого раза
     :above:
 
-    improt random
-    number = random.randinit(1, 10)
+    import random
+    number = random.randint(1, 10)
     guess = int(input('Введите целое число : '))
 
     if guess == number:

@@ -270,6 +270,9 @@
 <li><a class="reference internal" href="#id2">Выражения</a></li>
 <li><a class="reference internal" href="#else">Оператор else</a></li>
 <li><a class="reference internal" href="#python">Проверка истинности в Python</a></li>
+<li><a class="reference internal" href="#one-line-if-statement-in-python-ternary-conditional-operator">One line if statement in Python (ternary conditional operator)</a></li>
+<li><a class="reference internal" href="#alternatives-to-the-ternary-operator">Alternatives to the ternary operator</a></li>
+<li><a class="reference internal" href="#id3">Игра: Угодай число</a></li>
 </ul>
 </li>
 </ul>
@@ -318,10 +321,14 @@
   
   <div class="section" id="id1">
 <h1>Операторы ветвления. Случайные числа.<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
-<p>В жизни нам часто приходится сталкиваться с проблемами для которых нам необходимо принимать решения.
-Например, какую лучше купить видеокамеру или какой автомобиль лучше.
-При написании компьютерных программ мы делаем то же самое.
-Для принятия решений используется условия <em>if-else</em> тем самым мы изменяем поток выполнения программы.</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<p>В жизни нам часто приходится сталкиваться с проблемами которые требуют принятия решений.
+Например, какую купить видеокамеру или какой выбрать автомобиль.</p>
+<p>При написании компьютерных программ мы делаем то же самое.</p>
+<p>Для принятия решений используется условия <strong>if-else</strong> тем самым мы изменяем поток выполнения программы.</p>
 <div class="section" id="if">
 <h2>Условие  if<a class="headerlink" href="#if" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Синтаксис выглядит следующим образом:</p>
@@ -329,9 +336,9 @@
     &lt;действие&gt;
 </pre></div>
 </div>
-<p>Если <strong>&lt;выражение&gt;</strong> возвращает логическую правду (все кроме нуля), выполяется <strong>&lt;действие&gt;</strong>, которое записано ниже после отступа.
-Помните про необходимость добавления отступа, все строки с отступом будут выполнены в случае, если значение выражения возвращает <strong>True</strong>.
-В этом простом примере запрашивается постое число и проверяется меньше ли оно 100 или нет.</p>
+<p>Если <strong>&lt;выражение&gt;</strong> возвращает правду (т.е. все, кроме нуля), выполяется <strong>&lt;действие&gt;</strong>, которое записано ниже после отступа.</p>
+<p>Помните про необходимость добавления отступа, все строки с отступом будут выполнены в том случае, если значение выражения возвращает <strong>True</strong>.</p>
+<p>В этом простом примере у пользователя запрашивается простое число, после чего с применением условного оператора <strong>if</strong> проверяется меньше ли оно значения 100.</p>
 
 <textarea data-component="activecode" id=ifex01 data-lang="python"    data-timelimit=25000  data-codelens="true" data-audio=''     data-caption='Пример if'>
 number = int(input("Введите целое число: "))
@@ -341,10 +348,13 @@ if number < 100:
 </div>
 <div class="section" id="id2">
 <h2>Выражения<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Все арифметические операции сравнения, известные со школьного курса математики,
-могут быть использованы в условиях.
-Но не все стандартные математические сиволы можно применять.
-Это связано с отсутствием соответствующих клвиш на стандартной клавиатуре</p>
+<p>В приведенном выше примере в качестве <strong>выражения</strong> использовалась арифметическая операция <code class="docutils literal"><span class="pre">&lt;</span></code> (меньше).</p>
+<p>В Python в качестве <strong>выражения</strong> в условиях возможно использовать все арифметические операции сравнения,
+известные вам еще со школьного курса математики.</p>
+<p>Но не все стандартные математические символы возможно применять.
+Это связано с отсутствием соответствующих клавиш на стандартной клавиатуре.
+Вместо стандарных математических символов сравнения используются символы замены
+представленные в таблице:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="38%" />
@@ -384,12 +394,56 @@ if number < 100:
 </tr>
 </tbody>
 </table>
-<p>Между думя символами сравнения не должно быть пробела.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Предупреждение</p>
+<p class="last">Между думя символами сравнения не должно быть пробела.</p>
+</div>
+<p id="index-0">These are the Boolean operations, ordered by ascending priority:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="62%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Result</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">x</span> <span class="pre">or</span> <span class="pre">y</span></code></td>
+<td>if <em>x</em> is false, then <em>y</em>, else
+<em>x</em></td>
+<td>(1)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">x</span> <span class="pre">and</span> <span class="pre">y</span></code></td>
+<td>if <em>x</em> is false, then <em>x</em>, else
+<em>y</em></td>
+<td>(2)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">not</span> <span class="pre">x</span></code></td>
+<td>if <em>x</em> is false, then <code class="docutils literal"><span class="pre">True</span></code>,
+else <code class="docutils literal"><span class="pre">False</span></code></td>
+<td>(3)</td>
+</tr>
+</tbody>
+</table>
+<p id="index-1">Notes:</p>
+<ol class="arabic simple">
+<li>This is a short-circuit operator, so it only evaluates the second
+argument if the first one is <code class="xref py py-const docutils literal"><span class="pre">False</span></code>.</li>
+<li>This is a short-circuit operator, so it only evaluates the second
+argument if the first one is <code class="xref py py-const docutils literal"><span class="pre">True</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">not</span></code> has a lower priority than non-Boolean operators, so <code class="docutils literal"><span class="pre">not</span> <span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code> is
+interpreted as <code class="docutils literal"><span class="pre">not</span> <span class="pre">(a</span> <span class="pre">==</span> <span class="pre">b)</span></code>, and <code class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">not</span> <span class="pre">b</span></code> is a syntax error.</li>
+</ol>
 </div>
 <div class="section" id="else">
-<span id="index-0"></span><h2>Оператор else<a class="headerlink" href="#else" title="Ссылка на этот заголовок">¶</a></h2>
-<p>В примере ниже мы хотим вывести сообщение &#8220;Больше чем&#8221; если число бльше чем 100.
-Для этого мы используем оператор <strong>else</strong>, которые срабатывает если условие <strong>if</strong> не выполняется.</p>
+<span id="index-2"></span><h2>Оператор else<a class="headerlink" href="#else" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Часто приходится сталкиватся с ситауциями, когда необходимо принимать альтернативные решение, которые могут выходить
+из варианта не выполнения условия.</p>
+<p>В этом случае используется оператор <strong>else</strong>, которые срабатывает если условие <strong>if</strong> не выполняется.</p>
 
 <textarea data-component="activecode" id=ifex02 data-lang="python"    data-timelimit=25000  data-codelens="true" data-audio=''     data-caption='Пример if else'>
 number = int(input("Введите целое число: "))
@@ -398,7 +452,9 @@ if number < 100:
 else:
     print("Число больше чем 100")
 </textarea>
-<p>Другой, очень простой пример</p>
+<p>А что, если у нас больше чем два варианта ДА/НЕТ? В этом случае испоьзуются дополнительные условия вместе с
+оператором <strong>elseif</strong>.</p>
+<p>Пример:</p>
 
 <textarea data-component="activecode" id=ifex03 data-lang="python"    data-timelimit=25000  data-codelens="true" data-audio=''     data-caption='Пример if elif else'>
 x = int(input("Введите целое число: "))
@@ -415,30 +471,93 @@ else:
 </div>
 <div class="section" id="python">
 <h2>Проверка истинности в Python<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В качестве <strong>выражения</strong> в условиях, циклах и булевских операциях могуть быть использованы не только арифметические операции сравнения, но и любой объект.</p>
+<p>Следующие значения принимаются ложными:</p>
 <ul class="simple">
-<li>Любое число, не равное 0, или непустой объект - истина.</li>
-<li>Числа, равные 0, пустые объекты и значение None - ложь</li>
-<li>Операции сравнения применяются к структурам данных рекурсивно</li>
-<li>Операции сравнения возвращают True или False</li>
-<li>Логические операторы and и or возвращают истинный или ложный объект-операнд</li>
+<li>None</li>
+<li>False</li>
+<li>Число нуль любого типа, например 0, 0.0, 0j.</li>
+<li>Любая пустая последовательность, например, &#8216;&#8217;, (), [], set().</li>
+<li>Ппустой словарь, например, {}.</li>
+<li>экземпляр пользовательского класса если в классе определены методы __nonzero__() или __len__(), которые возвращают целочисленный нуль или булевое значение False.</li>
 </ul>
-<p>Элегантный способ проверить истину:</p>
+<p>Во всех других случаях значения считаются истинными &#8211; таким образом объекты многих типов всегда истинны
+.. so objects of many types are always true.</p>
+<p>Наиболее элегантный способ проверить истину (x - переменная):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">x</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Предупреждение</p>
-<p>Не делайте так</p>
+<p>Не рекомендуется проверять так:</p>
 <div class="last highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="one-line-if-statement-in-python-ternary-conditional-operator">
+<h2>One line if statement in Python (ternary conditional operator)<a class="headerlink" href="#one-line-if-statement-in-python-ternary-conditional-operator" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Python finally received its own shortcut conditional expression:</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>&lt;expression1&gt; if &lt;condition&gt; else &lt;expression2&gt;</dd>
+</dl>
+<p>It first evaluates the condition; if it returns True, expression1 will be evaluated to give the result, otherwise expression2.
+Evaluation is lazy, so only one expression will be executed.</p>
+<p>Let&#8217;s take a look at this example:</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>age = 15
+# Conditions are evaluated from left to right
+print(&#8216;kid&#8217; if age &lt; 18 else &#8216;adult&#8217;)</dd>
+</dl>
+<p>Ternary operators can be changed:</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>age = 15
+print(&#8216;kid&#8217; if age &lt; 13 else &#8216;teenager&#8217; if age &lt; 18 else &#8216;adult&#8217;)</dd>
+</dl>
+<p>Which is the same as:</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd><dl class="first last docutils">
+<dt>if age &lt; 18:</dt>
+<dd><dl class="first last docutils">
+<dt>if age &lt; 12:</dt>
+<dd>print(&#8216;kid&#8217;)</dd>
+<dt>else:</dt>
+<dd>print(&#8216;teenager&#8217;)</dd>
+</dl>
+</dd>
+<dt>else:</dt>
+<dd>print(&#8216;adult&#8217;)</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="alternatives-to-the-ternary-operator">
+<h2>Alternatives to the ternary operator<a class="headerlink" href="#alternatives-to-the-ternary-operator" title="Ссылка на этот заголовок">¶</a></h2>
+<p>For Python versions lower then 2.5, programmers developed several tricks that somehow emulate behavior of ternary conditional operator. They are generally discouraged, but it&#8217;s good to know how they work:</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>age = 15
+# Selecting an item from a tuple
+print((&#8216;adult&#8217;, &#8216;kid&#8217;)[age &lt; 20])
+# Which is the equivalent of...
+print((&#8216;adult&#8217;, &#8216;kid&#8217;)[True])
+# Or more explicit by using dict
+print({True: &#8216;kid&#8217;, False: &#8216;adult&#8217;}[age &lt; 20])</dd>
+</dl>
+<p>The problem of such an approach is that both expressions will be evaluated no matter what the condition is.</p>
+</div>
+<div class="section" id="id3">
+<h2>Игра: Угодай число<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
 
-<textarea data-component="activecode" id=ifex03 data-lang="python"    data-timelimit=25000  data-codelens="true" data-audio=''     data-caption='Пример if elif else'>
-improt random
-number = random.randinit(1, 10)
+<textarea data-component="activecode" id=game_guess_number data-lang="python"    data-timelimit=25000  data-codelens="true" data-audio=''     data-caption='Пример игры Угадай число с первого раза'>
+import random
+number = random.randint(1, 10)
 guess = int(input('Введите целое число : '))
 
 if guess == number:
