@@ -1,0 +1,1 @@
+Подборка заданий с решениями: http://www.w3resource.com/python-exercises/

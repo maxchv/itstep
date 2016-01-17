@@ -1,0 +1,1 @@
+Хорошая подборка заданий по базам данных: http://www.w3resource.com/mysql-exercises/

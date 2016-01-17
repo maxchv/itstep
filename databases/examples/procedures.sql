@@ -17,3 +17,5 @@ begin
     return d*d;
 end//
 
+select foo(s1) from t1//
+
