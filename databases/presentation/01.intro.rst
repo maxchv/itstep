@@ -70,9 +70,9 @@
 
 Примеры:
 
-    * Реестр Windows
-    * Серевера каталогов такие как LDAP Active и Directory
-    * Information Management System (IMS) фирмы IBM
+* Реестр Windows
+* Серевера каталогов такие как LDAP Active и Directory
+* Information Management System (IMS) фирмы IBM
 
 -------------
 
@@ -89,9 +89,9 @@
 
 Примеры:
 
-    * Internet
-    * Cerebrum
-    * CronosPRO
+* Internet
+* Cerebrum
+* CronosPRO
 
 -------------
 
@@ -106,10 +106,10 @@
 
 Примеры:
 
-    * MS SQL Server
-    * Oracle
-    * MySQL
-    * MS Access
+* MS SQL Server
+* Oracle
+* MySQL
+* MS Access
 
 -------------
 
@@ -122,14 +122,15 @@
 Объектно-ориентированные базы данных обычно рекомендованы для тех случаев, когда требуется высокопроизводительная обработка данных, имеющих сложную структуру.
 
 .. image:: http://www.inteltec.ru/publish/articles/objtech/chronic/img00004.gif
-    :height: 350px
+    :height: 300px
 
-.. Примеры:    
-    * IBM Lotus Notes/Domino
-    * Jasmine
-    * ObjectStore
-    * db4objects
-    * ODB-Jupiter
+Примеры:    
+
+* IBM Lotus Notes/Domino
+* Jasmine
+* ObjectStore
+* db4objects
+* ODB-Jupiter
 
 -------------
 
