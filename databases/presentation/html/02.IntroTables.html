@@ -25,7 +25,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Введение в базы данных</title>
+    <title>Работа с таблицами б/д</title>
     <!-- Styles -->
     
     <style type="text/css" media="print">
@@ -1305,12 +1305,12 @@ div.slide div.presenter_notes {
     </div>
     <div class="slides">
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-1">
           <div class="inner">
             
-            <header><h1>Введение в базы данных</h1></header>
+            <header><h1>Работа с таблицами б/д</h1></header>
             
             
           </div>
@@ -1323,29 +1323,70 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              1/14
+              1/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-2">
           <div class="inner">
             
-            <header><h1>Где хранить данные программ</h1></header>
+            <header><h1>Модель реляционной базы данны</h1></header>
             
             
-            <section><p>При разработке прикладного ПО возникает необходимость в работе с различного рода данными.
-Эти данные необходимо сохранять между запуском программы.
-Кроме того, эти данные возможно необходимо предоставлять различным программам (клиентам).</p>
-<p>Как хранить эти данные? Текстовый файл? Бинарный файл? Какой выбрать формат файла?</p>
-<img alt="http://www.victorija.ua/wp-content/uploads/2013/05/percdata.jpg" src="http://www.victorija.ua/wp-content/uploads/2013/05/percdata.jpg" /></section>
+            <section><p>Каждая таблица реляционной б/д должна состоять из полей, которые содержат
+характеристики данных и записи со значениями.</p>
+<p>Каждая таблица должна содержать первичный ключ (primary key) - значение, которое
+уникально идентифицирует каждую запись в пределах таблицы.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="10%" />
+<col width="15%" />
+<col width="22%" />
+<col width="18%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">EmloyeeID</th>
+<th class="head">FName</th>
+<th class="head">LName</th>
+<th class="head">Position</th>
+<th class="head">Department</th>
+<th class="head">PhoneDepartment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>01</td>
+<td>Вася</td>
+<td>Пупкин</td>
+<td>Инженер</td>
+<td>115</td>
+<td>21-21-21</td>
+</tr>
+<tr><td>02</td>
+<td>Вова</td>
+<td>Петров</td>
+<td>Инженер</td>
+<td>126</td>
+<td>36-32-21</td>
+</tr>
+<tr><td>03</td>
+<td>Петя</td>
+<td>Головач</td>
+<td>Администратор</td>
+<td>126</td>
+<td>36-21-21</td>
+</tr>
+</tbody>
+</table></section>
             
           </div>
           <div class="presenter_notes">
@@ -1357,28 +1398,36 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              2/14
+              2/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-3">
           <div class="inner">
             
-            <header><h1>Понятие базы данных (б/д)</h1></header>
+            <header><h1>Связи между таблицами</h1></header>
             
             
-            <section><p><strong>База данных</strong> (database/db) - это совокупность данных связанных между собой определенной тематикой.
-Данных сохраняются на машинных носителях системы в упорядоченнм виде.</p>
-<img alt="http://netpoint-dc.com/blog/wp-content/uploads/2015/09/db_hosting.png" src="http://netpoint-dc.com/blog/wp-content/uploads/2015/09/db_hosting.png" style="width: 300px;" />
-<p>Можно сравнить базу данных со шкафом, в котором хранятся документы.</p></section>
+            <section><p>Связи между таблицами осуществляются за счет добавления к таблице внешнего ключа (foreingn key).
+<strong>Внешним ключом</strong> таблицы называют поле, значение которого совпадает со значением поля с первичным ключом другой таблицы.</p>
+<img alt="http://osiprodeaodcspstoa01.blob.core.windows.net/ru-ru/media/2b3f79b2-7629-44f8-a0c5-2c6f72bfd935.gif" src="http://osiprodeaodcspstoa01.blob.core.windows.net/ru-ru/media/2b3f79b2-7629-44f8-a0c5-2c6f72bfd935.gif" style="height: 200px;" />
+<p>Существуют следующие типы связей между таблицами:</p>
+<blockquote>
+<ol class="arabic simple">
+<li>Один к одному</li>
+<li>Один ко многим</li>
+<li>Много к одному</li>
+<li>Много ко многим</li>
+</ol>
+</blockquote></section>
             
           </div>
           <div class="presenter_notes">
@@ -1390,33 +1439,130 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              3/14
+              3/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-4">
           <div class="inner">
             
-            <header><h1>СУБД</h1></header>
+            <header><h1>Пример таблиц б/д</h1></header>
             
             
-            <section><p><strong>Системы управления б/д</strong> (СУБД) - программы, которые предназначенные для управления б/д.</p>
-<p>Имеют следующие составляющие:</p>
-<ul class="simple">
-<li>Ядро СУБД, отвечающее за управление данными и их журналирование</li>
-<li>Процессор языка базы данных, обеспечивающий оптимизацию запросов и переводом их на машинный язык</li>
-<li>Подсистему поддержки времени выполнения (runtime), которая создает пользовательский интерфейс и обеспечивает его взаимодействие с б/д</li>
-<li>Набор утилит, которые предоставляют дополнительные возможности по обслуживанию информационной системы.</li>
-</ul>
-<p>В общем СУБД - это система, позволяющая создавать базы данных и манипулировать сведениями из них.</p></section>
+            <section><!-- http://edu.tltsu.ru/er/book_view.php?book_id=2790&page_id=31348 -->
+<p>Таблица СТУДЕНТ</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="19%" />
+<col width="11%" />
+<col width="20%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Номер личного дела</th>
+<th class="head">Фамилия</th>
+<th class="head">Имя</th>
+<th class="head">Отчество</th>
+<th class="head">Группа</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>120603</td>
+<td>Свиридова</td>
+<td>Анна</td>
+<td>Алексеевна</td>
+<td>ЭТ-101</td>
+</tr>
+<tr><td>120608</td>
+<td>Голубев</td>
+<td>Игорь</td>
+<td>Андреевич</td>
+<td>ЭТ-102</td>
+</tr>
+<tr><td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица СЕССИЯ</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="18%" />
+<col width="16%" />
+<col width="18%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Номер личного дела</th>
+<th class="head">Экзамен 1</th>
+<th class="head">Экзамен 2</th>
+<th class="head">Экзамен 3</th>
+<th class="head">Результат</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>120603</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr><td>120608</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr><td>120634</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr><td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица СТИПЕНДИЯ</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Результат</th>
+<th class="head">Процент</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>0</td>
+</tr>
+<tr><td>1</td>
+<td>100</td>
+</tr>
+<tr><td>2</td>
+<td>200</td>
+</tr>
+</tbody>
+</table></section>
             
           </div>
           <div class="presenter_notes">
@@ -1428,31 +1574,29 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              4/14
+              4/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-5">
           <div class="inner">
             
-            <header><h1>Типы и модели б/д и СУБД</h1></header>
+            <header><h1>Связь один к одному</h1></header>
             
             
-            <section><p>Находят применение следующие 4 типа моделей б/д и СУБД:</p>
-<ul class="simple">
-<li>Иерархические</li>
-<li>Сетевые</li>
-<li>Реляционные</li>
-<li>Объектно-ориентированные</li>
-</ul></section>
+            <section><!-- Каждой записи в родительской таблице соответствует только одна запись дочерней таблицы (или наоборот). -->
+<p>Таблицы А и В находятся в отношении «один-к-одному», если каждая запись в таблице А может иметь
+не более одной связанной с ней записи в таблице В и наоборот, каждая запись в таблице В может иметь не более
+одной связанной с ней записи в таблице А.</p>
+<img alt="http://edu.tltsu.ru/er/er_files/page11431/img/image007.jpg" src="http://edu.tltsu.ru/er/er_files/page11431/img/image007.jpg" style="height: 200px;" /></section>
             
           </div>
           <div class="presenter_notes">
@@ -1464,34 +1608,28 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              5/14
+              5/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-6">
           <div class="inner">
             
-            <header><h1>Иерархические б/д</h1></header>
+            <header><h1>Один ко многим</h1></header>
             
             
-            <section><p><a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%98%D0%B5%D1%80%D0%B0%D1%80%D1%85%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Иерархическая модель данных</a>
-— это модель данных, где используется представление базы данных в виде
-древовидной (иерархической) структуры, состоящей из объектов (данных) различных уровней.</p>
-<img alt="http://zametkinapolyah.ru/wp-content/uploads/2012/08/r71.jpg" src="http://zametkinapolyah.ru/wp-content/uploads/2012/08/r71.jpg" style="height: 200px;" />
-<p>Примеры:</p>
-<ul class="simple">
-<li>Реестр Windows</li>
-<li>Серевера каталогов такие как LDAP Active и Directory</li>
-<li>Information Management System (IMS) фирмы IBM</li>
-</ul></section>
+            <section><p>Таблицы А и В находятся в отношении «один-ко-многим», если каждая запись в таблице А может быть
+связана с несколькими записями таблицы В, но каждая запись в таблице В не может быть связана более чем
+с одной записью таблицы А. Таблица А в этом случае называется главной таблицей, а таблица В – подчиненной.</p>
+<img alt="http://edu.tltsu.ru/er/er_files/page11431/img/image008.jpg" src="http://edu.tltsu.ru/er/er_files/page11431/img/image008.jpg" style="height: 200px;" /></section>
             
           </div>
           <div class="presenter_notes">
@@ -1503,35 +1641,28 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              6/14
+              6/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-7">
           <div class="inner">
             
-            <header><h1>Сетевые б/д</h1></header>
+            <header><h1>Много ко многим</h1></header>
             
             
-            <section><p><a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D1%82%D0%B5%D0%B2%D0%B0%D1%8F_%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Сетевая модель данных</a>
-— логическая модель данных, являющаяся расширением иерархического подхода.
-Разница между иерархической моделью данных и сетевой состоит в том, что в иерархических структурах
-запись-потомок должна иметь в точности одного предка, а в сетевой структуре данных у потомка может иметься любое число предков.</p>
-<img alt="http://zametkinapolyah.ru/wp-content/uploads/2013/01/net_model.gif" src="http://zametkinapolyah.ru/wp-content/uploads/2013/01/net_model.gif" style="height: 200px;" />
-<p>Примеры:</p>
-<ul class="simple">
-<li>Internet</li>
-<li>Cerebrum</li>
-<li>CronosPRO</li>
-</ul></section>
+            <section><p>Таблицы А и В находятся в отношении «многие-ко-многим», если каждая запись таблицы А может быть связана
+с несколькими записями в таблице В, и наоборот, каждая запись таблицы В может быть связана с несколькими
+записями в таблице А.</p>
+<img alt="http://edu.tltsu.ru/er/er_files/page27985/img/image055.jpg" src="http://edu.tltsu.ru/er/er_files/page27985/img/image055.jpg" style="height: 200px;" /></section>
             
           </div>
           <div class="presenter_notes">
@@ -1543,34 +1674,40 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              7/14
+              7/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-8">
           <div class="inner">
             
-            <header><h1>Реляционные б/д</h1></header>
+            <header><h1>Проектирование реляционной б/д</h1></header>
             
             
-            <section><p>В <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%BB%D1%8F%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F_%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">реляционной б/д</a>
-все данные сохраняются в виде двумерных таблиц. Таблицы состоят из столбцов и рядов данных.</p>
-<img alt="http://www.moodle.ipm.kstu.ru/pluginfile.php/40357/mod_page/content/23/400px-RefIntExample.png" src="http://www.moodle.ipm.kstu.ru/pluginfile.php/40357/mod_page/content/23/400px-RefIntExample.png" style="height: 230px;" />
-<p>Примеры:</p>
-<ul class="simple">
-<li>MS SQL Server</li>
-<li>Oracle</li>
-<li>MySQL</li>
-<li>MS Access</li>
-</ul></section>
+            <section><p>В процессе разработки базы данных можно выделить следующие этапы:</p>
+<ol class="arabic">
+<li><p class="first">Анализ предметной области</p>
+<blockquote>
+<p>На этом этапе формируется задание по созданию БД. В нем подробно описывается состав базы данных, назначение и цели
+ее создания, а также перечисляется, какие виды работ предполагается осуществлять в этой базе данных
+(отбор, изменение данных, печать или вывод отчета и т. д.).</p>
+</blockquote>
+</li>
+<li><p class="first">Разработка схемы данных БД.</p>
+<blockquote>
+<p>На этом этапе рассматривается, из каких информационных объектов должна состоять БД, какими реквизитами описывается
+каждый объект. Затем определяется структура реляционных таблиц БД с указанием свойств полей и связей между таблицами.</p>
+</blockquote>
+</li>
+</ol></section>
             
           </div>
           <div class="presenter_notes">
@@ -1582,36 +1719,49 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              8/14
+              8/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-9">
           <div class="inner">
             
-            <header><h1>Объектно-ориентированные б/д</h1></header>
+            <header><h1>Проектирование реляционной б/д</h1></header>
             
             
-            <section><p><a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BD%D0%BE-%D0%BE%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F_%D0%B1%D0%B0%D0%B7%D0%B0_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Объектно-ориентированная база данных (ООБД)</a>
-— база данных, в которой данные моделируются в виде объектов, их атрибутов, методов и классов.</p>
-<p>Объектно-ориентированные базы данных обычно рекомендованы для тех случаев, когда требуется высокопроизводительная обработка данных, имеющих сложную структуру.</p>
-<img alt="http://www.inteltec.ru/publish/articles/objtech/chronic/img00004.gif" src="http://www.inteltec.ru/publish/articles/objtech/chronic/img00004.gif" style="height: 300px;" />
-<p>Примеры:</p>
-<ul class="simple">
-<li>IBM Lotus Notes/Domino</li>
-<li>Jasmine</li>
-<li>ObjectStore</li>
-<li>db4objects</li>
-<li>ODB-Jupiter</li>
-</ul></section>
+            <section><ol class="arabic" start="3">
+<li><dl class="first docutils">
+<dt>Создание неопсредственно базы данных:</dt>
+<dd><ul class="first last">
+<li><p class="first">Создание базы данных.</p>
+</li>
+<li><p class="first">Создание исходной таблицы или таблиц.</p>
+</li>
+<li><p class="first">Заполнение данными таблиц БД.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Работа с созданной базой данных:</dt>
+<dd><ul class="first last simple">
+<li>сортировка, фильтрация и поиск записей в таблице;</li>
+<li>отбор данных из таблиц в соответствии с заданными критериями отбора;</li>
+<li>выполнение обработки данных (удаление, добавление, изменение данных, выполнение вычислений).</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol></section>
             
           </div>
           <div class="presenter_notes">
@@ -1623,28 +1773,35 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              9/14
+              9/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-10">
           <div class="inner">
             
-            <header><h1>Эдгар Франк «Тед» Кодд</h1></header>
+            <header><h1>Разработка схемы данных</h1></header>
             
             
-            <section><p>Британский учёный, работы которого заложили основы теории <strong>реляционных баз данных</strong>.</p>
-<img alt="https://upload.wikimedia.org/wikipedia/ru/5/58/Edgar_F_Codd.jpg" src="https://upload.wikimedia.org/wikipedia/ru/5/58/Edgar_F_Codd.jpg" style="height: 300px;" />
-<p>Работая в компании <strong>IBM</strong>, он создал реляционную модель данных.
-Он также внёс существенный вклад в другие области информатики.</p></section>
+            <section><p>Разработку схемы данных обычно выполняют в следующей последовательности:</p>
+<ol class="arabic">
+<li><p class="first">Составляется общий список полей, отражающий реквизиты информационных объектов б/д.</p>
+</li>
+<li><p class="first">В соответствии с типом данных, размещаемых в каждом поле, определяют тип и другие свойства каждого поля.</p>
+</li>
+<li><p class="first">Поля общего списка распределяются по базовым таблицам. Критерии распределения полей по таблицам могут быть различными.</p>
+<p>Например, сведения о сотрудниках организации могут храниться в одной таблице или могут быть созданы две таблицы,
+одна из которых хранит информацию служебного назначения (СОТРУДНИКИ), а другая – информацию личного плана (ЛИЧНЫЕ ДАННЫЕ)</p>
+</li>
+</ol></section>
             
           </div>
           <div class="presenter_notes">
@@ -1656,38 +1813,35 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              10/14
+              10/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
-        <div class="slide has_notes slide-11">
+        <div class="slide slide-11">
           <div class="inner">
             
-            <header><h1>12 правил Кодда</h1></header>
+            <header><h1>Нормализация таблиц</h1></header>
             
             
-            <section><!-- 0. Основное правило Реляционная СУБД должна быть способна полностью управлять базой данных, используя связи между данными -->
-<!-- Чтобы быть реляционной системой управления базами данных (СУБД), система должна использовать исключительно свои реляционные возможности для управления базой данных. -->
-<ol class="arabic simple">
-<li>Явное представление данных (The Information Rule).</li>
-</ol>
-<p class="notes">Информация должна быть представлена в виде данных, хранящихся в ячейках. Данные, хранящиеся в ячейках, должны быть атомарны. Порядок строк в реляционной таблице не должен влиять на смысл данных.</p>
-<ol class="arabic simple" start="2">
-<li>Гарантированный доступ к данным (Guaranteed Access Rule).</li>
-</ol>
-<p class="notes">Доступ к данным должен быть свободен от двусмысленности. К каждому элементу данных должен быть гарантирован доступ с помощью комбинации имени таблицы, первичного ключа строки и имени столбца.</p>
-<ol class="arabic simple" start="3">
-<li>Систематическая поддержка отсутствующих значений (Systematic Treatment of Null Values).</li>
-</ol>
-<p class="notes">Неизвестные, или отсутствующие значения NULL, отличные от любого известного значения, должны поддерживаться для всех типов данных при выполнении любых операций. Например, для числовых данных неизвестные значения не должны рассматриваться как нули, а для символьных данных — как пустые строки.</p></section>
+            <section><blockquote>
+<a class="reference external" href="https://support.microsoft.com/ru-ru/kb/283878">Нормализация</a>
+— это процесс организации данных в базе данных, включающий создание таблиц и установление отношений
+между ними в соответствии с правилами, которые обеспечивают защиту данных и делают базу данных более гибкой,
+устраняя <strong>избыточность</strong> и <strong>несогласованные</strong> зависимости.</blockquote>
+<p>Существует несколько правил нормализации баз данных.</p>
+<p>Каждое правило называется «нормальной формой».</p>
+<p>Если выполняется первое правило, говорят, что база данных представлена в «первой нормальной форме».</p>
+<p>Если выполняются три первых правила, считается, что база данных представлена в «третьей нормальной форме».</p>
+<p>Есть и другие уровни нормализации, однако для большинства приложений достаточно нормализовать базы данных
+до третьей нормальной формы.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1699,39 +1853,37 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              11/14
+              11/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
-        <div class="slide has_notes slide-12">
+        <div class="slide slide-12">
           <div class="inner">
             
-            <header><h1>12 правил Кодда (продолжение)</h1></header>
+            <header><h1>Первая нормальная форма</h1></header>
             
             
-            <section><ol class="arabic simple" start="4">
-<li>Доступ к словарю данных в терминах реляционной модели (Active On-Line Catalog Based on the Relational Model).</li>
+            <section><ol class="arabic simple">
+<li>Устраните повторяющиеся группы в отдельных таблицах.</li>
+<li>Создайте отдельную таблицу для каждого набора связанных данных.</li>
+<li>Идентифицируйте каждый набор связанных данных с помощью первичного ключа.</li>
 </ol>
-<p class="notes">Словарь данных должен сохраняться в форме реляционных таблиц, и СУБД должна поддерживать доступ к нему при помощи стандартных языковых средств, тех же самых, которые используются для работы с реляционными таблицами, содержащими пользовательские данные.</p>
-<ol class="arabic simple" start="5">
-<li>Полнота подмножества языка</li>
-</ol>
-<p>.notes: Система управления реляционными базами данных должна поддерживать хотя бы один реляционный язык, который
-.notes:    (а) имеет линейный синтаксис,
-.notes:    (б) может использоваться как интерактивно, так и в прикладных программах,
-.notes:    (в) поддерживает операции определения данных, определения представлений, манипулирования данными (интерактивные и программные), ограничители целостности, управления доступом и операции управления транзакциями (begin, commit и rollback).</p>
-<ol class="arabic simple" start="6">
-<li>Возможность изменения представлений</li>
-</ol>
-<p class="notes">Каждое представление должно поддерживать все операции манипулирования данными, которые поддерживают реляционные таблицы: операции выборки, вставки, изменения и удаления данных.</p></section>
+<p>Не используйте несколько полей в одной таблице для хранения похожих данных.
+Например, для слежения за товаром, который закупается у двух разных поставщиков,
+можно создать запись с полями, определяющими код первого поставщика и код второго поставщика.</p>
+<p>Что произойдет при добавлении третьего поставщика? Добавление третьего поля нежелательно,
+так как для этого нужно изменять программу и таблицу, поэтому данный способ плохо адаптируется
+к динамическому изменению числа поставщиков.</p>
+<p>Вместо этого можно поместить все сведения о поставщиках в отдельную таблицу Vendors (поставщики) и
+связать товары с поставщиками с помощью кодов товаров или поставщиков с товарами с помощью кодов поставщиков.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1743,36 +1895,33 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              12/14
+              12/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
-        <div class="slide has_notes slide-13">
+        <div class="slide slide-13">
           <div class="inner">
             
-            <header><h1>12 правил Кодда (продолжение)</h1></header>
+            <header><h1>Вторая нормальная форма</h1></header>
             
             
-            <section><ol class="arabic simple" start="7">
-<li>Наличие высокоуровневых операций управления данными</li>
+            <section><ol class="arabic simple">
+<li>Создайте отдельные таблицы для наборов значений, относящихся к нескольким записям.</li>
+<li>Свяжите эти таблицы с помощью внешнего ключа.</li>
 </ol>
-<p class="notes">Операции вставки, изменения и удаления данных должны поддерживаться не только по отношению к одной строке реляционной таблицы, но и по отношению к любому множеству строк.</p>
-<ol class="arabic simple" start="8">
-<li>Физическая независимость данных</li>
-</ol>
-<p class="notes">Приложения не должны зависеть от используемых способов хранения данных на носителях, от аппаратного обеспечения компьютеров, на которых находится реляционная база данных.</p>
-<ol class="arabic simple" start="9">
-<li>Логическая независимость данных</li>
-</ol>
-<p class="notes">Представление данных в приложении не должно зависеть от структуры реляционных таблиц. Если в процессе нормализации одна реляционная таблица разделяется на две, представление должно обеспечить объединение этих данных, чтобы изменение структуры реляционных таблиц не сказывалось на работе приложений.</p></section>
+<p>Записи могут зависеть только от первичного ключа таблицы (составного ключа, если необходимо).</p>
+<p>Возьмем для примера адрес клиента в системе бухгалтерского учета. Этот адрес необходим не только
+таблице Customers, но и таблицам Orders, Shipping, Invoices, Accounts Receivable и Collections.</p>
+<p>Вместо того чтобы хранить адрес клиента как отдельный элемент в каждой из этих таблиц, храните его
+в одном месте: или в таблице Customers, или в отдельной таблице Addresses.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1784,36 +1933,40 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              13/14
+              13/20
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: 01.intro.rst -->
+      <!-- slide source: 02.IntroTables.rst -->
       <div class="slide-wrapper">
-        <div class="slide has_notes slide-14">
+        <div class="slide slide-14">
           <div class="inner">
             
-            <header><h1>12 правил Кодда (продолжение)</h1></header>
+            <header><h1>Третья нормальная форма</h1></header>
             
             
-            <section><ol class="arabic simple" start="10">
-<li>Независимость контроля целостности</li>
+            <section><ol class="arabic simple">
+<li>Устраните поля, не зависящие от ключа.</li>
 </ol>
-<p class="notes">Вся информация, необходимая для поддержания целостности, должна находиться в словаре данных. Язык для работы с данными должен выполнять проверку входных данных и автоматически поддерживать целостность данных.</p>
-<ol class="arabic simple" start="11">
-<li>Независимость от расположения</li>
-</ol>
-<p class="notes">База данных может быть распределённой, может находиться на нескольких компьютерах, и это не должно оказывать влияния на приложения. Перенос базы данных на другой компьютер не должен оказывать влияния на приложения.</p>
-<ol class="arabic simple" start="12">
-<li>Согласование языковых уровней</li>
-</ol>
-<p class="notes">Если используется низкоуровневый язык доступа к данным, он не должен игнорировать правила безопасности и правила целостности, которые поддерживаются языком более высокого уровня.</p></section>
+<p>Значения, входящие в запись и не являющиеся частью ключа этой записи, не принадлежат таблице.
+Если содержимое группы полей может относиться более чем к одной записи в таблице, подумайте о том,
+не поместить ли эти поля в отдельную таблицу.</p>
+<p>Например, в таблицу Employee Recruitment (наем сотрудников) можно включить адрес кандидата и название университета,
+в котором он получил образование. Однако для организации групповой почтовой рассылки необходим полный список университетов.</p>
+<p>Если сведения об университетах будут храниться в таблице Candidates, составить список университетов при отсутствии кандидатов
+не получится.</p>
+<p>Таким образом, создайте вместо этого отдельную таблицу Universities и свяжите ее с таблицей
+Candidates при помощи ключа — кода университета.</p>
+<blockquote>
+Выполнять нормализацию до третьей нормальной формы может быть целесообразно только для часто изменяемых данных.
+Если при этом сохранятся зависимые поля, спроектируйте приложение так, чтобы при изменении одного из этих полей
+пользователь должен был проверить все связанные поля.</blockquote></section>
             
           </div>
           <div class="presenter_notes">
@@ -1825,11 +1978,437 @@ div.slide div.presenter_notes {
           <footer>
             
             <aside class="source">
-              Source: <a href="01.intro.rst">01.intro.rst</a>
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
             </aside>
             
             <aside class="page_number">
-              14/14
+              14/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 02.IntroTables.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-15">
+          <div class="inner">
+            
+            <header><h1>Пример нормализации таблицы</h1></header>
+            
+            
+            <section><p>Ниже приведен пример нормализации таблицы с вымышленными данными о студентах.
+Таблица до нормализации:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="17%" />
+<col width="20%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Student#</th>
+<th class="head">Advisor</th>
+<th class="head">Adv-Room</th>
+<th class="head">Class1</th>
+<th class="head">Class2</th>
+<th class="head">Class3</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1022</td>
+<td>Петров</td>
+<td>412</td>
+<td>101-07</td>
+<td>143-01</td>
+<td>159-02</td>
+</tr>
+<tr><td>4123</td>
+<td>Иванов</td>
+<td>216</td>
+<td>201-01</td>
+<td>211-02</td>
+<td>214-01</td>
+</tr>
+</tbody>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 02.IntroTables.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-16">
+          <div class="inner">
+            
+            <header><h1>Первая нормальная форма</h1></header>
+            
+            
+            <section><h2>Устранение повторяющихся групп</h2>
+<p>Таблицы должны иметь только два измерения.
+Так как один студент изучает несколько курсов, эти курсы следует указать в отдельной таблице.</p>
+<p>Наличие полей Class1, Class2 и Class3 в приведенных выше записях свидетельствует о неудачном проектировании таблицы.</p>
+<p>Электронные таблицы часто включают третье измерение, но в таблицах баз данных оно использоваться не должно.</p>
+<p>Рассмотреть эту проблему можно также с помощью отношения «один — множество», тогда совет можно сформулировать следующим образом:
+не включайте в одну таблицу элементы, представляющие обе стороны данного отношения.
+Вместо этого создайте другую таблицу в первой нормальной форме, устранив повторяющуюся группу (Class#):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="24%" />
+<col width="28%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Student#</th>
+<th class="head">Advisor</th>
+<th class="head">Adv-Room</th>
+<th class="head">Class#</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1022</td>
+<td>Петров</td>
+<td>412</td>
+<td>101-07</td>
+</tr>
+<tr><td>1022</td>
+<td>Петров</td>
+<td>412</td>
+<td>143-01</td>
+</tr>
+<tr><td>1022</td>
+<td>Петров</td>
+<td>412</td>
+<td>159-02</td>
+</tr>
+<tr><td>4123</td>
+<td>Иванов</td>
+<td>216</td>
+<td>201-01</td>
+</tr>
+<tr><td>4123</td>
+<td>Иванов</td>
+<td>216</td>
+<td>211-02</td>
+</tr>
+<tr><td>4123</td>
+<td>Иванов</td>
+<td>216</td>
+<td>214-01</td>
+</tr>
+</tbody>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 02.IntroTables.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-17">
+          <div class="inner">
+            
+            <header><h1>Вторая нормальная форма</h1></header>
+            
+            
+            <section><h2>Устранение избыточных данных</h2>
+<p>Обратите внимание на то, что в приведенной выше таблице каждое значение Student# сопоставлено с несколькими значениями Class#.
+Значения Class# функционально не зависят от значений Student# (первичный ключ), а это означает, что данное отношение
+не нормализовано до второй нормальной формы.</p>
+<p>Вторую нормальную форму представляют две следующих таблицы.</p>
+<p>Таблица Students:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="30%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Student#</th>
+<th class="head">Advisor</th>
+<th class="head">Adv-Room</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1022</td>
+<td>Петров</td>
+<td>412</td>
+</tr>
+<tr><td>4123</td>
+<td>Иванов</td>
+<td>216</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица Registration:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Student#</th>
+<th class="head">Class#</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1022</td>
+<td>101-07</td>
+</tr>
+<tr><td>1022</td>
+<td>143-01</td>
+</tr>
+<tr><td>1022</td>
+<td>159-02</td>
+</tr>
+<tr><td>4123</td>
+<td>201-01</td>
+</tr>
+<tr><td>4123</td>
+<td>211-02</td>
+</tr>
+<tr><td>4123</td>
+<td>214-01</td>
+</tr>
+</tbody>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 02.IntroTables.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-18">
+          <div class="inner">
+            
+            <header><h1>Третья нормальная форма</h1></header>
+            
+            
+            <section><h2>Устранение данных, не зависящих от ключа</h2>
+<p>В последнем примере значения Adv-Room (номер кабинета научного руководителя) функционально зависят от атрибута Advisor.
+Решить эту проблему можно, переместив данный атрибут из таблицы Students в таблицу Faculty (факультет):</p>
+<p>Таблица Students:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Student#</th>
+<th class="head">Advisor</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1022</td>
+<td>Петров</td>
+</tr>
+<tr><td>4123</td>
+<td>Иванов</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица Faculty:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="38%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Name</th>
+<th class="head">Room</th>
+<th class="head">Dept</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Петров</td>
+<td>412</td>
+<td>42</td>
+</tr>
+<tr><td>Иванов</td>
+<td>216</td>
+<td>42</td>
+</tr>
+</tbody>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 02.IntroTables.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-19">
+          <div class="inner">
+            
+            <header><h1>Задание</h1></header>
+            
+            
+            <section><!-- http://club.shelek.ru/viewart.php?id=177 -->
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="8%" />
+<col width="19%" />
+<col width="11%" />
+<col width="10%" />
+<col width="8%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Наим.</th>
+<th class="head">Город</th>
+<th class="head">Адрес</th>
+<th class="head">Эл. почта</th>
+<th class="head">WWW</th>
+<th class="head">Вид</th>
+<th class="head">Конт. лица</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Поршневой з-д</td>
+<td>Владимир</td>
+<td>Ул. 2-я Кольцевая, 17</td>
+<td><a class="reference external" href="mailto:info&#64;plunger.ru">info&#64;plunger.ru</a></td>
+<td>www.plunger.ru</td>
+<td>Поставщик</td>
+<td>Иванов И.И., зам. дир., тел (3254)76-15-95
+Петров П.П., нач. отд. сбыта, тел (3254)76-15-35</td>
+</tr>
+<tr><td>ООО Вымпел</td>
+<td>Курск</td>
+<td>Ул. Гоголя, 25</td>
+<td><a class="reference external" href="mailto:pennon&#64;mail.ru">pennon&#64;mail.ru</a></td>
+<td>NULL</td>
+<td>Клиент</td>
+<td>Сидоров С.С., директор, тел. (7634)66-65-38</td>
+</tr>
+<tr><td>ИЧП Альфа</td>
+<td>Владимир</td>
+<td>Ул. Пушкинская, 37, оф. 565</td>
+<td><a class="reference external" href="mailto:alpha323&#64;list.ru">alpha323&#64;list.ru</a></td>
+<td>NULL</td>
+<td>Клиент</td>
+<td>Васильев В.В., директор, тел (3254)74-57-45</td>
+</tr>
+</tbody>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/20
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 02.IntroTables.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-20">
+          <div class="inner">
+            
+            <header><h1>Домашнее задание</h1></header>
+            
+            
+            <section><!-- http://edu.tltsu.ru/er/book_view.php?book_id=2790&page_id=31359 -->
+<p>Разработать базу данных Кадры предсавленную таблицами:</p>
+<img alt="http://edu.tltsu.ru/er/er_files/page27995/img/image103.jpg" src="http://edu.tltsu.ru/er/er_files/page27995/img/image103.jpg" /></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="02.IntroTables.rst">02.IntroTables.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/20
             </aside>
           </footer>
         </div>
@@ -1844,86 +2423,122 @@ div.slide div.presenter_notes {
       <caption>Table of Contents</caption>
       
       <tr id="toc-row-1">
-        <th><a href="#slide1">Введение в базы данных</a></th>
+        <th><a href="#slide1">Работа с таблицами б/д</a></th>
         <td><a href="#slide1">1</a></td>
       </tr>
       
       
       <tr id="toc-row-2">
-        <th><a href="#slide2">Где хранить данные программ</a></th>
+        <th><a href="#slide2">Модель реляционной базы данны</a></th>
         <td><a href="#slide2">2</a></td>
       </tr>
       
       
       <tr id="toc-row-3">
-        <th><a href="#slide3">Понятие базы данных (б/д)</a></th>
+        <th><a href="#slide3">Связи между таблицами</a></th>
         <td><a href="#slide3">3</a></td>
       </tr>
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">СУБД</a></th>
+        <th><a href="#slide4">Пример таблиц б/д</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
       
       <tr id="toc-row-5">
-        <th><a href="#slide5">Типы и модели б/д и СУБД</a></th>
+        <th><a href="#slide5">Связь один к одному</a></th>
         <td><a href="#slide5">5</a></td>
       </tr>
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">Иерархические б/д</a></th>
+        <th><a href="#slide6">Один ко многим</a></th>
         <td><a href="#slide6">6</a></td>
       </tr>
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">Сетевые б/д</a></th>
+        <th><a href="#slide7">Много ко многим</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">Реляционные б/д</a></th>
+        <th><a href="#slide8">Проектирование реляционной б/д</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
       
       <tr id="toc-row-9">
-        <th><a href="#slide9">Объектно-ориентированные б/д</a></th>
+        <th><a href="#slide9">Проектирование реляционной б/д</a></th>
         <td><a href="#slide9">9</a></td>
       </tr>
       
       
       <tr id="toc-row-10">
-        <th><a href="#slide10">Эдгар Франк «Тед» Кодд</a></th>
+        <th><a href="#slide10">Разработка схемы данных</a></th>
         <td><a href="#slide10">10</a></td>
       </tr>
       
       
       <tr id="toc-row-11">
-        <th><a href="#slide11">12 правил Кодда</a></th>
+        <th><a href="#slide11">Нормализация таблиц</a></th>
         <td><a href="#slide11">11</a></td>
       </tr>
       
       
       <tr id="toc-row-12">
-        <th><a href="#slide12">12 правил Кодда (продолжение)</a></th>
+        <th><a href="#slide12">Первая нормальная форма</a></th>
         <td><a href="#slide12">12</a></td>
       </tr>
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">12 правил Кодда (продолжение)</a></th>
+        <th><a href="#slide13">Вторая нормальная форма</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">12 правил Кодда (продолжение)</a></th>
+        <th><a href="#slide14">Третья нормальная форма</a></th>
         <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Пример нормализации таблицы</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Первая нормальная форма</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">Вторая нормальная форма</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Третья нормальная форма</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Задание</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Домашнее задание</a></th>
+        <td><a href="#slide20">20</a></td>
       </tr>
       
       
