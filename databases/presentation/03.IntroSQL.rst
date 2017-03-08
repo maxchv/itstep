@@ -120,14 +120,18 @@ IBM была разработана экспериментальная
 
 --------------
 
-Типы данных SQL
-===============
+Типы данных SQL [#]
+===================
 
 - Целые числа
 - Дробные числа
 - Строки
 - Бинарные данные
 - Дата и время
+
+.. [#] `Типы данных MS Access`_
+
+.. _`Типы данных MS Access`: https://support.office.com/ru-ru/article/%d0%92%d0%b2%d0%b5%d0%b4%d0%b5%d0%bd%d0%b8%d0%b5-%d0%b2-%d0%b8%d1%81%d0%bf%d0%be%d0%bb%d1%8c%d0%b7%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5-%d1%82%d0%b8%d0%bf%d0%be%d0%b2-%d0%b4%d0%b0%d0%bd%d0%bd%d1%8b%d1%85-%d0%b8-%d1%81%d0%b2%d0%be%d0%b9%d1%81%d1%82%d0%b2-%d0%bf%d0%be%d0%bb%d0%b5%d0%b9-30ad644f-946c-442e-8bd2-be067361987c?ui=ru-RU&rs=ru-RU&ad=RU
 
 --------------
 
@@ -383,7 +387,7 @@ DDL (работа со структурой базы)
     	title_id INT PRIMARY KEY  AUTO_INCREMENT,
         title VARCHAR(255) NOT NULL,
     	yearpub INT,
-        pub_id INT REFERENCES publishers(pub_id)
+        pub_id INT FOREIGN KEY REFERENCES publishers(pub_id)
     );
 
 --------------
@@ -411,8 +415,8 @@ DDL (работа со структурой базы)
     -- промежуточная таблица связывающая веб-сайты с авторами
     CREATE TABLE wwwsiteauthors
     (
-        au_id INT REFERENCES authors(au_id),
-        site_id INT REFERENCES wwwsites(site_id)
+        au_id INT FOREIGN KEY REFERENCES authors(au_id),
+        site_id INT FOREIGN KEY REFERENCES wwwsites(site_id)
     );
 
 --------------
@@ -430,8 +434,8 @@ DDL (работа со структурой базы)
     -- промежуточная таблица связывает авторов с публикациями
     CREATE TABLE titleautors
     (
-        au_id INT REFERENCES authors(au_id),
-        title_id INT REFERENCES titles(title_id)
+        au_id INT FOREIGN KEY REFERENCES authors(au_id),
+        title_id INT FOREIGN KEY REFERENCES titles(title_id)
     );
 
 --------------
@@ -470,7 +474,7 @@ DDL (работа со структурой базы)
        <имя_столбца> <тип_столбца>
        [NOT NULL]
        [UNIQUE | PRIMARY KEY]
-       [REFERENCES <имя_мастер_таблицы>(<имя_столбца>)]]
+       [[FOREIGN KEY] REFERENCES <имя_мастер_таблицы>(<имя_столбца>)]]
        ,...)
 
 --------------
@@ -494,9 +498,9 @@ DDL (работа со структурой базы)
     -- с разрешением не заполненных значений.
     ALTER TABLE students
         ADD COLUMN `date birth` DATE NULL AFTER id;
- 
+
 .. code-block:: sql
-    
+
     -- Удаление таблицы studets.
     DROP TABLE studets;
 
