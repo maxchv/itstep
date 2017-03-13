@@ -1,6 +1,6 @@
 drop database if exists Cartoons;
 
-create database Cartoons;
+create database Cartoons default character set 'utf8' collate utf8_general_ci;
 
 use Cartoons;
 
