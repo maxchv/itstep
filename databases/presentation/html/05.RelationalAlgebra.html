@@ -1327,7 +1327,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              1/19
+              1/24
             </aside>
           </footer>
         </div>
@@ -1359,7 +1359,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              2/19
+              2/24
             </aside>
           </footer>
         </div>
@@ -1404,7 +1404,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              3/19
+              3/24
             </aside>
           </footer>
         </div>
@@ -1502,7 +1502,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              4/19
+              4/24
             </aside>
           </footer>
         </div>
@@ -1602,7 +1602,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              5/19
+              5/24
             </aside>
           </footer>
         </div>
@@ -1698,7 +1698,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              6/19
+              6/24
             </aside>
           </footer>
         </div>
@@ -1808,7 +1808,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              7/19
+              7/24
             </aside>
           </footer>
         </div>
@@ -1904,7 +1904,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              8/19
+              8/24
             </aside>
           </footer>
         </div>
@@ -2021,7 +2021,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              9/19
+              9/24
             </aside>
           </footer>
         </div>
@@ -2089,7 +2089,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              10/19
+              10/24
             </aside>
           </footer>
         </div>
@@ -2120,7 +2120,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              11/19
+              11/24
             </aside>
           </footer>
         </div>
@@ -2192,7 +2192,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              12/19
+              12/24
             </aside>
           </footer>
         </div>
@@ -2301,7 +2301,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              13/19
+              13/24
             </aside>
           </footer>
         </div>
@@ -2334,7 +2334,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              14/19
+              14/24
             </aside>
           </footer>
         </div>
@@ -2433,7 +2433,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              15/19
+              15/24
             </aside>
           </footer>
         </div>
@@ -2499,7 +2499,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              16/19
+              16/24
             </aside>
           </footer>
         </div>
@@ -2513,7 +2513,9 @@ div.slide div.presenter_notes {
             <header><h1>Соединение</h1></header>
             
             
-            <section><p>Операция соединения есть результат последовательного применения операций декартового произведения и выборки. Если в отношениях и имеются атрибуты с одинаковыми наименованиями, то перед выполнением соединения такие атрибуты необходимо переименовать.</p>
+            <section><p>Операция соединения есть результат последовательного применения операций декартового произведения и выборки.
+Если в отношениях и имеются атрибуты с одинаковыми наименованиями, то перед выполнением соединения
+такие атрибуты необходимо переименовать.</p>
 <p>Пример</p>
 <p>Есть таблица Cartoons:</p>
 <table border="1" class="docutils">
@@ -2579,7 +2581,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              17/19
+              17/24
             </aside>
           </footer>
         </div>
@@ -2593,7 +2595,7 @@ div.slide div.presenter_notes {
             <header><h1>Результат соединения</h1></header>
             
             
-            <section><p>Первый этап, произведение:</p>
+            <section><p>Первый этап, декартовое произведение:</p>
 <pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Cartoons</span><span class="p">,</span> <span class="n">Channels</span><span class="p">;</span>
 </pre>
 <table border="1" class="docutils">
@@ -2651,7 +2653,7 @@ div.slide div.presenter_notes {
 </tr>
 </tbody>
 </table>
-<p>Второй этап, выборка</p>
+<p>Второй этап, выборка:</p>
 <pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Cartoons</span><span class="p">,</span> <span class="n">Channels</span>
     <span class="k">WHERE</span> <span class="n">Cartoons</span><span class="p">.</span><span class="n">channel_id</span><span class="o">=</span><span class="n">Channels</span><span class="p">.</span><span class="n">id_channel</span><span class="p">;</span>
 </pre>
@@ -2710,7 +2712,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              18/19
+              18/24
             </aside>
           </footer>
         </div>
@@ -2719,6 +2721,403 @@ div.slide div.presenter_notes {
       <!-- slide source: 05.RelationalAlgebra.rst -->
       <div class="slide-wrapper">
         <div class="slide slide-19">
+          <div class="inner">
+            
+            <header><h1>Inner Join</h1></header>
+            
+            
+            <section><p>Выбираются только совпадающие данные из объединяемых таблиц.</p>
+<img alt="https://www.w3schools.com/sql/img_innerjoin.gif" src="https://www.w3schools.com/sql/img_innerjoin.gif" />
+<pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Cartoons</span>
+       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Channels</span>
+       <span class="k">ON</span> <span class="n">Cartoons</span><span class="p">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="n">Channels</span><span class="p">.</span><span class="n">id_channel</span><span class="p">;</span>
+</pre>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="22%" />
+<col width="18%" />
+<col width="18%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">id_catroons</th>
+<th class="head">name_cartoon</th>
+<th class="head">channel_id</th>
+<th class="head">id_channel</th>
+<th class="head">name_channel</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>The Simpsons</td>
+<td>1</td>
+<td>1</td>
+<td>Inter</td>
+</tr>
+<tr><td>2</td>
+<td>Family Guy</td>
+<td>1</td>
+<td>1</td>
+<td>Inter</td>
+</tr>
+<tr><td>3</td>
+<td>Duck Tales</td>
+<td>2</td>
+<td>2</td>
+<td>ICTV</td>
+</tr>
+</tbody>
+</table>
+<p>Внутреннее объединение INNER JOIN (синоним JOIN, ключевое слово INNER можно опустить).</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="05.RelationalAlgebra.rst">05.RelationalAlgebra.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/24
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 05.RelationalAlgebra.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-20">
+          <div class="inner">
+            
+            <header><h1>Outer Join</h1></header>
+            
+            
+            <section><p>Чтобы получить данные, которые подходят по условию частично, необходимо использовать
+внешнее объединение - <strong>OUTER JOIN</strong>.</p>
+<p>Такое объединение вернет данные из обеих таблиц (совпадающие по условию объединения) <strong>ПЛЮС</strong>
+дополнит выборку оставшимися данными из внешней таблицы, которые по условию не подходят,
+заполнив недостающие данные значением <strong>NULL</strong>.</p>
+<p>Существует два типа внешнего объединения OUTER JOIN - <strong>LEFT</strong> OUTER JOIN и <strong>RIGHT</strong> OUTER JOIN.</p>
+<p>Работают они одинаково, разница заключается в том что <strong>LEFT</strong> - указывает что &quot;внешней&quot; таблицей
+будет находящаяся слева (в нашем примере это таблица Cartoons), а <strong>RIGHT</strong> - что &quot;внешней&quot;
+таблица будет таблица справа (в нашем примере это таблица Channels).</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="05.RelationalAlgebra.rst">05.RelationalAlgebra.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/24
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 05.RelationalAlgebra.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-21">
+          <div class="inner">
+            
+            <header><h1>Left Outer Join</h1></header>
+            
+            
+            <section><p>В случае с left join из главной таблицы будут выбраны все записи, даже если в присоединяемой
+таблице нет совпадений, то есть условие не учитывает присоединяемую (правую) таблицу.</p>
+<img alt="https://www.w3schools.com/sql/img_leftjoin.gif" src="https://www.w3schools.com/sql/img_leftjoin.gif" />
+<p>Пример:</p>
+<pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Cartoons</span>
+       <span class="k">OUTER</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">Channels</span>
+       <span class="k">ON</span> <span class="n">Cartoons</span><span class="p">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="n">Channels</span><span class="p">.</span><span class="n">id_channel</span><span class="p">;</span>
+</pre>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="22%" />
+<col width="18%" />
+<col width="18%" />
+<col width="22%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>id_catroons</td>
+<td>name_cartoon</td>
+<td>channel_id</td>
+<td>id_channel</td>
+<td>name_channel</td>
+</tr>
+<tr><td>1</td>
+<td>The Simpsons</td>
+<td>1</td>
+<td>1</td>
+<td>Inter</td>
+</tr>
+<tr><td>2</td>
+<td>Family Guy</td>
+<td>1</td>
+<td>1</td>
+<td>Inter</td>
+</tr>
+<tr><td>3</td>
+<td>Duck Tales</td>
+<td>2</td>
+<td>2</td>
+<td>ICTV</td>
+</tr>
+<tr><td>4</td>
+<td>Futurama</td>
+<td>10</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+<tr><td>5</td>
+<td>Spanch Bob</td>
+<td>15</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="05.RelationalAlgebra.rst">05.RelationalAlgebra.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/24
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 05.RelationalAlgebra.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-22">
+          <div class="inner">
+            
+            <header><h1>Right Outer Join</h1></header>
+            
+            
+            <section><p>Right join отображает все строки удовлетворяющие правой части условия condition,
+даже если они не имеют соответствия в главной (левой) таблице:</p>
+<img alt="https://www.w3schools.com/sql/img_rightjoin.gif" src="https://www.w3schools.com/sql/img_rightjoin.gif" />
+<p>Пример:</p>
+<pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Cartoons</span>
+       <span class="k">OUTER</span> <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">Channels</span>
+       <span class="k">ON</span> <span class="n">Cartoons</span><span class="p">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="n">Channels</span><span class="p">.</span><span class="n">id_channel</span><span class="p">;</span>
+</pre>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="22%" />
+<col width="18%" />
+<col width="18%" />
+<col width="22%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>id_catroons</td>
+<td>name_cartoon</td>
+<td>channel_id</td>
+<td>id_channel</td>
+<td>name_channel</td>
+</tr>
+<tr><td>1</td>
+<td>The Simpsons</td>
+<td>1</td>
+<td>1</td>
+<td>Inter</td>
+</tr>
+<tr><td>2</td>
+<td>Family Guy</td>
+<td>1</td>
+<td>1</td>
+<td>Inter</td>
+</tr>
+<tr><td>3</td>
+<td>Duck Tales</td>
+<td>2</td>
+<td>2</td>
+<td>ICTV</td>
+</tr>
+<tr><td>NULL</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>3</td>
+<td>1+1</td>
+</tr>
+<tr><td>NULL</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>4</td>
+<td>СТБ</td>
+</tr>
+<tr><td>NULL</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>5</td>
+<td>2+2</td>
+</tr>
+</tbody>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="05.RelationalAlgebra.rst">05.RelationalAlgebra.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/24
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 05.RelationalAlgebra.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-23">
+          <div class="inner">
+            
+            <header><h1>Full Join</h1></header>
+            
+            
+            <section><p>Full outer join (ключевое слово outer можно опустить) необходим для отображения всех возможных
+комбинаций строк из нескольких таблиц. Иными словами, это объединение результатов left и right join.</p>
+<img alt="https://www.w3schools.com/sql/img_fulljoin.gif" src="https://www.w3schools.com/sql/img_fulljoin.gif" />
+<pre><span class="k">SELECT</span> <span class="k">column_name</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">table1</span>
+<span class="k">FULL</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">table2</span>
+<span class="k">ON</span> <span class="n">table1</span><span class="p">.</span><span class="k">column_name</span><span class="o">=</span><span class="n">table2</span><span class="p">.</span><span class="k">column_name</span><span class="p">;</span>
+</pre>
+<p>Некоторые СУБД не поддерживают такую функциональность (например, MySQL), в таких случаях обычно
+используют объединение двух запросов:</p>
+<pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Cartoons</span>
+       <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">Channels</span>
+       <span class="k">ON</span> <span class="n">Cartoons</span><span class="p">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="n">Channels</span><span class="p">.</span><span class="n">id_channel</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Cartoons</span>
+       <span class="k">OUTER</span> <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">Channels</span>
+       <span class="k">ON</span> <span class="n">Cartoons</span><span class="p">.</span><span class="n">channel_id</span> <span class="o">=</span> <span class="n">Channels</span><span class="p">.</span><span class="n">id_channel</span><span class="p">;</span>
+</pre>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="22%" />
+<col width="18%" />
+<col width="18%" />
+<col width="22%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>id_catroons</td>
+<td>name_cartoon</td>
+<td>channel_id</td>
+<td>id_channel</td>
+<td>name_channel</td>
+</tr>
+<tr><td>1</td>
+<td>The Simpsons</td>
+<td>1</td>
+<td>1</td>
+<td>Inter</td>
+</tr>
+<tr><td>2</td>
+<td>Family Guy</td>
+<td>1</td>
+<td>1</td>
+<td>Inter</td>
+</tr>
+<tr><td>3</td>
+<td>Duck Tales</td>
+<td>2</td>
+<td>2</td>
+<td>ICTV</td>
+</tr>
+<tr><td>4</td>
+<td>Futurama</td>
+<td>10</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+<tr><td>5</td>
+<td>Spanch Bob</td>
+<td>15</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+<tr><td>NULL</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>3</td>
+<td>1+1</td>
+</tr>
+<tr><td>NULL</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>4</td>
+<td>СТБ</td>
+</tr>
+<tr><td>NULL</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>5</td>
+<td>2+2</td>
+</tr>
+</tbody>
+</table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="05.RelationalAlgebra.rst">05.RelationalAlgebra.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/24
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 05.RelationalAlgebra.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-24">
           <div class="inner">
             
             <header><h1>Ссылки</h1></header>
@@ -2746,7 +3145,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              19/19
+              24/24
             </aside>
           </footer>
         </div>
@@ -2869,8 +3268,38 @@ div.slide div.presenter_notes {
       
       
       <tr id="toc-row-19">
-        <th><a href="#slide19">Ссылки</a></th>
+        <th><a href="#slide19">Inner Join</a></th>
         <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Outer Join</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">Left Outer Join</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">Right Outer Join</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">Full Join</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">Ссылки</a></th>
+        <td><a href="#slide24">24</a></td>
       </tr>
       
       
