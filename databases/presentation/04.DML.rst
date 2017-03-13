@@ -11,7 +11,7 @@ Data Manipulation Language (DML)
 
 .. sourcecode:: sql
 
-    ALTER TABLE <имя_таблицы> 
+    ALTER TABLE <имя_таблицы>
         ADD COLUMN <имя_столбца> <тип_столбца>
         [NOT NULL] [UNIQUE | PRIMARY KEY]
         [REFERENCES <имя_мастер_таблицы>(<имя_столбца>)]
@@ -24,7 +24,7 @@ Data Manipulation Language (DML)
 
 .. sourcecode:: sql
 
-    ALTER TABLE <имя_таблицы> 
+    ALTER TABLE <имя_таблицы>
         DROP COLUMN (<имя_столбца>,...)
 
 
@@ -33,7 +33,7 @@ Data Manipulation Language (DML)
 
 .. sourcecode:: sql
 
-    ALTER TABLE <имя_таблицы> 
+    ALTER TABLE <имя_таблицы>
        MODIFY COLUMN <имя_столбца> <тип_столбца>
        [NOT NULL] [UNIQUE | PRIMARY KEY]
        [REFERENCES <имя_мастер_таблицы>(<имя_столбца>)]]
@@ -71,14 +71,14 @@ Data Manipulation Language (DML)
 
 .. code-block:: sql
 
-   mysql> ALTER TABLE students 
+   mysql> ALTER TABLE students
                MODIFY COLUMN name varchar(50);
 
 Удаление поля таблицы
 ---------------------
 
 .. code-block:: sql
-    
+
     mysql> ALTER TABLE students
                 DROP COLUMN `group`;
 
@@ -111,8 +111,8 @@ Data Manipulation Language (DML)
 --------------------
 
 .. sourcecode:: sql
-    
-    mysql> describe authors    
+
+    mysql> describe authors
 
 +-------+--------------+------+-----+---------+----------------+
 | Field | Type         | Null | Key | Default | Extra          |
@@ -126,7 +126,7 @@ Data Manipulation Language (DML)
 ------------------
 
 .. sourcecode:: sql
-    
+
     mysql> describe books
 
 +-------------+--------------+------+-----+---------+----------------+
@@ -175,7 +175,7 @@ Data Manipulation Language (DML)
 .. sourcecode:: sql
 
     -- Добавление данных в таблицу authors
-    mysql> INSERT INTO authors(name) 
+    mysql> INSERT INTO authors(name)
                 VALUES ('Станислав Лем');
 
 +----+---------------------------+
@@ -186,7 +186,7 @@ Data Manipulation Language (DML)
 
 .. sourcecode:: sql
 
-    mysql> INSERT INTO books(title, author, year) 
+    mysql> INSERT INTO books(title, author, year)
                 VALUES ("Молох", 1, 2006);
 
 +----+------------+--------+------+-------------+
@@ -212,8 +212,8 @@ Data Manipulation Language (DML)
 Пример
 ------
 
-.. sourcecode:: sql 
-    
+.. sourcecode:: sql
+
     -- Добавляем запись в таблицу books
     mysql> INSERT INTO books(title, author, year)
                 VALUES("Солярис", 1, 1960);
@@ -231,7 +231,7 @@ Data Manipulation Language (DML)
 
     -- Обновляем запись с id=2 в таблице books
     mysql> UPDATE books
-                SET year=1961 
+                SET year=1961
                 WHERE id=2;
 
 +----+----------------+--------+------+-------------+
@@ -352,7 +352,7 @@ DQL. Оператор SELECT
         [GROUP BY <поле>]
         [HAVING <фильтр>]
         [ORDER BY <поле> [ASC | DESC], ...]
-    
+
 
 - `DISTINCT`_ – исключает записи, содержащие повторяющиеся данные в выбранных полях
 
@@ -439,14 +439,14 @@ DQL. Оператор SELECT
  <	             Меньше
 
  >=	             Больше или равно
- 
+
  <=	             Меньше или равно
 
  BETWEEN	     Между (включительно)
 
  LIKE	         Шаблон поиска
-    
- IN	             Для указания множества занчений 
+
+ IN	             Для указания множества занчений
 
  AND OR NOT      Логические И ИЛИ и НЕ
 =============== =================================
@@ -454,7 +454,7 @@ DQL. Оператор SELECT
 .. sourcecode:: sql
 
     -- Выбрать произведения опубликованные между 1960 и 1990 годами
-    mysql> SELECT title, year 
+    mysql> SELECT title, year
                 FROM books WHERE year > 1960  AND year < 1990;
 
 +---------------------------+------+
@@ -472,7 +472,7 @@ DQL. Оператор SELECT
 .. sourcecode:: sql
 
     -- Тот же самый результат может быть получен с BETWEEN
-    mysql> SELECT title, year 
+    mysql> SELECT title, year
                 FROM books WHERE year BETWEEN 1960 AND 1990;
 
 .. http://www.w3schools.com/sql/sql_where.asp
@@ -535,8 +535,8 @@ _	                         Замена для одиночного символ
 .. sourcecode:: sql
 
     -- выборка по авторам с сортировкой по возрастанию
-    mysql> SELECT * 
-                FROM books 
+    mysql> SELECT *
+                FROM books
                 WHERE author IN (2, 3)
                 ORDER BY year;
 
@@ -553,9 +553,9 @@ _	                         Замена для одиночного символ
 
 .. sourcecode:: sql
 
-    mysql> SELECT * 
-                FROM books 
-                WHERE description IS NULL 
+    mysql> SELECT *
+                FROM books
+                WHERE description IS NULL
                 ORDER BY author DESC;
 
 +----+----------------------------------+--------+------+-------------+
@@ -582,11 +582,11 @@ _	                         Замена для одиночного символ
 ===========
 
     Оператор **AS** позволяет задать псевдонимы таблицам и полям таблиц
-    
+
 .. sourcecode:: sql
 
-    mysql> SELECT b.title AS 'название', b.author AS 'автор' 
-                FROM books AS b;    
+    mysql> SELECT b.title AS 'название', b.author AS 'автор'
+                FROM books AS b;
 
 +---------------------------+------------+
 | название                  | автор      |
@@ -612,9 +612,13 @@ _	                         Замена для одиночного символ
 Полезные ссылки
 ===============
 
-- `www.sqlteaching.com`_ - уроки по SQL (SQLite)
-- `www.codeacademy.com`_ - изучение SQL
+- `sqlteaching`_ - уроки по SQL (SQLite)
+- `sqlbolt`_ - уроки по SQL
+- `codeacademy`_ - изучение SQL
 
-.. _`www.sqlteaching.com`: https://www.sqlteaching.com/
 
-.. _`www.codeacademy.com`: https://www.codecademy.com/learn/learn-sql
+.. _`sqlteaching`: https://www.sqlteaching.com/
+
+.. _`codeacademy`: https://www.codecademy.com/learn/learn-sql
+
+.. _`sqlbolt`:  - https://sqlbolt.com
