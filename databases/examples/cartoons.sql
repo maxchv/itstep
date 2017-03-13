@@ -24,7 +24,10 @@ create table Channels
 insert into Channels(name_channel)
     values('1+1'),
           ('СТБ'),
-          ('Интер');
+          ('Интер'),
+          ('2+2'),
+          ('1+1'),
+          ('BBC');
 
 create table CartoonsChannels
 (
@@ -60,7 +63,11 @@ create table Channels
 );
 
 insert into Channels (name_channel)
-    values('Inter'), ('ICTV');
+    values('Inter'), 
+          ('ICTV'), 
+          ('2+2'),
+          ('1+1'),
+          ('BBC');
 
 drop table if exists Cartoons;
 
@@ -77,7 +84,35 @@ insert into Cartoons(name_cartoon, channel_id)
           ('Family Guy', 1),
           ('Duck Tales', 2);
 
+alter table Cartoons drop foreign key cartoons_ibfk_1;
+insert into Cartoons(name_cartoon, channel_id)
+	values('Futurama', 10),
+          ('Spanch Bob', 15);
 
+select * from Cartoons 
+	cross join Channels;
+
+select * from Cartoons
+	 inner join Channels
+     on Cartoons.channel_id = Channels.id_channel;
+    
+    
+select * from Cartoons
+	left outer join Channels
+    on Cartoons.channel_id = Channels.id_channel;
+    
+select * from Cartoons
+	right outer join Channels
+    on Cartoons.channel_id = Channels.id_channel;
+    
+
+select * from Cartoons
+	left outer join Channels
+    on Cartoons.channel_id = Channels.id_channel
+union
+select * from Cartoons
+	right outer join Channels
+    on Cartoons.channel_id = Channels.id_channel;
 
 
 
