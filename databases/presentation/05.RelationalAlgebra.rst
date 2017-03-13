@@ -566,7 +566,7 @@ Peter	34	80
 Результат соединения
 ====================
 
-Первый этап, произведение:
+Первый этап, декартовое произведение:
 
 .. sourcecode:: sql
 
@@ -608,6 +608,75 @@ Peter	34	80
     Вопрос: как получить только столбцы name_cartoon и name_channel?
 
 .notes: :code:`SELECT Cartoons.name_cartoon, Channels.name_channel FROM Cartoons, Channels WHERE Cartoons.channel_id=Channels.id_channel;`
+
+----
+
+Inner Join
+==========
+
+Выбираются только совпадающие данные из объединяемых таблиц.
+
+.. image:: https://www.w3schools.com/sql/img_innerjoin.gif
+
+.. sourcecode:: sql
+
+	 SELECT * FROM Cartoons
+		INNER JOIN Channels 
+		ON Cartoons.channel_id = Channels.id_channel;
+		
++-------------+--------------+------------+------------+--------------+
+| id_catroons | name_cartoon | channel_id | id_channel | name_channel |
++=============+==============+============+============+==============+
+|           1 | The Simpsons |          1 |          1 | Inter        |
++-------------+--------------+------------+------------+--------------+
+|           2 | Family Guy   |          1 |          1 | Inter        |
++-------------+--------------+------------+------------+--------------+
+|           3 | Duck Tales   |          2 |          2 | ICTV         |
++-------------+--------------+------------+------------+--------------+
+
+Внутреннее объединение INNER JOIN (синоним JOIN, ключевое слово INNER можно опустить). 
+		
+----
+
+Outer Join
+==========
+
+Чтобы получить данные, которые подходят по условию частично, необходимо использовать 
+внешнее объединение - **OUTER JOIN**. 
+
+Такое объединение вернет данные из обеих таблиц (совпадающие по условию объединения) **ПЛЮС**
+дополнит выборку оставшимися данными из внешней таблицы, которые по условию не подходят, 
+заполнив недостающие данные значением NULL.
+
+Существует два типа внешнего объединения OUTER JOIN - LEFT OUTER JOIN и RIGHT OUTER JOIN. 
+
+Работают они одинаково, разница заключается в том что LEFT - указывает что "внешней" таблицей 
+будет находящаяся слева (в нашем примере это таблица Cartoons) и наоборот. 
+
+----
+
+Left Outer Join
+===============
+
+.. image:: https://www.w3schools.com/sql/img_leftjoin.gif
+
+
+----
+
+
+Right Outer Join
+================
+
+.. image:: https://www.w3schools.com/sql/img_rightjoin.gif
+
+----
+
+
+Full Join
+==========
+
+.. image:: https://www.w3schools.com/sql/img_fulljoin.gif
+
 
 ----
 
