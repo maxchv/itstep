@@ -1,0 +1,11 @@
+1. Используя соединение inner join, outer left join и outer right join, full outer join
+   получить значения полей ContactName таблицы Customers и поля OrderID таблицы Orders базы данных northwind
+
+2. Используя объединение (union) таблицы Customers и Suppliers получить все уникальные 
+   города  (City) базы данных northwind отсортированные в алфавитном порядке
+
+3. Найти все города в таблице Customers начинающиеся с символа s
+
+4. В таблице Customers найти всех клиентов из Мексики (Mexico)
+
+5. В таблице Customers найти всех клиентов из Германии (Germany) и горда Берлин (Berlin)
