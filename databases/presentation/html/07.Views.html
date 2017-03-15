@@ -2344,10 +2344,8 @@ CREATE VIEW WESTREPS AS
 она исчезнет из представления, поскольку значение оценки не равно 300.
 Для решения проблемы можно использовать <strong>WITH CHECK OPTION</strong> в определении представления.</p>
 <pre><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">Highratings</span>
-   <span class="k">AS</span> <span class="k">SELECT</span> <span class="n">cnum</span><span class="p">,</span> <span class="n">rating</span>
-      <span class="k">FROM</span> <span class="n">Customers</span>
-      <span class="k">WHERE</span> <span class="n">rating</span> <span class="o">=</span> <span class="mi">300</span>
-      <span class="k">WITH</span> <span class="k">CHECK</span> <span class="k">OPTION</span><span class="p">;</span>
+   <span class="k">AS</span> <span class="k">SELECT</span> <span class="n">cnum</span><span class="p">,</span> <span class="n">rating</span> <span class="k">FROM</span> <span class="n">Customers</span>
+      <span class="k">WHERE</span> <span class="n">rating</span> <span class="o">=</span> <span class="mi">300</span> <span class="k">WITH</span> <span class="k">CHECK</span> <span class="k">OPTION</span><span class="p">;</span>
 </pre></section>
             
           </div>
