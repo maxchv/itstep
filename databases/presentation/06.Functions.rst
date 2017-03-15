@@ -574,7 +574,7 @@ GROUP BY
 
 1. Вывести общее количество товаров каждой категории
 
-.notes: :code:`select CategoryName, count(ProductID) as CountProducts from Products, Categories where Products.CategoryID=Categories.CategoryID group by CategoryName;`
+.notes: :code:`SELECT CategoryName, COUNT(categoryID) FROM products JOIN categories USING(categoryID) GROUP BY categoryID;`
 
 +----------------+---------------+
 | CategoryName   | CountProducts |
@@ -599,7 +599,7 @@ GROUP BY
 
 2. Определить среднеюю цену товаров каждой категории 
 
-.notes: :code:`select CategoryName, avg(UnitPrice) as AvgUnitPrice from Products, Categories where Products.CategoryID=Categories.CategoryID group by CategoryName;`
+.notes: :code:`SELECT CategoryName, AVG(UnitPrice) FROM products JOIN categories USING (CategoryID) GROUP BY CategoryID;;`
 
 +----------------+--------------+
 | CategoryName   | AvgUnitPrice |
