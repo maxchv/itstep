@@ -644,10 +644,8 @@ CHECK OPTION
 .. sourcecode:: sql
 
           CREATE VIEW Highratings
-             AS SELECT cnum, rating
-                FROM Customers
-                WHERE rating = 300
-                WITH CHECK OPTION;
+             AS SELECT cnum, rating FROM Customers
+                WHERE rating = 300 WITH CHECK OPTION;
 ----
 
 Задание
