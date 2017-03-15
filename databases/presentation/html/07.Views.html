@@ -1341,8 +1341,9 @@ div.slide div.presenter_notes {
             <header><h1>VIEWS</h1></header>
             
             
-            <section><p><strong>Представления</strong> - это виртульная таблица чье содержание выбирается или получается из других таблиц.</p>
-<p>Представления испоьзуются в запросах и операторах <strong>DML</strong> точно также как и основные таблицы, но не содержат никаких собственных данных.</p>
+            <section><p><strong>Представления</strong> - это виртульная таблица чье содержимое выбирается из других таблиц.</p>
+<p>Представления испоьзуются в запросах и операторах <strong>DML</strong> точно также как и основные таблицы,
+но представления не содержат никаких собственных данных.</p>
 <p><strong>Представление</strong> - это фактически SQL запрос, который выполняется всякий раз, когда происходит обращение к представлению.</p>
 <p>В представление можно добавлять функции SQL, команды WHERE, JOIN и представлять данные из различных таблиц так как будто они находятся в одной таблице.</p>
 <img alt="http://www.dotnetinterviewquestions.in/contentpics/view....png" src="http://www.dotnetinterviewquestions.in/contentpics/view....png" /></section>
@@ -1445,13 +1446,9 @@ div.slide div.presenter_notes {
 </pre>
 
 
-<h2>Пример</h2>
-
-
 <h2>Таблица Products</h2>
 <pre><span class="k">SELECT</span> <span class="n">ProductID</span><span class="p">,</span> <span class="n">ProductName</span><span class="p">,</span> <span class="n">Discontinued</span>
-    <span class="k">FROM</span> <span class="n">Products</span>
-    <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="k">FROM</span> <span class="n">Products</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
 </pre>
 <table border="1" class="docutils">
 <colgroup>
@@ -1616,11 +1613,11 @@ div.slide div.presenter_notes {
             
             <section><p>Условно, представления можно разделить на следующие типы:</p>
 <ol class="arabic simple">
-<li><a class="reference internal" href="#id9">Горизонтальные представления</a></li>
-<li><a class="reference internal" href="#id10">Вертикальные представления</a></li>
-<li><a class="reference internal" href="#id11">Смешанные представления</a></li>
-<li><a class="reference internal" href="#id13">Сгруппированные представления</a></li>
-<li><a class="reference internal" href="#id15">Соединенные представления</a></li>
+<li><a class="reference internal" href="#id8">Горизонтальные представления</a></li>
+<li><a class="reference internal" href="#id9">Вертикальные представления</a></li>
+<li><a class="reference internal" href="#id10">Смешанные представления</a></li>
+<li><a class="reference internal" href="#id12">Сгруппированные представления</a></li>
+<li><a class="reference internal" href="#id14">Соединенные представления</a></li>
 </ol></section>
             
           </div>
@@ -1789,8 +1786,8 @@ CREATE VIEW WESTREPS AS
             <header><h1>Сгруппированные представления</h1></header>
             
             
-            <section><p>Запрос, определяющий представление, может содержать предложение <strong>GROUP BY</strong>.</p>
-<p>Представление такого типа называется сгруппированным представлением, поскольку
+            <section><p>Запрос, определяющий представление, может содержать предложение <strong>GROUP BY</strong>.
+Представление такого типа называется сгруппированным представлением, поскольку
 данные в нем являются результатом запроса с группировкой.</p>
 <!-- Сгруппированные представления
 выполняют ту же функцию, что и запросы с группировкой, — в них родственные строки
@@ -2011,7 +2008,7 @@ CREATE VIEW WESTREPS AS
             
             <section><ol class="arabic simple">
 <li>Создайте представление которое бы показывало заказчиков
-которые имеют наивысший рейтинг (rating). Таблица <strong>Customers</strong>.</li>
+с наивысшим рейтингом (rating). Таблица <strong>Customers</strong>.</li>
 </ol>
 <p class="notes"><code class="sql">CREATE VIEW Highratings AS SELECT * FROM Customers WHERE rating=(SELECT MAX(rating) FROM Customers);</code></p>
 <!-- select * from Highratings; -->
