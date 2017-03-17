@@ -1,5 +1,6 @@
 CREATE TABLE if not exists Salespeople 
 (
+	snum   integer NOT NULL PRIMARY KEY auto_increment, 
 	sname  char(15) CHECK (sname BETWEEN 'AA' AND 'MZ'), 
 	city   varchar(15), 
 	comm   decimal(3,2) NOT NULL DEFAULT 0.10
@@ -17,6 +18,7 @@ select * from Salespeople;
 # ==================  ТАБЛИЦА 2:  ЗАКАЗЧИКИ  ===============
 CREATE TABLE if not exists Customers 
 (
+	cnum   integer primary key auto_increment, 
 	cname  char(10), 
 	city    char(10), 
 	rating  integer, 
