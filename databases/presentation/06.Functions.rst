@@ -122,6 +122,9 @@ AVG
 | Chef Anton's Gumbo Mix       |   21.3500 |
 +------------------------------+-----------+
 
+----
+
+.. image:: http://www.w3resource.com/w3r_images/mysql-exercises-aggregate-functions-result-5.png
 
 ----
 
@@ -217,6 +220,10 @@ COUNT
 .. sourcecode:: sql
 
     SELECT COUNT(DISTINCT CustomerID) AS NumberOfCustomers FROM Orders;
+
+----
+
+.. image:: http://www.w3resource.com/w3r_images/mysql-exercises-aggregate-functions-result-1.png
 
 ----
 
@@ -340,6 +347,10 @@ MAX
 
 ----
 
+.. image:: http://www.w3resource.com/w3r_images/mysql-exercises-aggregate-functions-result-4.png
+
+----
+
 MIN
 ===
 
@@ -385,6 +396,10 @@ MIN
 +================+
 |        10.0000 |
 +----------------+
+
+----
+
+.. image:: http://www.w3resource.com/w3r_images/mysql-exercises-aggregate-functions-result-3.png
 
 ----
 
@@ -440,6 +455,10 @@ SUM
 +===============+
 |           136 |
 +---------------+
+
+----
+
+.. image:: http://www.w3resource.com/w3r_images/mysql-exercises-aggregate-functions-result-2.png
 
 ----
 
@@ -562,6 +581,13 @@ GROUP BY
 | United Package   |              2 |
 +------------------+----------------+
 
+----
+
+.. image:: http://www.w3resource.com/w3r_images/mysql-exercises-aggregate-functions-result-7.png
+
+----
+
+.. image:: http://www.w3resource.com/w3r_images/mysql-exercises-aggregate-functions-result-10.png
 
 ----
 
@@ -744,6 +770,10 @@ SQL HAVING Syntax
 +-----------+-----------------------+
 | Peacock   |                   156 |
 +-----------+-----------------------+
+
+----
+
+.. image:: http://www.w3resource.com/w3r_images/mysql-exercises-aggregate-functions-result-13.png
 
 ----
 
