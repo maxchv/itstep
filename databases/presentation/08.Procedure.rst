@@ -110,6 +110,27 @@
 
 ----
 
+Хранимые процедуры в MS SQL
+---------------------------
+
+Синтаксис:
+
+.. sourcecode:: sql
+
+	CREATE PROC [ EDURE ] procedure_name [ ; number ] 
+		[ { @parameter data_type } 
+			[ VARYING ] [ = default ] [ OUTPUT ] 
+		] [ ,...n ] 
+
+	[ WITH 
+		{ RECOMPILE | ENCRYPTION | RECOMPILE , ENCRYPTION } ] 
+
+	[ FOR REPLICATION ] 
+
+	AS sql_statement [ ...n ]
+
+----
+
 Пример создания процедуры в MS SQL
 ==================================
 
@@ -119,17 +140,17 @@
 .. sourcecode:: sql
    
     CREATE PROCEDURE procedure1                     /* имя              */
-        (IN @parameter1 INTEGER)                    /* входной параметр */
+        (@parameter1 INTEGER)                       /* входной параметр */
 		AS
-
             DECLARE @variable1 CHAR(10);            /* переменные       */
             IF @parameter1 = 17 THEN                /* начало IF        */
                 SET @variable1 = 'birds';           /* присвоение       */
             ELSE
                 SET @variable1 = 'beasts';          /* присвоение       */
-            END IF;                                 /* конец IF         */
+            END                                     /* конец IF         */
             INSERT INTO table1 VALUES (@variable1); /* запрос           */
-        GO                                          
+        GO   
+	
 
 Вызов процедуры
 ---------------
@@ -211,7 +232,7 @@
     SELECT * FROM `data` WHERE `id` = @iVar;
 
     DECLARE @iVar INT = 0;
-    SELECT COUNT(*) INTO @iVar FROM `data`;
+    SELECT @iVar = COUNT(*) FROM `data`;
 
 ----
 
@@ -219,7 +240,7 @@
 Параметры
 =========
 
-.. Хранимые процедуры могут иметь **IN**, **OUT** и **INOUT** параметры.
+.. Хранимые процедуры в mysql могут иметь **IN**, **OUT** и **INOUT** параметры.
 
 IN
 --
@@ -330,7 +351,6 @@ DELIMITER
     SET @title = '';
     CALL get_title(1, @title);
     SELECT @title;
-
 
 ----
 
@@ -491,7 +511,7 @@ CASE
        WHEN <значение 2> THEN <команды 2>
        ...
        ELSE <команды n>
-    END CASE;
+    END <CASE>;
 
 
 ----
@@ -606,6 +626,9 @@ CASE
 
     WHILE условие DO
         действие;
+		[BREAK]
+		действие;
+		[CONTINUE]
     END WHILE;
 
 .. image:: http://www.mysqltutorial.org/wp-content/uploads/2009/12/mysql-while-loop.jpg
@@ -829,6 +852,157 @@ CASE
     FROM
         customers
     ORDER BY customerName;
+
+----
+
+Хранимые функции Transact-SQL
+-----------------------------
+
+.. http://www.flenov.info/books.php?contentid=42
+
+Сервер SQL поддерживает три типа функций определенных пользователем:
+
+* Скалярные функции – похожи на встроенные функции;
+* Функция, возвращающая таблицу - возвращает результат единичного оператора SELECT. 
+  Он похож на объект просмотра, но имеет большую эластичность благодаря использованию параметров, 
+  и расширяет возможности индексированного объекта просмотра;
+* Многооператорная функция - возвращает таблицу созданную одним или несколькими операторами 
+  Transact-SQL, чем напоминает хранимые процедуры. В отличие от процедур, на такие функции можно 
+  ссылаться в WHERE как на объект просмотра.
+
+----
+
+Создание хранимой функции в MS SQL
+----------------------------------
+
+Скалярная функция:
+~~~~~~~~~~~~~~~~~~ 
+
+.. sourcecode:: sql
+
+	CREATE  FUNCTION [ owner_name. ] function_name 
+		( [ { @parameter_name [AS] scalar_parameter_data_type [ = default ] } 
+		  [ ,...n ] ] ) 
+
+	RETURNS scalar_return_data_type
+
+	[ WITH < function_option> [ [,] ...n] ] 
+
+	[ AS ]
+
+	BEGIN 
+		function_body 
+		RETURN scalar_expression
+	END
+
+----
+
+Пример создания скалярной функции
+---------------------------------
+
+.. sourcecode:: sql
+
+	CREATE FUNCTION GetSumm
+	 (@name varchar(50), @date datetime)
+	RETURNS numeric(10,2)
+	 BEGIN
+	  DECLARE @Summ numeric(10,2)
+	  SELECT @Summ = Цена*Количество
+	  FROM Товары
+	  WHERE [Название товара]=@name
+		AND Дата=@date;
+	  RETURN @Summ
+	 END
+	 
+Использование функций
+---------------------
+
+Как выполнить такую функцию? Да также, как и многие другие системные функции (например, GETDATE()). 
+Например, следующий пример использует функцию в операторе SELECT:
+
+.. sourcecode:: sql
+
+	SELECT dbo.GetSumm('Картофель', '03.03.2017')
+
+Функции можно использовать и напрямую, присваивая значение переменной. Например: 	
+
+.. sourcecode:: sql
+
+	DECLARE @Summ numeric(10,2)
+	SET @Summ=dbo.GetSumm('Картофель', '03.03.2005')
+	PRINT @Summ
+	
+----
+
+Функция, возвращающая таблицу:
+------------------------------
+
+.. sourcecode:: sql
+
+	CREATE FUNCTION [ owner_name. ] function_name 
+		( [ { @parameter_name [AS] scalar_parameter_data_type [ = default ] } 
+		 [ ,...n ] ] ) 
+
+	RETURNS TABLE 
+
+	[ WITH < function_option > [ [,] ...n ] ] 
+
+	[ AS ] 
+
+	RETURN [ ( ] select-stmt [ ) ]
+
+----
+
+Пример функции
+--------------
+
+Рассмотрим пример функции возвращающая таблицу:
+
+.. sourcecode:: sql
+
+	CREATE FUNCTION GetPrice()
+	RETURNS TABLE
+	AS
+	 RETURN 
+	 (
+	  SELECT Дата, [Название товара], Цена, 
+		Количество, Цена*Количество AS Сумма
+	  FROM Товары
+	 )
+	 
+Посмотрим, как можно использовать такую функцию с помощью оператора SELECT: 
+
+.. sourcecode:: sql
+
+	SELECT * FROM GetPrice()
+
+----
+
+Многооператорные функции:
+-------------------------
+
+.. sourcecode:: sql
+
+	CREATE FUNCTION [ owner_name. ] function_name 
+		( [ { @parameter_name [AS] scalar_parameter_data_type [ = default ] } 
+		 [ ,...n ] ] ) 
+
+	RETURNS @return_variable TABLE < table_type_definition > 
+
+	[ WITH < function_option > [ [,] ...n ] ] 
+
+	[ AS ] 
+
+	BEGIN 
+		function_body 
+		RETURN
+	END
+
+	< function_option > ::= 
+		{ ENCRYPTION | SCHEMABINDING }
+
+	< table_type_definition > :: = 
+		( { column_definition | table_constraint } [ ,...n ] ) 
 
 ----
 
@@ -1102,10 +1276,13 @@ CASE
 
 - `MySQL Stored Procedures`_
 - `CREATE PROCEDURE (Transact-SQL)`_
--  `CREATE PROCEDURE Oracle Database Online Documentation`_
+- `CREATE PROCEDURE Oracle Database Online Documentation`_
 - `Хранимые процедуры и триггеры`_
 - `Хранимые процедуры и триггеры. Активные базы данных`_
 - `Работа с trigger (триггерами) в MySQL`_
+- `Transact-SQL В подлиннике`_
+
+.. _Transact-SQL В подлиннике: http://www.flenov.info/books.php?id=10
 
 .. _MySQL Stored Procedures:  http://www.peregrinesalon.com/wp-content/uploads/2009/03/mysql-stored-procedures.pdf
 
