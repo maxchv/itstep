@@ -131,8 +131,8 @@
 
 ----
 
-Пример создания процедуры в MS SQL
-==================================
+Пример процедуры в MS SQL
+=========================
 
 Синтаксис
 ---------
@@ -140,14 +140,13 @@
 .. sourcecode:: sql
    
     CREATE PROCEDURE procedure1                     /* имя              */
-        (@parameter1 INTEGER)                       /* входной параметр */
+        @parameter1 INTEGER                         /* входной параметр */
 		AS
             DECLARE @variable1 CHAR(10);            /* переменные       */
-            IF @parameter1 = 17 THEN                /* начало IF        */
+            IF @parameter1 = 17                     /* начало IF        */
                 SET @variable1 = 'birds';           /* присвоение       */
             ELSE
-                SET @variable1 = 'beasts';          /* присвоение       */
-            END                                     /* конец IF         */
+                SET @variable1 = 'beasts';          /* присвоение       */            
             INSERT INTO table1 VALUES (@variable1); /* запрос           */
         GO   
 	
@@ -416,13 +415,13 @@ DELIMITER
 .. sourcecode:: sql
 
     IF <условие> 
-	[BEGIN]
-        <действие 1>;
-	[END]
+		[BEGIN]
+			<действие 1>;
+		[END]
     ELSE
-	[BEGIN]
-        <действие 2>;
-    [END]
+		[BEGIN]
+			<действие 2>;
+		[END]
 	GO
 
 .. https://msdn.microsoft.com/en-us/library/ms182587.aspx
@@ -481,6 +480,30 @@ DELIMITER
 ----
 
 .. image:: http://www.mysqltutorial.org/wp-content/uploads/2013/01/mysql-if-statement-flow-chart.png
+
+----
+
+Пример условий в MS SQL
+-----------------------
+
+.. sourcecode:: sql
+
+	-- Uses AdventureWorksDW  
+	  
+	DECLARE @maxWeight float, @productKey integer  
+	SET @maxWeight = 100.00  
+	SET @productKey = 424  
+	IF @maxWeight <= (SELECT Weight from DimProduct 
+					  WHERE ProductKey = @productKey)   
+		(SELECT @productKey AS ProductKey, EnglishDescription, Weight, 
+		'This product is too heavy to ship and is only available for pickup.' 
+			AS ShippingStatus
+		FROM DimProduct WHERE ProductKey = @productKey);  
+	ELSE  
+		(SELECT @productKey AS ProductKey, EnglishDescription, Weight, 
+		'This product is available for shipping or pickup.' 
+			AS ShippingStatus
+		FROM DimProduct WHERE ProductKey = @productKey);
 
 ----
 
@@ -575,7 +598,7 @@ CASE
         WHEN <условие_2> THEN <команды_2>
         ...
         ELSE <команды_n>
-    END CASE;
+    END <CASE>;
 
 ----
 
@@ -622,14 +645,19 @@ CASE
 
 Запрос будет выполняться до тех пор, пока условие истинно.
 
+mysql:
+
 .. sourcecode:: sql
 
     WHILE условие DO
         действие;
-		[BREAK]
-		действие;
-		[CONTINUE]
-    END WHILE;
+    END <WHILE>;
+	
+MS SQL:
+	
+.. sourcecode:: sql
+	WHILE условие   
+     { sql_statement | statement_block | BREAK | CONTINUE }
 
 .. image:: http://www.mysqltutorial.org/wp-content/uploads/2009/12/mysql-while-loop.jpg
 
@@ -679,8 +707,8 @@ CASE
 Сам же цикл выполняется, пока условие ложно.
 
 
-Синтаксис
----------
+Синтаксис mysql
+---------------
 
 .. sourcecode:: sql
 
@@ -728,8 +756,8 @@ CASE
 
 
 
-Синтаксис
----------
+Синтаксис mysql
+---------------
 
 .. sourcecode:: sql
 
@@ -769,8 +797,8 @@ CASE
 
 ----
 
-Сохраненные функции
-===================
+Хранимые функции
+================
 
 .. http://www.mysqltutorial.org/mysql-stored-function/
 
@@ -779,7 +807,7 @@ CASE
     You use stored functions to encapsulate common formulas or business rules that
     are reusable among SQL statements or stored programs.
 
-Сохраненные функции это подпрограммы, которые возвращают скалярное значение.
+Хранимые функции это подпрограммы, которые возвращают скалярное значение.
 
 ..
     Different from a stored procedure, you can use a stored function in SQL
@@ -872,8 +900,8 @@ CASE
 
 ----
 
-Создание хранимой функции в MS SQL
-----------------------------------
+Создание функции в MS SQL
+-------------------------
 
 Скалярная функция:
 ~~~~~~~~~~~~~~~~~~ 
