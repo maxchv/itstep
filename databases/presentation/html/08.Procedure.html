@@ -1327,7 +1327,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              1/41
+              1/48
             </aside>
           </footer>
         </div>
@@ -1361,7 +1361,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              2/41
+              2/48
             </aside>
           </footer>
         </div>
@@ -1406,7 +1406,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              3/41
+              3/48
             </aside>
           </footer>
         </div>
@@ -1455,7 +1455,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              4/41
+              4/48
             </aside>
           </footer>
         </div>
@@ -1506,7 +1506,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              5/41
+              5/48
             </aside>
           </footer>
         </div>
@@ -1517,20 +1517,61 @@ div.slide div.presenter_notes {
         <div class="slide slide-6">
           <div class="inner">
             
+            <header><h2>Хранимые процедуры в MS SQL</h2></header>
+            
+            
+            <section><p>Синтаксис:</p>
+<pre><span class="k">CREATE</span> <span class="n">PROC</span> <span class="p">[</span> <span class="n">EDURE</span> <span class="p">]</span> <span class="n">procedure_name</span> <span class="p">[</span> <span class="p">;</span> <span class="nb">number</span> <span class="p">]</span>
+        <span class="p">[</span> <span class="err">{</span> <span class="o">@</span><span class="k">parameter</span> <span class="n">data_type</span> <span class="err">}</span>
+                <span class="p">[</span> <span class="nb">VARYING</span> <span class="p">]</span> <span class="p">[</span> <span class="o">=</span> <span class="k">default</span> <span class="p">]</span> <span class="p">[</span> <span class="k">OUTPUT</span> <span class="p">]</span>
+        <span class="p">]</span> <span class="p">[</span> <span class="p">,...</span><span class="n">n</span> <span class="p">]</span>
+
+<span class="p">[</span> <span class="k">WITH</span>
+        <span class="err">{</span> <span class="n">RECOMPILE</span> <span class="o">|</span> <span class="n">ENCRYPTION</span> <span class="o">|</span> <span class="n">RECOMPILE</span> <span class="p">,</span> <span class="n">ENCRYPTION</span> <span class="err">}</span> <span class="p">]</span>
+
+<span class="p">[</span> <span class="k">FOR</span> <span class="n">REPLICATION</span> <span class="p">]</span>
+
+<span class="k">AS</span> <span class="n">sql_statement</span> <span class="p">[</span> <span class="p">...</span><span class="n">n</span> <span class="p">]</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="08.Procedure.rst">08.Procedure.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 08.Procedure.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-7">
+          <div class="inner">
+            
             <header><h1>Пример создания процедуры в MS SQL</h1></header>
             
             
             <section><h2>Синтаксис</h2>
 <pre><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">procedure1</span>                     <span class="cm">/* имя              */</span>
-    <span class="p">(</span><span class="k">IN</span> <span class="o">@</span><span class="n">parameter1</span> <span class="nb">INTEGER</span><span class="p">)</span>                    <span class="cm">/* входной параметр */</span>
+    <span class="p">(</span><span class="o">@</span><span class="n">parameter1</span> <span class="nb">INTEGER</span><span class="p">)</span>                       <span class="cm">/* входной параметр */</span>
             <span class="k">AS</span>
-
         <span class="k">DECLARE</span> <span class="o">@</span><span class="n">variable1</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>            <span class="cm">/* переменные       */</span>
         <span class="n">IF</span> <span class="o">@</span><span class="n">parameter1</span> <span class="o">=</span> <span class="mi">17</span> <span class="k">THEN</span>                <span class="cm">/* начало IF        */</span>
             <span class="k">SET</span> <span class="o">@</span><span class="n">variable1</span> <span class="o">=</span> <span class="s1">&#39;birds&#39;</span><span class="p">;</span>           <span class="cm">/* присвоение       */</span>
         <span class="k">ELSE</span>
             <span class="k">SET</span> <span class="o">@</span><span class="n">variable1</span> <span class="o">=</span> <span class="s1">&#39;beasts&#39;</span><span class="p">;</span>          <span class="cm">/* присвоение       */</span>
-        <span class="k">END</span> <span class="n">IF</span><span class="p">;</span>                                 <span class="cm">/* конец IF         */</span>
+        <span class="k">END</span>                                     <span class="cm">/* конец IF         */</span>
         <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">table1</span> <span class="k">VALUES</span> <span class="p">(</span><span class="o">@</span><span class="n">variable1</span><span class="p">);</span> <span class="cm">/* запрос           */</span>
     <span class="k">GO</span>
 </pre>
@@ -1554,7 +1595,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              6/41
+              7/48
             </aside>
           </footer>
         </div>
@@ -1562,7 +1603,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-7">
+        <div class="slide slide-8">
           <div class="inner">
             
             <header><h1>Переменные в mysql</h1></header>
@@ -1614,7 +1655,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              7/41
+              8/48
             </aside>
           </footer>
         </div>
@@ -1622,7 +1663,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-8">
+        <div class="slide slide-9">
           <div class="inner">
             
             <header><h1>Переменные в MS SQL</h1></header>
@@ -1642,7 +1683,7 @@ div.slide div.presenter_notes {
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="o">`</span><span class="k">data</span><span class="o">`</span> <span class="k">WHERE</span> <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="o">=</span> <span class="o">@</span><span class="n">iVar</span><span class="p">;</span>
 
 <span class="k">DECLARE</span> <span class="o">@</span><span class="n">iVar</span> <span class="nb">INT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">INTO</span> <span class="o">@</span><span class="n">iVar</span> <span class="k">FROM</span> <span class="o">`</span><span class="k">data</span><span class="o">`</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">@</span><span class="n">iVar</span> <span class="o">=</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="o">`</span><span class="k">data</span><span class="o">`</span><span class="p">;</span>
 </pre></section>
             
           </div>
@@ -1659,7 +1700,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              8/41
+              9/48
             </aside>
           </footer>
         </div>
@@ -1667,13 +1708,13 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-9">
+        <div class="slide slide-10">
           <div class="inner">
             
             <header><h1>Параметры</h1></header>
             
             
-            <section><!-- Хранимые процедуры могут иметь **IN**, **OUT** и **INOUT** параметры. -->
+            <section><!-- Хранимые процедуры в mysql могут иметь **IN**, **OUT** и **INOUT** параметры. -->
 
 <h2>IN</h2>
 <p>По умолчанию. Этот параметр принимается процедурой и может изменяться внутри процедуру, но не может изменятся вне процедуры.</p>
@@ -1714,7 +1755,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              9/41
+              10/48
             </aside>
           </footer>
         </div>
@@ -1722,7 +1763,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-10">
+        <div class="slide slide-11">
           <div class="inner">
             
             <header><h1>DELIMITER</h1></header>
@@ -1763,7 +1804,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              10/41
+              11/48
             </aside>
           </footer>
         </div>
@@ -1771,7 +1812,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-11">
+        <div class="slide slide-12">
           <div class="inner">
             
             <header><h1>Команда SELECT ... INTO</h1></header>
@@ -1818,7 +1859,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              11/41
+              12/48
             </aside>
           </footer>
         </div>
@@ -1826,7 +1867,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-12">
+        <div class="slide slide-13">
           <div class="inner">
             
             <header><h1>Условие IF в mysql</h1></header>
@@ -1853,7 +1894,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              12/41
+              13/48
             </aside>
           </footer>
         </div>
@@ -1861,7 +1902,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-13">
+        <div class="slide slide-14">
           <div class="inner">
             
             <header><h1>Условие IF в MS SQL</h1></header>
@@ -1890,7 +1931,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              13/41
+              14/48
             </aside>
           </footer>
         </div>
@@ -1898,7 +1939,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-14">
+        <div class="slide slide-15">
           <div class="inner">
             
             <header><h1>Условие IF .. ELSE в mysql</h1></header>
@@ -1927,7 +1968,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              14/41
+              15/48
             </aside>
           </footer>
         </div>
@@ -1935,7 +1976,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-15">
+        <div class="slide slide-16">
           <div class="inner">
             
             <header><h1>Условие IF .. ELSE в MS SQL</h1></header>
@@ -1968,7 +2009,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              15/41
+              16/48
             </aside>
           </footer>
         </div>
@@ -1976,7 +2017,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-16">
+        <div class="slide slide-17">
           <div class="inner">
             
             <header><h1>Условие IF .. ELSEIF .. ELSE в mysql</h1></header>
@@ -2008,7 +2049,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              16/41
+              17/48
             </aside>
           </footer>
         </div>
@@ -2016,7 +2057,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-17">
+        <div class="slide slide-18">
           <div class="inner">
             
             <header><h1>Пример применения условий</h1></header>
@@ -2059,7 +2100,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              17/41
+              18/48
             </aside>
           </footer>
         </div>
@@ -2067,7 +2108,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-18">
+        <div class="slide slide-19">
           <div class="inner">
             
             
@@ -2087,7 +2128,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              18/41
+              19/48
             </aside>
           </footer>
         </div>
@@ -2095,7 +2136,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-19">
+        <div class="slide slide-20">
           <div class="inner">
             
             <header><h1>CASE</h1></header>
@@ -2116,7 +2157,7 @@ div.slide div.presenter_notes {
    <span class="k">WHEN</span> <span class="o">&lt;</span><span class="err">значение</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="k">THEN</span> <span class="o">&lt;</span><span class="err">команды</span> <span class="mi">2</span><span class="o">&gt;</span>
    <span class="p">...</span>
    <span class="k">ELSE</span> <span class="o">&lt;</span><span class="err">команды</span> <span class="n">n</span><span class="o">&gt;</span>
-<span class="k">END</span> <span class="k">CASE</span><span class="p">;</span>
+<span class="k">END</span> <span class="o">&lt;</span><span class="k">CASE</span><span class="o">&gt;</span><span class="p">;</span>
 </pre></section>
             
           </div>
@@ -2133,7 +2174,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              19/41
+              20/48
             </aside>
           </footer>
         </div>
@@ -2141,7 +2182,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-20">
+        <div class="slide slide-21">
           <div class="inner">
             
             <header><h1>Пример CASE</h1></header>
@@ -2185,7 +2226,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              20/41
+              21/48
             </aside>
           </footer>
         </div>
@@ -2193,7 +2234,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-21">
+        <div class="slide slide-22">
           <div class="inner">
             
             <header><h1>Пример CASE</h1></header>
@@ -2215,7 +2256,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              21/41
+              22/48
             </aside>
           </footer>
         </div>
@@ -2223,7 +2264,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-22">
+        <div class="slide slide-23">
           <div class="inner">
             
             <header><h1>Поисковый CASE</h1></header>
@@ -2257,7 +2298,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              22/41
+              23/48
             </aside>
           </footer>
         </div>
@@ -2265,7 +2306,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-23">
+        <div class="slide slide-24">
           <div class="inner">
             
             <header><h1>Пример применения CASE</h1></header>
@@ -2323,7 +2364,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              23/41
+              24/48
             </aside>
           </footer>
         </div>
@@ -2331,7 +2372,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-24">
+        <div class="slide slide-25">
           <div class="inner">
             
             <header><h1>Цикл WHILE</h1></header>
@@ -2340,6 +2381,9 @@ div.slide div.presenter_notes {
             <section><p>Запрос будет выполняться до тех пор, пока условие истинно.</p>
 <pre><span class="n">WHILE</span> <span class="err">условие</span> <span class="k">DO</span>
     <span class="err">действие</span><span class="p">;</span>
+            <span class="p">[</span><span class="n">BREAK</span><span class="p">]</span>
+            <span class="err">действие</span><span class="p">;</span>
+            <span class="p">[</span><span class="k">CONTINUE</span><span class="p">]</span>
 <span class="k">END</span> <span class="n">WHILE</span><span class="p">;</span>
 </pre>
 <img alt="http://www.mysqltutorial.org/wp-content/uploads/2009/12/mysql-while-loop.jpg" src="http://www.mysqltutorial.org/wp-content/uploads/2009/12/mysql-while-loop.jpg" /></section>
@@ -2358,7 +2402,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              24/41
+              25/48
             </aside>
           </footer>
         </div>
@@ -2366,7 +2410,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-25">
+        <div class="slide slide-26">
           <div class="inner">
             
             <header><h1>Пример цикла WHILE</h1></header>
@@ -2422,7 +2466,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              25/41
+              26/48
             </aside>
           </footer>
         </div>
@@ -2430,7 +2474,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-26">
+        <div class="slide slide-27">
           <div class="inner">
             
             <header><h1>Цикл REPEAT</h1></header>
@@ -2460,7 +2504,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              26/41
+              27/48
             </aside>
           </footer>
         </div>
@@ -2468,7 +2512,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-27">
+        <div class="slide slide-28">
           <div class="inner">
             
             <header><h1>Пример цикла REPEAT</h1></header>
@@ -2508,7 +2552,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              27/41
+              28/48
             </aside>
           </footer>
         </div>
@@ -2516,7 +2560,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-28">
+        <div class="slide slide-29">
           <div class="inner">
             
             <header><h1>Цикл LOOP</h1></header>
@@ -2545,7 +2589,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              28/41
+              29/48
             </aside>
           </footer>
         </div>
@@ -2553,7 +2597,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-29">
+        <div class="slide slide-30">
           <div class="inner">
             
             <header><h1>Пример цикла LOOP</h1></header>
@@ -2598,7 +2642,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              29/41
+              30/48
             </aside>
           </footer>
         </div>
@@ -2606,7 +2650,7 @@ div.slide div.presenter_notes {
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-30">
+        <div class="slide slide-31">
           <div class="inner">
             
             <header><h1>Сохраненные функции</h1></header>
@@ -2653,7 +2697,7 @@ readability and maintainability of the procedural code. -->
             </aside>
             
             <aside class="page_number">
-              30/41
+              31/48
             </aside>
           </footer>
         </div>
@@ -2661,7 +2705,7 @@ readability and maintainability of the procedural code. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-31">
+        <div class="slide slide-32">
           <div class="inner">
             
             <header><h1>Пример создания функции</h1></header>
@@ -2708,7 +2752,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              31/41
+              32/48
             </aside>
           </footer>
         </div>
@@ -2716,7 +2760,279 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-32">
+        <div class="slide slide-33">
+          <div class="inner">
+            
+            <header><h2>Хранимые функции Transact-SQL</h2></header>
+            
+            
+            <section><!-- http://www.flenov.info/books.php?contentid=42 -->
+<p>Сервер SQL поддерживает три типа функций определенных пользователем:</p>
+<ul class="simple">
+<li>Скалярные функции – похожи на встроенные функции;</li>
+<li>Функция, возвращающая таблицу - возвращает результат единичного оператора SELECT.
+Он похож на объект просмотра, но имеет большую эластичность благодаря использованию параметров,
+и расширяет возможности индексированного объекта просмотра;</li>
+<li>Многооператорная функция - возвращает таблицу созданную одним или несколькими операторами
+Transact-SQL, чем напоминает хранимые процедуры. В отличие от процедур, на такие функции можно
+ссылаться в WHERE как на объект просмотра.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="08.Procedure.rst">08.Procedure.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              33/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 08.Procedure.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-34">
+          <div class="inner">
+            
+            <header><h2>Создание хранимой функции в MS SQL</h2></header>
+            
+            
+            <section><h3>Скалярная функция:</h3>
+<pre><span class="k">CREATE</span>  <span class="k">FUNCTION</span> <span class="p">[</span> <span class="n">owner_name</span><span class="p">.</span> <span class="p">]</span> <span class="n">function_name</span>
+        <span class="p">(</span> <span class="p">[</span> <span class="err">{</span> <span class="o">@</span><span class="n">parameter_name</span> <span class="p">[</span><span class="k">AS</span><span class="p">]</span> <span class="n">scalar_parameter_data_type</span> <span class="p">[</span> <span class="o">=</span> <span class="k">default</span> <span class="p">]</span> <span class="err">}</span>
+          <span class="p">[</span> <span class="p">,...</span><span class="n">n</span> <span class="p">]</span> <span class="p">]</span> <span class="p">)</span>
+
+<span class="k">RETURNS</span> <span class="n">scalar_return_data_type</span>
+
+<span class="p">[</span> <span class="k">WITH</span> <span class="o">&lt;</span> <span class="n">function_option</span><span class="o">&gt;</span> <span class="p">[</span> <span class="p">[,]</span> <span class="p">...</span><span class="n">n</span><span class="p">]</span> <span class="p">]</span>
+
+<span class="p">[</span> <span class="k">AS</span> <span class="p">]</span>
+
+<span class="k">BEGIN</span>
+        <span class="n">function_body</span>
+        <span class="k">RETURN</span> <span class="n">scalar_expression</span>
+<span class="k">END</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="08.Procedure.rst">08.Procedure.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              34/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 08.Procedure.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-35">
+          <div class="inner">
+            
+            <header><h2>Пример создания скалярной функции</h2></header>
+            
+            
+            <section><pre><span class="k">CREATE</span> <span class="k">FUNCTION</span> <span class="n">GetSumm</span>
+ <span class="p">(</span><span class="o">@</span><span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="o">@</span><span class="nb">date</span> <span class="n">datetime</span><span class="p">)</span>
+<span class="k">RETURNS</span> <span class="nb">numeric</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+ <span class="k">BEGIN</span>
+  <span class="k">DECLARE</span> <span class="o">@</span><span class="n">Summ</span> <span class="nb">numeric</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+  <span class="k">SELECT</span> <span class="o">@</span><span class="n">Summ</span> <span class="o">=</span> <span class="err">Цена</span><span class="o">*</span><span class="err">Количество</span>
+  <span class="k">FROM</span> <span class="err">Товары</span>
+  <span class="k">WHERE</span> <span class="p">[</span><span class="err">Название</span> <span class="err">товара</span><span class="p">]</span><span class="o">=@</span><span class="n">name</span>
+        <span class="k">AND</span> <span class="err">Дата</span><span class="o">=@</span><span class="nb">date</span><span class="p">;</span>
+  <span class="k">RETURN</span> <span class="o">@</span><span class="n">Summ</span>
+ <span class="k">END</span>
+</pre>
+
+
+<h2>Использование функций</h2>
+<p>Как выполнить такую функцию? Да также, как и многие другие системные функции (например, GETDATE()).
+Например, следующий пример использует функцию в операторе SELECT:</p>
+<pre><span class="k">SELECT</span> <span class="n">dbo</span><span class="p">.</span><span class="n">GetSumm</span><span class="p">(</span><span class="s1">&#39;Картофель&#39;</span><span class="p">,</span> <span class="s1">&#39;03.03.2017&#39;</span><span class="p">)</span>
+</pre>
+<p>Функции можно использовать и напрямую, присваивая значение переменной. Например:</p>
+<pre><span class="k">DECLARE</span> <span class="o">@</span><span class="n">Summ</span> <span class="nb">numeric</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">SET</span> <span class="o">@</span><span class="n">Summ</span><span class="o">=</span><span class="n">dbo</span><span class="p">.</span><span class="n">GetSumm</span><span class="p">(</span><span class="s1">&#39;Картофель&#39;</span><span class="p">,</span> <span class="s1">&#39;03.03.2005&#39;</span><span class="p">)</span>
+<span class="n">PRINT</span> <span class="o">@</span><span class="n">Summ</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="08.Procedure.rst">08.Procedure.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              35/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 08.Procedure.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-36">
+          <div class="inner">
+            
+            <header><h2>Функция, возвращающая таблицу:</h2></header>
+            
+            
+            <section><pre><span class="k">CREATE</span> <span class="k">FUNCTION</span> <span class="p">[</span> <span class="n">owner_name</span><span class="p">.</span> <span class="p">]</span> <span class="n">function_name</span>
+        <span class="p">(</span> <span class="p">[</span> <span class="err">{</span> <span class="o">@</span><span class="n">parameter_name</span> <span class="p">[</span><span class="k">AS</span><span class="p">]</span> <span class="n">scalar_parameter_data_type</span> <span class="p">[</span> <span class="o">=</span> <span class="k">default</span> <span class="p">]</span> <span class="err">}</span>
+         <span class="p">[</span> <span class="p">,...</span><span class="n">n</span> <span class="p">]</span> <span class="p">]</span> <span class="p">)</span>
+
+<span class="k">RETURNS</span> <span class="k">TABLE</span>
+
+<span class="p">[</span> <span class="k">WITH</span> <span class="o">&lt;</span> <span class="n">function_option</span> <span class="o">&gt;</span> <span class="p">[</span> <span class="p">[,]</span> <span class="p">...</span><span class="n">n</span> <span class="p">]</span> <span class="p">]</span>
+
+<span class="p">[</span> <span class="k">AS</span> <span class="p">]</span>
+
+<span class="k">RETURN</span> <span class="p">[</span> <span class="p">(</span> <span class="p">]</span> <span class="k">select</span><span class="o">-</span><span class="n">stmt</span> <span class="p">[</span> <span class="p">)</span> <span class="p">]</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="08.Procedure.rst">08.Procedure.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              36/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 08.Procedure.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-37">
+          <div class="inner">
+            
+            <header><h2>Пример функции</h2></header>
+            
+            
+            <section><p>Рассмотрим пример функции возвращающая таблицу:</p>
+<pre><span class="k">CREATE</span> <span class="k">FUNCTION</span> <span class="n">GetPrice</span><span class="p">()</span>
+<span class="k">RETURNS</span> <span class="k">TABLE</span>
+<span class="k">AS</span>
+ <span class="k">RETURN</span>
+ <span class="p">(</span>
+  <span class="k">SELECT</span> <span class="err">Дата</span><span class="p">,</span> <span class="p">[</span><span class="err">Название</span> <span class="err">товара</span><span class="p">],</span> <span class="err">Цена</span><span class="p">,</span>
+        <span class="err">Количество</span><span class="p">,</span> <span class="err">Цена</span><span class="o">*</span><span class="err">Количество</span> <span class="k">AS</span> <span class="err">Сумма</span>
+  <span class="k">FROM</span> <span class="err">Товары</span>
+ <span class="p">)</span>
+</pre>
+<p>Посмотрим, как можно использовать такую функцию с помощью оператора SELECT:</p>
+<pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">GetPrice</span><span class="p">()</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="08.Procedure.rst">08.Procedure.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              37/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 08.Procedure.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-38">
+          <div class="inner">
+            
+            <header><h2>Многооператорные функции:</h2></header>
+            
+            
+            <section><pre><span class="k">CREATE</span> <span class="k">FUNCTION</span> <span class="p">[</span> <span class="n">owner_name</span><span class="p">.</span> <span class="p">]</span> <span class="n">function_name</span>
+        <span class="p">(</span> <span class="p">[</span> <span class="err">{</span> <span class="o">@</span><span class="n">parameter_name</span> <span class="p">[</span><span class="k">AS</span><span class="p">]</span> <span class="n">scalar_parameter_data_type</span> <span class="p">[</span> <span class="o">=</span> <span class="k">default</span> <span class="p">]</span> <span class="err">}</span>
+         <span class="p">[</span> <span class="p">,...</span><span class="n">n</span> <span class="p">]</span> <span class="p">]</span> <span class="p">)</span>
+
+<span class="k">RETURNS</span> <span class="o">@</span><span class="n">return_variable</span> <span class="k">TABLE</span> <span class="o">&lt;</span> <span class="n">table_type_definition</span> <span class="o">&gt;</span>
+
+<span class="p">[</span> <span class="k">WITH</span> <span class="o">&lt;</span> <span class="n">function_option</span> <span class="o">&gt;</span> <span class="p">[</span> <span class="p">[,]</span> <span class="p">...</span><span class="n">n</span> <span class="p">]</span> <span class="p">]</span>
+
+<span class="p">[</span> <span class="k">AS</span> <span class="p">]</span>
+
+<span class="k">BEGIN</span>
+        <span class="n">function_body</span>
+        <span class="k">RETURN</span>
+<span class="k">END</span>
+
+<span class="o">&lt;</span> <span class="n">function_option</span> <span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span>
+        <span class="err">{</span> <span class="n">ENCRYPTION</span> <span class="o">|</span> <span class="n">SCHEMABINDING</span> <span class="err">}</span>
+
+<span class="o">&lt;</span> <span class="n">table_type_definition</span> <span class="o">&gt;</span> <span class="p">::</span> <span class="o">=</span>
+        <span class="p">(</span> <span class="err">{</span> <span class="n">column_definition</span> <span class="o">|</span> <span class="n">table_constraint</span> <span class="err">}</span> <span class="p">[</span> <span class="p">,...</span><span class="n">n</span> <span class="p">]</span> <span class="p">)</span>
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="08.Procedure.rst">08.Procedure.rst</a>
+            </aside>
+            
+            <aside class="page_number">
+              38/48
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: 08.Procedure.rst -->
+      <div class="slide-wrapper">
+        <div class="slide slide-39">
           <div class="inner">
             
             <header><h1>Изменения и удаление</h1></header>
@@ -2748,7 +3064,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              32/41
+              39/48
             </aside>
           </footer>
         </div>
@@ -2756,7 +3072,7 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-33">
+        <div class="slide slide-40">
           <div class="inner">
             
             <header><h1>Перечень подпрограмм в MySQL</h1></header>
@@ -2801,7 +3117,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              33/41
+              40/48
             </aside>
           </footer>
         </div>
@@ -2809,7 +3125,7 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-34">
+        <div class="slide slide-41">
           <div class="inner">
             
             <header><h1>Триггеры</h1></header>
@@ -2860,7 +3176,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              34/41
+              41/48
             </aside>
           </footer>
         </div>
@@ -2868,7 +3184,7 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-35">
+        <div class="slide slide-42">
           <div class="inner">
             
             <header><h1>Пример работы с триггером</h1></header>
@@ -2914,7 +3230,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              35/41
+              42/48
             </aside>
           </footer>
         </div>
@@ -2922,7 +3238,7 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-36">
+        <div class="slide slide-43">
           <div class="inner">
             
             <header><h1>Пример работы с триггером</h1></header>
@@ -2967,7 +3283,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              36/41
+              43/48
             </aside>
           </footer>
         </div>
@@ -2975,7 +3291,7 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-37">
+        <div class="slide slide-44">
           <div class="inner">
             
             <header><h1>Проверяем работу триггеров</h1></header>
@@ -3038,7 +3354,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              37/41
+              44/48
             </aside>
           </footer>
         </div>
@@ -3046,7 +3362,7 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-38">
+        <div class="slide slide-45">
           <div class="inner">
             
             <header><h1>Список созданных триггеров</h1></header>
@@ -3077,7 +3393,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              38/41
+              45/48
             </aside>
           </footer>
         </div>
@@ -3085,7 +3401,7 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-39">
+        <div class="slide slide-46">
           <div class="inner">
             
             <header><h2>Удаление триггера</h2></header>
@@ -3109,7 +3425,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              39/41
+              46/48
             </aside>
           </footer>
         </div>
@@ -3117,7 +3433,7 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-40">
+        <div class="slide slide-47">
           <div class="inner">
             
             <header><h1>Домашнее задание</h1></header>
@@ -3150,7 +3466,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              40/41
+              47/48
             </aside>
           </footer>
         </div>
@@ -3158,7 +3474,7 @@ We use the IF statement to decide the credit limit. -->
       
       <!-- slide source: 08.Procedure.rst -->
       <div class="slide-wrapper">
-        <div class="slide slide-41">
+        <div class="slide slide-48">
           <div class="inner">
             
             <header><h1>Полезные ссылки</h1></header>
@@ -3171,6 +3487,7 @@ We use the IF statement to decide the credit limit. -->
 <li><a class="reference external" href="http://www.zoonman.ru/library/mysql_sr_and_t.htm">Хранимые процедуры и триггеры</a></li>
 <li><a class="reference external" href="http://web.znu.edu.ua/lab/econom/dba/lectures/ADBS_lect5.pdf">Хранимые процедуры и триггеры. Активные базы данных</a></li>
 <li><a class="reference external" href="http://blog.nagaychenko.com/2009/12/02/%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-trigger-%D1%82%D1%80%D0%B8%D0%B3%D0%B3%D0%B5%D1%80%D0%B0%D0%BC%D0%B8-%D0%B2-mysql/">Работа с trigger (триггерами) в MySQL</a></li>
+<li><a class="reference external" href="http://www.flenov.info/books.php?id=10">Transact-SQL В подлиннике</a></li>
 </ul></section>
             
           </div>
@@ -3187,7 +3504,7 @@ We use the IF statement to decide the credit limit. -->
             </aside>
             
             <aside class="page_number">
-              41/41
+              48/48
             </aside>
           </footer>
         </div>
@@ -3230,93 +3547,94 @@ We use the IF statement to decide the credit limit. -->
         <td><a href="#slide5">5</a></td>
       </tr>
       
-      
-      <tr id="toc-row-6">
-        <th><a href="#slide6">Пример создания процедуры в MS SQL</a></th>
-        <td><a href="#slide6">6</a></td>
-      </tr>
+        
+        <tr id="toc-row-6" class="sub">
+          <th><a href="#slide6">Хранимые процедуры в MS SQL</a></th>
+          <td><a href="#slide6">6</a></td>
+        </tr>
+        
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">Переменные в mysql</a></th>
+        <th><a href="#slide7">Пример создания процедуры в MS SQL</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">Переменные в MS SQL</a></th>
+        <th><a href="#slide8">Переменные в mysql</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
       
       <tr id="toc-row-9">
-        <th><a href="#slide9">Параметры</a></th>
+        <th><a href="#slide9">Переменные в MS SQL</a></th>
         <td><a href="#slide9">9</a></td>
       </tr>
       
       
       <tr id="toc-row-10">
-        <th><a href="#slide10">DELIMITER</a></th>
+        <th><a href="#slide10">Параметры</a></th>
         <td><a href="#slide10">10</a></td>
       </tr>
       
       
       <tr id="toc-row-11">
-        <th><a href="#slide11">Команда SELECT ... INTO</a></th>
+        <th><a href="#slide11">DELIMITER</a></th>
         <td><a href="#slide11">11</a></td>
       </tr>
       
       
       <tr id="toc-row-12">
-        <th><a href="#slide12">Условие IF в mysql</a></th>
+        <th><a href="#slide12">Команда SELECT ... INTO</a></th>
         <td><a href="#slide12">12</a></td>
       </tr>
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">Условие IF в MS SQL</a></th>
+        <th><a href="#slide13">Условие IF в mysql</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">Условие IF .. ELSE в mysql</a></th>
+        <th><a href="#slide14">Условие IF в MS SQL</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Условие IF .. ELSE в MS SQL</a></th>
+        <th><a href="#slide15">Условие IF .. ELSE в mysql</a></th>
         <td><a href="#slide15">15</a></td>
       </tr>
       
       
       <tr id="toc-row-16">
-        <th><a href="#slide16">Условие IF .. ELSEIF .. ELSE в mysql</a></th>
+        <th><a href="#slide16">Условие IF .. ELSE в MS SQL</a></th>
         <td><a href="#slide16">16</a></td>
       </tr>
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Пример применения условий</a></th>
+        <th><a href="#slide17">Условие IF .. ELSEIF .. ELSE в mysql</a></th>
         <td><a href="#slide17">17</a></td>
       </tr>
       
       
       <tr id="toc-row-18">
-        <th><a href="#slide18">-</a></th>
+        <th><a href="#slide18">Пример применения условий</a></th>
         <td><a href="#slide18">18</a></td>
       </tr>
       
       
       <tr id="toc-row-19">
-        <th><a href="#slide19">CASE</a></th>
+        <th><a href="#slide19">-</a></th>
         <td><a href="#slide19">19</a></td>
       </tr>
       
       
       <tr id="toc-row-20">
-        <th><a href="#slide20">Пример CASE</a></th>
+        <th><a href="#slide20">CASE</a></th>
         <td><a href="#slide20">20</a></td>
       </tr>
       
@@ -3328,123 +3646,161 @@ We use the IF statement to decide the credit limit. -->
       
       
       <tr id="toc-row-22">
-        <th><a href="#slide22">Поисковый CASE</a></th>
+        <th><a href="#slide22">Пример CASE</a></th>
         <td><a href="#slide22">22</a></td>
       </tr>
       
       
       <tr id="toc-row-23">
-        <th><a href="#slide23">Пример применения CASE</a></th>
+        <th><a href="#slide23">Поисковый CASE</a></th>
         <td><a href="#slide23">23</a></td>
       </tr>
       
       
       <tr id="toc-row-24">
-        <th><a href="#slide24">Цикл WHILE</a></th>
+        <th><a href="#slide24">Пример применения CASE</a></th>
         <td><a href="#slide24">24</a></td>
       </tr>
       
       
       <tr id="toc-row-25">
-        <th><a href="#slide25">Пример цикла WHILE</a></th>
+        <th><a href="#slide25">Цикл WHILE</a></th>
         <td><a href="#slide25">25</a></td>
       </tr>
       
       
       <tr id="toc-row-26">
-        <th><a href="#slide26">Цикл REPEAT</a></th>
+        <th><a href="#slide26">Пример цикла WHILE</a></th>
         <td><a href="#slide26">26</a></td>
       </tr>
       
       
       <tr id="toc-row-27">
-        <th><a href="#slide27">Пример цикла REPEAT</a></th>
+        <th><a href="#slide27">Цикл REPEAT</a></th>
         <td><a href="#slide27">27</a></td>
       </tr>
       
       
       <tr id="toc-row-28">
-        <th><a href="#slide28">Цикл LOOP</a></th>
+        <th><a href="#slide28">Пример цикла REPEAT</a></th>
         <td><a href="#slide28">28</a></td>
       </tr>
       
       
       <tr id="toc-row-29">
-        <th><a href="#slide29">Пример цикла LOOP</a></th>
+        <th><a href="#slide29">Цикл LOOP</a></th>
         <td><a href="#slide29">29</a></td>
       </tr>
       
       
       <tr id="toc-row-30">
-        <th><a href="#slide30">Сохраненные функции</a></th>
+        <th><a href="#slide30">Пример цикла LOOP</a></th>
         <td><a href="#slide30">30</a></td>
       </tr>
       
       
       <tr id="toc-row-31">
-        <th><a href="#slide31">Пример создания функции</a></th>
+        <th><a href="#slide31">Сохраненные функции</a></th>
         <td><a href="#slide31">31</a></td>
       </tr>
       
       
       <tr id="toc-row-32">
-        <th><a href="#slide32">Изменения и удаление</a></th>
+        <th><a href="#slide32">Пример создания функции</a></th>
         <td><a href="#slide32">32</a></td>
       </tr>
       
-      
-      <tr id="toc-row-33">
-        <th><a href="#slide33">Перечень подпрограмм в MySQL</a></th>
-        <td><a href="#slide33">33</a></td>
-      </tr>
-      
-      
-      <tr id="toc-row-34">
-        <th><a href="#slide34">Триггеры</a></th>
-        <td><a href="#slide34">34</a></td>
-      </tr>
-      
-      
-      <tr id="toc-row-35">
-        <th><a href="#slide35">Пример работы с триггером</a></th>
-        <td><a href="#slide35">35</a></td>
-      </tr>
-      
-      
-      <tr id="toc-row-36">
-        <th><a href="#slide36">Пример работы с триггером</a></th>
-        <td><a href="#slide36">36</a></td>
-      </tr>
-      
-      
-      <tr id="toc-row-37">
-        <th><a href="#slide37">Проверяем работу триггеров</a></th>
-        <td><a href="#slide37">37</a></td>
-      </tr>
-      
-      
-      <tr id="toc-row-38">
-        <th><a href="#slide38">Список созданных триггеров</a></th>
-        <td><a href="#slide38">38</a></td>
-      </tr>
-      
         
-        <tr id="toc-row-39" class="sub">
-          <th><a href="#slide39">Удаление триггера</a></th>
-          <td><a href="#slide39">39</a></td>
+        <tr id="toc-row-33" class="sub">
+          <th><a href="#slide33">Хранимые функции Transact-SQL</a></th>
+          <td><a href="#slide33">33</a></td>
+        </tr>
+        
+        <tr id="toc-row-34" class="sub">
+          <th><a href="#slide34">Создание хранимой функции в MS SQL</a></th>
+          <td><a href="#slide34">34</a></td>
+        </tr>
+        
+        <tr id="toc-row-35" class="sub">
+          <th><a href="#slide35">Пример создания скалярной функции</a></th>
+          <td><a href="#slide35">35</a></td>
+        </tr>
+        
+        <tr id="toc-row-36" class="sub">
+          <th><a href="#slide36">Функция, возвращающая таблицу:</a></th>
+          <td><a href="#slide36">36</a></td>
+        </tr>
+        
+        <tr id="toc-row-37" class="sub">
+          <th><a href="#slide37">Пример функции</a></th>
+          <td><a href="#slide37">37</a></td>
+        </tr>
+        
+        <tr id="toc-row-38" class="sub">
+          <th><a href="#slide38">Многооператорные функции:</a></th>
+          <td><a href="#slide38">38</a></td>
         </tr>
         
       
       
+      <tr id="toc-row-39">
+        <th><a href="#slide39">Изменения и удаление</a></th>
+        <td><a href="#slide39">39</a></td>
+      </tr>
+      
+      
       <tr id="toc-row-40">
-        <th><a href="#slide40">Домашнее задание</a></th>
+        <th><a href="#slide40">Перечень подпрограмм в MySQL</a></th>
         <td><a href="#slide40">40</a></td>
       </tr>
       
       
       <tr id="toc-row-41">
-        <th><a href="#slide41">Полезные ссылки</a></th>
+        <th><a href="#slide41">Триггеры</a></th>
         <td><a href="#slide41">41</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-42">
+        <th><a href="#slide42">Пример работы с триггером</a></th>
+        <td><a href="#slide42">42</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-43">
+        <th><a href="#slide43">Пример работы с триггером</a></th>
+        <td><a href="#slide43">43</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-44">
+        <th><a href="#slide44">Проверяем работу триггеров</a></th>
+        <td><a href="#slide44">44</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-45">
+        <th><a href="#slide45">Список созданных триггеров</a></th>
+        <td><a href="#slide45">45</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-46" class="sub">
+          <th><a href="#slide46">Удаление триггера</a></th>
+          <td><a href="#slide46">46</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-47">
+        <th><a href="#slide47">Домашнее задание</a></th>
+        <td><a href="#slide47">47</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-48">
+        <th><a href="#slide48">Полезные ссылки</a></th>
+        <td><a href="#slide48">48</a></td>
       </tr>
       
       
