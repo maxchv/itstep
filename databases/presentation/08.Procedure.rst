@@ -1034,6 +1034,32 @@ MS SQL:
 
 ----
 
+Пример многооператорной функции:
+--------------------------------
+
+.. sourcecode:: sql
+
+	CREATE FUNCTION getFIO ()
+	RETURNS  @ret TABLE 
+	  (idPeoples int primary key,
+	   vcFIO varchar(100))
+	AS
+	 BEGIN
+	  INSERT @ret
+	  SELECT idPeoples, vcFamil+' '+vcName+' '+vcSurName
+	  FROM tbPeoples;
+
+	  RETURN
+	 END
+ 
+В использовании, такая функция ничем не отличается от рассмотренных ранее. Например, следующий запрос выбирает все данные, которые возвращает функция:
+
+.. sourcecode:: sql
+
+	SELECT * FROM GetFIO()
+ 
+----
+
 Изменения и удаление
 ====================
 
