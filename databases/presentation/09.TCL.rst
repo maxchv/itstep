@@ -674,6 +674,10 @@ Serializable (упорядочиваемость)
 
 - `Блокировки в MySQL`_
 
+- `На пути к правильным SQL транзакциям`_
+
+- `SQL Server Isolation Levels By Example`_
+
 
 .. _Что такое транзакции?: https://www.eduonix.com/blog/database/sql-transaction-control-language-tcl/
 
@@ -684,3 +688,7 @@ Serializable (упорядочиваемость)
 .. _ACID: https://ru.wikipedia.org/wiki/ACID
 
 .. _Блокировки в MySQL: http://habrahabr.ru/post/46542/
+
+.. _На пути к правильным SQL транзакциям: https://habrahabr.ru/company/infopulse/blog/261097/
+
+.. _SQL Server Isolation Levels By Example: http://gavindraper.com/2012/02/18/sql-server-isolation-levels-by-example/
