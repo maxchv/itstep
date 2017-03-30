@@ -1377,7 +1377,7 @@ div.slide div.presenter_notes {
         <div class="slide slide-3">
           <div class="inner">
             
-            <header><h2>Синтаксис создания триггера в MySQL</h2></header>
+            <header><h2>Создание триггера в MySQL</h2></header>
             
             
             <section><pre><span class="k">CREATE</span> <span class="p">[</span><span class="k">DEFINER</span> <span class="o">=</span> <span class="err">{</span> <span class="o">&lt;</span><span class="err">имя</span><span class="n">_</span> <span class="err">пользователя</span><span class="o">&gt;</span> <span class="o">|</span> <span class="k">CURRENT_USER</span> <span class="err">}</span><span class="p">]</span>
@@ -1427,24 +1427,22 @@ div.slide div.presenter_notes {
         <div class="slide slide-4">
           <div class="inner">
             
-            <header><h2>Синтаксис создания триггера в MS SQL</h2></header>
+            <header><h2>Создание триггера в MS SQL</h2></header>
             
             
-            <section><pre><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="err">имя</span><span class="n">_</span><span class="err">триггера</span>
-<span class="k">ON</span> <span class="err">{</span> <span class="err">таблица</span> <span class="o">|</span> <span class="err">представление</span> <span class="err">}</span>
+            <section><pre><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="err">имя</span><span class="n">_</span><span class="err">триггера</span> <span class="k">ON</span> <span class="err">{</span> <span class="err">таблица</span> <span class="o">|</span> <span class="err">представление</span> <span class="err">}</span>
 <span class="p">[</span> <span class="k">WITH</span> <span class="n">ENCRYPTION</span> <span class="p">]</span>
 <span class="err">{</span>
-        <span class="err">{</span> <span class="err">{</span> <span class="k">FOR</span> <span class="o">|</span> <span class="k">AFTER</span> <span class="o">|</span> <span class="k">INSTEAD</span> <span class="k">OF</span> <span class="err">}</span> <span class="err">{</span><span class="p">[</span> <span class="k">DELETE</span> <span class="p">]</span> <span class="p">[</span> <span class="p">,</span> <span class="p">]</span> <span class="p">[</span> <span class="k">INSERT</span> <span class="p">]</span> <span class="p">[</span> <span class="p">,</span> <span class="p">]</span> <span class="p">[</span> <span class="k">UPDATE</span> <span class="p">]</span> <span class="err">}</span>
-                <span class="p">[</span> <span class="k">WITH</span> <span class="n">APPEND</span> <span class="p">]</span>
-                <span class="p">[</span> <span class="k">NOT</span> <span class="k">FOR</span> <span class="n">REPLICATION</span> <span class="p">]</span>
+        <span class="err">{</span> <span class="err">{</span> <span class="k">FOR</span> <span class="o">|</span> <span class="k">AFTER</span> <span class="o">|</span> <span class="k">INSTEAD</span> <span class="k">OF</span> <span class="err">}</span>
+        <span class="err">{</span><span class="p">[</span> <span class="k">DELETE</span> <span class="p">]</span> <span class="p">[</span> <span class="p">,</span> <span class="p">]</span> <span class="p">[</span> <span class="k">INSERT</span> <span class="p">]</span> <span class="p">[</span> <span class="p">,</span> <span class="p">]</span> <span class="p">[</span> <span class="k">UPDATE</span> <span class="p">]</span> <span class="err">}</span>
+                <span class="p">[</span> <span class="k">WITH</span> <span class="n">APPEND</span> <span class="p">]</span> <span class="p">[</span> <span class="k">NOT</span> <span class="k">FOR</span> <span class="n">REPLICATION</span> <span class="p">]</span>
                 <span class="k">AS</span>
                 <span class="p">[</span> <span class="err">{</span> <span class="n">IF</span> <span class="k">UPDATE</span> <span class="p">(</span> <span class="err">столбец</span> <span class="p">)</span>
                         <span class="p">[</span> <span class="err">{</span> <span class="k">AND</span> <span class="o">|</span> <span class="k">OR</span> <span class="err">}</span> <span class="k">UPDATE</span> <span class="p">(</span> <span class="err">столбец</span> <span class="p">)</span> <span class="p">]</span>
                                 <span class="p">[</span> <span class="p">...</span><span class="n">n</span> <span class="p">]</span>
                 <span class="o">|</span> <span class="n">IF</span> <span class="p">(</span><span class="n">COLUMNS_UPDATED</span><span class="p">()</span> <span class="err">{бинарный</span><span class="n">_</span><span class="err">оператор}</span> <span class="err">бинарная</span><span class="n">_</span><span class="err">маска</span><span class="p">)</span>
                                 <span class="err">{</span> <span class="err">оператор</span><span class="n">_</span><span class="err">бин</span><span class="n">_</span><span class="err">сравнения</span> <span class="err">}</span> <span class="err">бинарная</span><span class="n">_</span><span class="err">маска</span> <span class="p">[</span> <span class="p">...</span><span class="n">n</span> <span class="p">]</span>
-                <span class="err">}</span> <span class="p">]</span>
-                <span class="err">выражение</span> <span class="p">[</span> <span class="p">...</span><span class="n">n</span> <span class="p">]</span>
+                <span class="err">}</span> <span class="p">]</span> <span class="err">выражение</span> <span class="p">[</span> <span class="p">...</span><span class="n">n</span> <span class="p">]</span>
         <span class="err">}</span>
 <span class="err">}</span>
 </pre>
@@ -1895,12 +1893,12 @@ inserted и deleted. В них содержатся списки строк, к�
       
         
         <tr id="toc-row-3" class="sub">
-          <th><a href="#slide3">Синтаксис создания триггера в MySQL</a></th>
+          <th><a href="#slide3">Создание триггера в MySQL</a></th>
           <td><a href="#slide3">3</a></td>
         </tr>
         
         <tr id="toc-row-4" class="sub">
-          <th><a href="#slide4">Синтаксис создания триггера в MS SQL</a></th>
+          <th><a href="#slide4">Создание триггера в MS SQL</a></th>
           <td><a href="#slide4">4</a></td>
         </tr>
         
