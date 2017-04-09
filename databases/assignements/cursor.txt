@@ -1,0 +1,22 @@
+¬ базе данных NotrhWind использовать таблицы Orders, [Order Details] и Customers
+
+Ќаписать хранимую процедуру в которой с применением курсора рассчитываетс€ скидка исход€ из 
+следующих значений:
+ 
+UnitPrice	  	—кидка 
+------------------------------
+10.00 - 19.99  		5% 
+20.00 - 49.99  		10% 
+50.00 - 99.99  		15% 
+> 100.00  		20% 
+
+Ќапечатать низвание компании (CompanyName из таблицы Customer), 
+id продукта (ProductID из табицы [Order Details]), 
+÷ена продажи (UnitPrice с учетом скидки из табицы [Order Details]), 
+количество (Quantity из табицы [Order Details]) 
+и обща€ стоимость (Sale Price * Quantity).
+
+ѕример вывода:
+
+Company: Vins et alcools Chevalier
+Product: 11 , Sale Price: $13.30 , Quantity: 12 , Total: 159.60 

@@ -1,0 +1,1 @@
+ссылка на ресурс: http://datasql.ru/basesql/13.htm

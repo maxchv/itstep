@@ -1,2 +1,4 @@
 Список практических заданий:
 http://eos.ibi.spb.ru/umk/5_8/15/15_A.html
+
+Задания на курсоры: http://www.cs.sfu.ca/CourseCentral/354/han/assignmenttwo.html
