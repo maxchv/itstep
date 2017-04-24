@@ -1,5 +1,5 @@
 1. Используя соединение inner join, outer left join и outer right join, full outer join
-   получить значения полей ContactName таблицы Customers и поля OrderID таблицы Orders базы данных northwind
+   получить значения полей first_name, last_name и city таблицы Customers и поля ship_name, ship_address таблицы Orders базы данных northwind
 
 2. Используя объединение (union) таблицы Customers и Suppliers получить все уникальные 
    города  (City) базы данных northwind отсортированные в алфавитном порядке
