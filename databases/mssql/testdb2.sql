@@ -1,0 +1,1 @@
+select count(*) from test_table where [data] like 'A%';
