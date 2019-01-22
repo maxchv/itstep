@@ -1,1 +1,4 @@
-Хорошая подборка заданий по базам данных: http://www.w3resource.com/mysql-exercises/
+﻿Хорошая подборка заданий по базам данных: http://www.w3resource.com/mysql-exercises/
+
+Материалы по бд
+https://www.rose-hulman.edu/class/cs/csse333/
