@@ -1,0 +1,67 @@
+Во всех заданиях используется бд Northwind:
+
+1. Практика на EXISTS
+
+	1.1 Найти всех поставщиков из таблицы Suppliers цена продукта которых меньше 20:
+
+	SELECT Suppliers.CompanyName
+	FROM Suppliers
+	WHERE EXISTS (SELECT ProductName FROM Products WHERE SupplierId = Suppliers.supplierId AND Products.UnitPrice < 20); 
+
+	1.2 Найти всех поставщиков из таблицы Suppliers цена продукта которых равна 22:
+	
+	SELECT Suppliers.CompanyName
+	FROM Suppliers
+	WHERE EXISTS (SELECT ProductName FROM Products WHERE SupplierId = Suppliers.supplierId AND Products.UnitPrice = 22); 
+	
+2. Практика на UNION
+	
+	2.1 Используя объединение (union) таблицы Customers и Suppliers получить уникальные 
+		города (City) базы данных northwind отсортированные в алфавитном порядке
+		
+		SELECT City FROM Customers
+		UNION 
+		SELECT City FROM Suppliers
+		ORDER BY City;
+		
+	2.2 Используя объединение (union) таблицы Customers и Suppliers получить все  
+		города (City) базы данных northwind отсортированные в алфавитном порядке
+		
+		SELECT City FROM Customers
+		UNION ALL
+		SELECT City FROM Suppliers
+		ORDER BY City;
+		
+	2.3 Выбирать все уникальные немецкие города (только отдельные значения) из таблиц Customers и Suppliers:
+	
+		SELECT City, Country FROM Customers
+		WHERE Country='Germany'
+		UNION
+		SELECT City, Country FROM Suppliers
+		WHERE Country='Germany'
+		ORDER BY City;
+		
+3. Практика на ANY
+	
+	3.1 Найти названия всех продуктов из таблицы Products если в таблице [Order Details] есть 
+      	какие-либо записи для которых количество Quantity = 10:
+	
+		SELECT ProductName
+		FROM Products
+		WHERE ProductID = ANY (SELECT ProductID FROM [Order Details] WHERE Quantity = 10)
+		
+	3.2 Найти названия всех продуктов из таблицы Products если в таблице [Order Details] есть 
+      	какие-либо записи для которых количество больше 99
+	
+		SELECT ProductName
+		FROM Products
+		WHERE ProductID = ANY (SELECT ProductID FROM [Order Details] WHERE Quantity = 10)
+	
+4. Практика на ALL
+	
+	4.1 Найти названия всех продуктов из таблицы Products если в таблице [Order Details]  
+      	для всех записе количество Quantity = 10:	
+	
+		SELECT ProductName
+		FROM Products
+		WHERE ProductID = ALL (SELECT ProductID FROM [Order Details] WHERE Quantity = 10); 
